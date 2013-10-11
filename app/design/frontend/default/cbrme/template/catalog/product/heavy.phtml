@@ -1,0 +1,18 @@
+<div class="heavy">
+<div class="heavy-title"><img src="<?php echo $this->getSkinUrl("images/heavy_duty.jpg") ?>" alt="" /></div>
+<ul class="heavy-categories">
+<?php $cat = Mage::getModel('catalog/category')->load(4);
+$subcats = $cat->getChildren();
+
+foreach(explode(',',$subcats) as $subCatid)
+{
+$_category = Mage::getModel('catalog/category')->load($subCatid);
+if($_category->getIsActive()) {
+echo '<li class="sub_cat">';
+echo '<a href="'.$_category->getURL().'" title="View the products for the "'.$_category->getName().'" category">'.$_category->getName().'</a>';
+}
+echo '</li>';
+}
+?>
+</ul>
+</div>

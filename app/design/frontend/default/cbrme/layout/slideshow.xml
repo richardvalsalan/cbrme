@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <slideshow_index_index>
+        <reference name="content">
+            <block type="slideshow/slideshow" name="slideshow" template="slideshow/slideshow.phtml" />
+        </reference>
+    </slideshow_index_index>
+</layout> 

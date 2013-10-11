@@ -1,0 +1,56 @@
+<?php
+/*
+This source code is developed by BigRaja. 
+All rights to edit this code, copy it or make additions are reserved by BigRaja. 
+If you wish to purchase this module or edit it please contact info@bigraja.com. 
+Any unauthorized copying or editing will be subject to prosecution under strict piracy laws.
+
+*/
+?>
+<?php
+$mediapath = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'slideshow//';
+$slidemodel= $this->slideCollection();
+$categoryModel = $this->categoryCollection();
+$enabletoggle=Mage::getStoreConfig('slideshow/slideshow_group/slideshow_select');
+foreach($categoryModel as $stat)
+{
+$statuscheck=$stat->getStatus();
+}
+?>
+<?php if($enabletoggle==1 and $statuscheck==1){ ?>
+<?php 
+foreach ($categoryModel as $cat)
+$effect=$cat->getEffect(); 
+$height=$cat->getHeight();
+$width=$cat->getWidth();
+$directionnav=$cat->getDirectNav();
+$controlnav=$cat->getControlNav();
+$animationspeed=$cat->getDuration();
+$pausetime=$cat->getPausetime();
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/nivo-slider.css') ?>" />
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery-1.4.4.min.js') ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/jquery.nivo.slider.js') ?>"></script>
+<div class="home-content">
+<script type="text/javascript">
+    jQuery(window).load(function() {
+        jQuery('#slider').nivoSlider({
+		effect:'<?php echo $effect;?>',
+		directionNav:<?php if($directionnav==2){echo 'false';}elseif($directionnav==1){echo 'true';}else{echo ' ';}?>,
+		controlNav:<?php if($controlnav==2){echo 'false';}elseif($controlnav==1){echo 'true';}else{echo ' ';}?>,
+		animSpeed: <?php echo $animationspeed; ?>,
+		pauseTime: <?php echo $pausetime; ?>
+	});
+		 
+    });
+</script>
+<div id="slider" class="nivoSlider" style="height:<?php echo $height.'px';?>;width:<?php echo $width.'px';?>">
+<?php foreach ($slidemodel as $slides){?>
+<?php $imagename= $slides->getFilename();$url=$slides->getUrl();?>
+<a href="<?php echo $url;?>"><img src="<?php echo $mediapath.$imagename;?>" style="height:<?php echo $height.'px';?>;width:<?php echo $width.'px';?>" alt="" /> </a>
+
+<?php } ?>
+
+</div>
+</div>
+<?php } ?>

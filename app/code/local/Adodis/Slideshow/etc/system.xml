@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <sections>
+        <slideshow translate="label">
+            <label>Slideshow</label>
+            <tab>general</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store> 
+            <groups>
+                <slideshow_group translate="label">
+                    <label>Slideshow</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store> 
+                    <fields>
+                        <slideshow_select translate="label">
+                            <label>Slideshow </label>
+                            <comment>Enable or disable Slideshow</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                           <source_model>slideshow/system_config_source_yesno</source_model>
+                        </slideshow_select>		 
+                    </fields>
+                </slideshow_group>
+            </groups>
+        </slideshow>
+    </sections>
+</config>

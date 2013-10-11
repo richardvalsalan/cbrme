@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Adodis_Slideshow>
+            <version>0.1.0</version>
+        </Adodis_Slideshow>
+    </modules>
+    <frontend>
+        <routers>
+            <slideshow>
+                <use>standard</use>
+                <args>
+                    <module>Adodis_Slideshow</module>
+                    <frontName>slideshow</frontName>
+                </args>
+            </slideshow>
+        </routers>
+        <layout>
+            <updates>
+                <slideshow>
+                    <file>slideshow.xml</file>
+                </slideshow>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<slideshow>
+				<use>admin</use>
+				<args>
+					<module>Adodis_Slideshow</module>
+					<frontName>slideshow</frontName>
+				</args>
+			</slideshow>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+			<slideshow module="slideshow">
+				<title>Slideshow</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<newslide module="slideshow">
+						<title>Add New Slide</title>
+						<sort_order>0</sort_order>
+						<action>slideshow/adminhtml_slideshow</action>
+					</newslide>
+					<manageslide module="slideshow">
+						<title>Manage Slide</title>
+						<sort_order>1</sort_order>
+						<action>slideshow/adminhtml_slideshow</action>
+					</manageslide>
+					<managecat module="slideshow">
+						<title>Manage Category</title>
+						<sort_order>2</sort_order>
+						<action>slideshow/adminhtml_category</action>
+					</managecat>					
+				</children>
+			</slideshow>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<slideshow>
+								<title>Slide Show</title>
+								<sort_order>10</sort_order>
+								<children>
+								<newslide translate="title">
+								<title>Add New Slide</title>
+								<sort_order>10</sort_order>
+								</newslide>
+								<manageslide translate="title">
+								<title>Manage Slide</title>
+								<sort_order>0</sort_order>
+								</manageslide>
+								<managecat translate="title">
+								<title>Manage Category</title>
+								<sort_order>20</sort_order>
+								</managecat>
+								</children>
+								</slideshow>
+						<system>
+							<children>
+								<config>
+									<children>
+										<slideshow>
+											<title>Slideshow</title>
+										</slideshow>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<slideshow>
+					<file>slideshow.xml</file>
+				</slideshow>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <slideshow>
+                <class>Adodis_Slideshow_Model</class>
+                <resourceModel>slideshow_mysql4</resourceModel>				
+            </slideshow>
+            <slideshow_mysql4>
+                <class>Adodis_Slideshow_Model_Mysql4</class>
+                <entities>
+                    <slideshow>
+                        <table>slideshow</table>
+                    </slideshow>
+                  <category>
+                        <table>category</table>
+                    </category>
+				<category_store>
+                        <table>category_store</table>
+                    </category_store>
+                </entities>
+            </slideshow_mysql4>
+        </models>
+        <resources>
+            <slideshow_setup>
+                <setup>
+                    <module>Adodis_Slideshow</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </slideshow_setup>
+            <slideshow_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </slideshow_write>
+            <slideshow_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </slideshow_read>
+        </resources>
+        <blocks>
+            <slideshow>
+                <class>Adodis_Slideshow_Block</class>
+            </slideshow>
+        </blocks>
+        <helpers>
+            <slideshow>
+                <class>Adodis_Slideshow_Helper</class>
+            </slideshow>
+        </helpers>
+    </global>
+</config>

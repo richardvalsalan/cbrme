@@ -29,18 +29,48 @@
 ?>
 <div class="header-container">
     <div class="header">
+	<div class="header-inner-left"></div>
+	<div class="header-inner-middle">
         <?php if ($this->getIsHomePage()):?>
         <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
         <?php else:?>
         <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
         <?php endif?>
-        <div class="quick-access">
+		<div class="header-login"><img src="<?php echo $this->getSkinUrl("images/login.png") ?>" alt="" /></div>
+		<div class="header-register"><img src="<?php echo $this->getSkinUrl("images/register.png") ?>" alt="" /></div>
+	</div>
+	<div class="header-inner-right"></div>
+	
+	<!-- Menu -->
+	<div class="header-menu-left"></div>
+	<div class="header-menu-middle">
+	<ul class="header-menu">
+	<li class="homel2"><a href="">Home</a></li>
+	<li><a href="">About Us</a></li>
+	<li><a href="">Services</a></li>
+	<li><a href="">Contact Us</a></li>
+	</ul>
+	</div>
+	<div class="header-menu-right"></div>
+	<!-- Menu -->
+	
+	<!-- search -->
+	<div class="header-search-left"></div>
+	<div class="header-search-middle">
+	<div class="header-searchinner-left"></div>
+	<div class="header-searchinner-middle">
+	 <div class="quick-access">
             <?php echo $this->getChildHtml('topSearch') ?>
-            <p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getAdditionalHtml() ?></p>
+            <!--<p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getAdditionalHtml() ?></p>
             <?php echo $this->getChildHtml('topLinks') ?>
-            <?php echo $this->getChildHtml('store_language') ?>
-        </div>
+            <?php echo $this->getChildHtml('store_language') ?>-->
+     </div>
+	 </div>
+	 <div class="header-searchinner-right"></div>  
+     </div>
+	<div class="header-search-right"></div>  
+	<!-- search -->
         <?php echo $this->getChildHtml('topContainer'); ?>
     </div>
 </div>
-<?php echo $this->getChildHtml('topMenu') ?>
+<!--<?php echo $this->getChildHtml('topMenu') ?>-->

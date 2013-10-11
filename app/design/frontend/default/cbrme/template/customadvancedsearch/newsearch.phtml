@@ -1,3 +1,6 @@
+<?php 
+	$this->getStoreCategories();
+?>
 <?php
 	$attributes = Mage::getSingleton('catalogsearch/advanced')->getAttributes();
 ?>
@@ -13,6 +16,12 @@
 				<select name="category" id="category_search_field">
 					<option value="">-- Any Category --</option>
 					<?php foreach ($this->getStoreCategories() as $_category) { ?>
+						<?php 
+							//echo "catgeoryInfo";
+							//echo "<pre>";
+							//print_r($_category->toArray());
+							//die;
+						?>
 						<?php if($_category->hasChildren()){ ?>
 							<option class="parent-cat" value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName();?></option>
 							<?php foreach ($_category->getChildren() as $subcategory) { ?>
