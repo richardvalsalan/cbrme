@@ -4,8 +4,7 @@
 <?php $maxQueryLength= Mage::helper('catalogsearch')->getMaxQueryLength();?>
 
 <form action="<?php echo $this->getAdvancedSearchPostUrl() ?>" method="get" id="new-form-validate" name="new-form-validate">
-	<div class="fieldset advanced-search">
-		<h2 class="legend"><?php echo $this->__('Search Settings') ?></h2>
+	<div class="customfieldset advanced-search">
 		<ul class="form-list" id="advanced-search-list">
 			<li>
 				<label for="category_search_field" >Category</label>
@@ -82,9 +81,9 @@
 	</div>
 	<!-- Sending Hidden input for Used tab-->
 	<input type="hidden" value="5" name="product_use_type[]" id="product_use_type" />
-	<div class="buttons-set">
-        <button type="submit" title="<?php echo $this->__('Search') ?>" class="button"><span><span><?php echo $this->__('Search') ?></span></span></button>
-    </div>
+	<div class="buttons">
+    	<button type="submit" title="<?php echo $this->__('Search') ?>" class="button"><span><span><?php echo $this->__('Search') ?></span></span></button>
+	</div>
 </form>
 <script type="text/javascript">
 //<![CDATA[
