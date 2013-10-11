@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <customadvancedsearch_index_newsearch>
+        <reference name="content">
+            <block type="customadvancedsearch/customadvancedsearch" name="customadvancedsearch" template="customadvancedsearch/newsearch.phtml" />
+        </reference>
+    </customadvancedsearch_index_newsearch>
+
+    <customadvancedsearch_index_usedsearch>
+        <reference name="content">
+            <block type="customadvancedsearch/customadvancedsearch" name="customadvancedsearch" template="customadvancedsearch/usedsearch.phtml" />
+        </reference>
+    </customadvancedsearch_index_usedsearch>
+
+    <customadvancedsearch_index_rentalsearch>
+        <reference name="content">
+            <block type="customadvancedsearch/customadvancedsearch" name="customadvancedsearch" template="customadvancedsearch/rentalsearch.phtml" />
+        </reference>
+    </customadvancedsearch_index_rentalsearch>
+
+    <customadvancedsearch_index_sparepartsearch>
+        <reference name="content">
+            <block type="customadvancedsearch/customadvancedsearch" name="customadvancedsearch" template="customadvancedsearch/sparepartsearch.phtml" />
+        </reference>
+    </customadvancedsearch_index_sparepartsearch>
+
+    
+</layout>

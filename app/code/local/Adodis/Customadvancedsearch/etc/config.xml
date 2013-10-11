@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Adodis_Customadvancedsearch>
+            <version>0.1.0</version>
+        </Adodis_Customadvancedsearch>
+    </modules>
+    <frontend>
+        <routers>
+            <customadvancedsearch>
+                <use>standard</use>
+                <args>
+                    <module>Adodis_Customadvancedsearch</module>
+                    <frontName>customadvancedsearch</frontName>
+                </args>
+            </customadvancedsearch>
+        </routers>
+        <layout>
+            <updates>
+                <customadvancedsearch>
+                    <file>customadvancedsearch.xml</file>
+                </customadvancedsearch>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+            <customadvancedsearch>
+                <use>admin</use>
+                <args>
+                    <module>Adodis_Customadvancedsearch</module>
+                    <frontName>customadvancedsearch</frontName>
+                </args>
+            </customadvancedsearch>
+        </routers>
+    </admin>
+    <adminhtml>
+        <!-- <menu>
+            <customadvancedsearch module="customadvancedsearch">
+                <title>Customadvancedsearch</title>
+                <sort_order>71</sort_order>
+                <children>
+                    <items module="customadvancedsearch">
+                        <title>Manage Items</title>
+                        <sort_order>0</sort_order>
+                        <action>customadvancedsearch/adminhtml_customadvancedsearch</action>
+                    </items>
+                </children>
+            </customadvancedsearch>
+        </menu> -->
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <Adodis_Customadvancedsearch>
+                            <title>Customadvancedsearch Module</title>
+                            <sort_order>10</sort_order>
+                        </Adodis_Customadvancedsearch>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <customadvancedsearch>
+                    <file>customadvancedsearch.xml</file>
+                </customadvancedsearch>
+            </updates>
+        </layout>
+    </adminhtml>
+    <global>
+        <models>
+            <customadvancedsearch>
+                <class>Adodis_Customadvancedsearch_Model</class>
+                <resourceModel>customadvancedsearch_mysql4</resourceModel>
+            </customadvancedsearch>
+
+            <catalogsearch>
+                <rewrite>
+                    <advanced>Adodis_Customadvancedsearch_Model_Catalogsearch_Advanced</advanced>
+                </rewrite>
+            </catalogsearch>
+
+            <customadvancedsearch_mysql4>
+                <class>Adodis_Customadvancedsearch_Model_Mysql4</class>
+                <entities>
+                    <customadvancedsearch>
+                        <table>customadvancedsearch</table>
+                    </customadvancedsearch>
+                </entities>
+            </customadvancedsearch_mysql4>
+        </models>
+        <resources>
+            <customadvancedsearch_setup>
+                <setup>
+                    <module>Adodis_Customadvancedsearch</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </customadvancedsearch_setup>
+            <customadvancedsearch_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </customadvancedsearch_write>
+            <customadvancedsearch_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </customadvancedsearch_read>
+        </resources>
+        <blocks>
+            <customadvancedsearch>
+                <class>Adodis_Customadvancedsearch_Block</class>
+            </customadvancedsearch>
+
+            <catalogsearch>
+                <rewrite>
+                    <advanced_form>Adodis_Customadvancedsearch_Block_Catalogsearch_Advanced_Form</advanced_form>
+                </rewrite>
+            </catalogsearch>
+            
+        </blocks>
+        <helpers>
+            <customadvancedsearch>
+                <class>Adodis_Customadvancedsearch_Helper</class>
+            </customadvancedsearch>
+        </helpers>
+    </global>
+</config>

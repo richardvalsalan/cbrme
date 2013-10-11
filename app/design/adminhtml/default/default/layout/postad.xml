@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <postad_adminhtml_postad_index>
+        <reference name="content">
+            <block type="postad/adminhtml_postad" name="postad" />
+        </reference>
+    </postad_adminhtml_postad_index>
+</layout>

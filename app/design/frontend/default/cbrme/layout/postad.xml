@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <postad_index_index>
+        <reference name="content">
+            <block type="postad/postad" name="postad" template="postad/postad.phtml" />
+        </reference>
+    </postad_index_index>
+
+    <postad_index_classifiedad>
+        <reference name="content">
+            <block type="postad/postad" name="postad" template="postad/classifiedad.phtml" />
+        </reference>
+    </postad_index_classifiedad>
+</layout>
