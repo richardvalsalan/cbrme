@@ -10,8 +10,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
 
     public function saveAd()
     {
-    	print_r($_FILE);
-    	die;
+    	
     	$product = Mage::getModel('catalog/product')->load(4);
 
     	$product->setSku('richi1');

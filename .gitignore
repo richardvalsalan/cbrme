@@ -6,9 +6,12 @@
 /var/report/*
 
 /media/catalog/product/cache/**/*
+/media/catalog/product/*
 /media/js/*
 /media/css/*.css
-media/slideshow/*
+/media/slideshow/*
+/media/productUploadTempFolder/*
+
 
 /errors/local.xml
 /app/etc/local.xml
