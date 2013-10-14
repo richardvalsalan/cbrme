@@ -17,6 +17,8 @@ class Adodis_Postad_IndexController extends Mage_Core_Controller_Front_Action
     public function classifiedadsaveAction()
     {
     	
+        $saveAdAndGetId = Mage::getModel('postad/postad')->saveAd();
+
         for ($i = 1; $i <= 4 ; $i++ ) {
             
             if (isset($_FILES['filename' . $i]['name']) && $_FILES['filename' . $i]['name'] != '') {
@@ -59,7 +61,7 @@ class Adodis_Postad_IndexController extends Mage_Core_Controller_Front_Action
 
                 $imgUrl = Mage::getBaseDir('media') . DS . 'productUploadTempFolder/' . $_FILES['filename' . $i]['name'];
 
-                $product = Mage::getModel('catalog/product')->load(4);
+                $product = Mage::getModel('catalog/product')->load($saveAdAndGetId);
 
                 $product->addImageToMediaGallery($imgUrl , $mediaAttribute, false, false ); 
                 $product->save();
@@ -67,13 +69,45 @@ class Adodis_Postad_IndexController extends Mage_Core_Controller_Front_Action
                 //deleting the images after saving the product
                 unlink(Mage::getBaseDir('media') . DS . 'productUploadTempFolder/' . $_FILES['filename' . $i]['name']);
 
-                // $product = Mage::getModel('catalog/product')->load()
             }
         }
-        echo "done";
-        die;
+        
+    	$this->_addToCart($product);
+    }
 
-        $saveAd = Mage::getModel('postad/postad')->saveAd();
-    	
+    protected function _addToCart($product)
+    {
+        $cart = $this->_getCart();
+
+        $eventArgs = array(
+            'product' => $product,
+            'qty' => 1
+        );
+
+        try {
+
+            Mage::dispatchEvent('checkout_cart_before_add', $eventArgs);
+
+            $cart->addProduct($product);
+
+            Mage::dispatchEvent('checkout_cart_after_add', $eventArgs);
+
+            $cart->save();
+
+            Mage::dispatchEvent('checkout_cart_add_product', array('product'=>$product));
+
+            $message = $this->__('%s was successfully added to your shopping cart.', $product->getName());    
+            Mage::getSingleton('checkout/session')->addSuccess($message);
+
+        } catch (Exception $e) {
+            Mage::getSingleton('checkout/session')->addException($e, $this->__('Can not add item to shopping cart'));
+        }
+
+        return $this->_redirect('checkout/cart');
+    }
+
+    protected function _getCart()
+    {
+        return Mage::getSingleton('checkout/cart');
     }
 }
