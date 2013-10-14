@@ -1832,6 +1832,7 @@ tr.summary-details-excluded { font-style:italic; }
 .tab2 {float: left;height: 30px;width: auto; color:#000; margin-right:5px; cursor:pointer; font-weight:bold;}
 .tab3 {float: left;height: 30px;width: auto; color:#000; margin-right:5px; cursor:pointer; font-weight:bold;}
 .tab4 {float: left;height: 30px;width: auto; color:#000; margin-right:5px; cursor:pointer; font-weight:bold;}
+.tab5 {float: left;height: 30px;width: auto; color:#000; margin-right:5px; cursor:pointer; font-weight:bold;}
 
 .tab1-left{background:url(../images/text_field_mouse_out_tab_left.png) no-repeat; float:left;height: 31px; width: 8px; }
 .tab1-middle{background:url(../images/text_field_mouse_out_tab_middle.png) repeat-x; float:left;height: 25px; padding-left: 5px; padding-right: 5px; padding-top: 6px; width: auto; }
