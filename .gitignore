@@ -1,9 +1,12 @@
+quickCatCreate.php
+
 /var/cache/**/*
 /var/session/**/*
 /var/session/*
 /var/log/*
 /var/locks/*
 /var/report/*
+/var/import/*
 
 /media/catalog/product/cache/**/*
 /media/catalog/product/*
