@@ -1151,9 +1151,12 @@ tr.summary-details-excluded { font-style:italic; }
 .tags-list li a { color:#1b2d3b; }
 
 /* Advanced Search */
-.advanced-search .form-list label { width:160px; padding-right:10px; }
+.advanced-search .form-list label { width:50px; padding-right:15px; padding-left: 20px;}
 .advanced-search .form-list .input-box,
 .advanced-search .form-list .input-range { float:left; clear:none; }
+.advanced-search .form-list .input-range input.input-text {width: 156px;}
+.advanced-search .form-list input.input-text {width: 342px;}
+.advanced-search .form-list select {width: 350px;}
 .advanced-search-amount { margin:0 0 10px; }
 .advanced-search-summary { margin:10px 0; border:1px solid #e9d7c9; background:#fff6f1; padding:10px; }
 .advanced-search-summary ul { float:left; width:49%; }
@@ -1801,7 +1804,7 @@ tr.summary-details-excluded { font-style:italic; }
 /* ======================================================================================= */
 
 
-/* Home Page============================================================================ */
+/* Home Page ============================================================================ */
 
 .guest-select {width:305px !important;}
 .header-inner-left{background:url(../images/header-Left.jpg) no-repeat; float:left;height: 113px; width: 10px;}
@@ -1864,6 +1867,218 @@ tr.summary-details-excluded { font-style:italic; }
 .home-bottom-right { float: left; margin-top: 10px;width: 165px;}
 .home-bottom-middle { float: left; height: 600px; margin-left: 5px; margin-top: 10px; width: 645px;}
 
+/* custom advanced search */
+
+
+.customfieldset {
+    float: left;
+    height: 258px;
+}
+
+form#new-form-validate ul {
+	list-style-type: none;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+form#new-form-validate .separator {
+	color: #666666;
+    font-weight: bold;
+    margin: 0 3px;
+}
+
+form#new-form-validate ul li:nth-child(8) {
+	display: inline-block;
+}
+
+form#new-form-validate ul li:nth-child(8) div.input-box {
+	display: block;
+	width: 137px;
+}
+
+form#new-form-validate ul li:nth-child(8) select{
+	width : 165px;
+	float : left
+}
+
+form#new-form-validate ul li:nth-child(9){
+	display: inline-block;
+}
+
+form#new-form-validate ul li:nth-child(9) label{
+	padding-left : 30px;
+	width : 10px;
+}
+
+form#new-form-validate ul li:nth-child(9) select{
+
+	width : 155px;
+}
+
+form#new-form-validate ul li:nth-child(9) div.input-box {
+	display: block;
+	width: 137px;
+}
+
+form#new-form-validate .buttons {
+	float : right;
+	padding-right: 40px;
+}
+
+form#used-form-validate ul {
+	list-style-type: none;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+form#used-form-validate .separator {
+	color: #666666;
+    font-weight: bold;
+    margin: 0 3px;
+}
+
+form#used-form-validate ul li:nth-child(9) {
+	display: inline-block;
+}
+
+form#used-form-validate ul li:nth-child(9) div.input-box {
+	display: block;
+	width: 137px;
+}
+
+form#used-form-validate ul li:nth-child(9) select{
+	width : 165px;
+	float : left
+}
+
+form#used-form-validate ul li:nth-child(10){
+	display: inline-block;
+}
+
+form#used-form-validate ul li:nth-child(10) label{
+	padding-left : 30px;
+	width : 10px;
+}
+
+form#used-form-validate ul li:nth-child(10) select{
+
+	width : 155px;
+}
+
+form#used-form-validate ul li:nth-child(10) div.input-box {
+	display: block;
+	width: 137px;
+}
+
+form#used-form-validate .buttons {
+	float : right;
+	padding-right: 40px;
+}
+
+form#rental-form-validate ul {
+	list-style-type: none;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+form#rental-form-validate .separator {
+	color: #666666;
+    font-weight: bold;
+    margin: 0 3px;
+}
+
+form#rental-form-validate ul li:nth-child(9) {
+	display: inline-block;
+}
+
+form#rental-form-validate ul li:nth-child(9) div.input-box {
+	display: block;
+	width: 137px;
+}
+
+form#rental-form-validate ul li:nth-child(9) select{
+	width : 165px;
+	float : left
+}
+
+form#rental-form-validate ul li:nth-child(10){
+	display: inline-block;
+}
+
+form#rental-form-validate ul li:nth-child(10) label{
+	padding-left : 30px;
+	width : 10px;
+}
+
+form#rental-form-validate ul li:nth-child(10) select{
+
+	width : 155px;
+}
+
+form#rental-form-validate ul li:nth-child(10) div.input-box {
+	display: block;
+	width: 137px;
+}
+
+form#rental-form-validate .buttons {
+	float : right;
+	padding-right: 40px;
+}
+
+form#sparepart-form-validate ul {
+	list-style-type: none;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+form#sparepart-form-validate .separator {
+	color: #666666;
+    font-weight: bold;
+    margin: 0 3px;
+}
+
+form#sparepart-form-validate ul li:nth-child(9) {
+	display: inline-block;
+}
+
+form#sparepart-form-validate ul li:nth-child(9) div.input-box {
+	display: block;
+	width: 137px;
+}
+
+form#sparepart-form-validate ul li:nth-child(9) select{
+	width : 165px;
+	float : left
+}
+
+form#sparepart-form-validate ul li:nth-child(10){
+	display: inline-block;
+}
+
+form#sparepart-form-validate ul li:nth-child(10) label{
+	padding-left : 30px;
+	width : 10px;
+}
+
+form#sparepart-form-validate ul li:nth-child(10) select{
+
+	width : 155px;
+}
+
+form#sparepart-form-validate ul li:nth-child(10) div.input-box {
+	display: block;
+	width: 137px;
+}
+
+form#sparepart-form-validate .buttons {
+	float : right
+}
+
+form#sparepart-form-validate .buttons {
+	float : right;
+	padding-right: 40px;
+}
+
 .foo-left{background:url(../images/footer_left.png) no-repeat; float:left;height: 42px; width: 12px;}
 .foo-mid{background:url(../images/footer_middle.png) repeat-x; float:left;height: 42px; width: 961px;}
 .foo-right{background:url(../images/footer_right.png) no-repeat; float:left;height: 42px; width: 12px;}
@@ -1872,5 +2087,7 @@ tr.summary-details-excluded { font-style:italic; }
 .home-bottom-middle2 { float: left; height: 420px; margin-right: 5px; width: 210px;}
 .home-bottom-middle3 { float: left; height: 420px; width: 210px;}
 .heavy-categories .sub_cat{ list-style: none outside none;}
+
+
 
 /* ======================================================================================= */

@@ -3,7 +3,7 @@
 ?>
 <?php $maxQueryLength= Mage::helper('catalogsearch')->getMaxQueryLength();?>
 
-<form action="<?php echo $this->getAdvancedSearchPostUrl() ?>" method="get" id="new-form-validate" name="new-form-validate">
+<form action="<?php echo $this->getAdvancedSearchPostUrl() ?>" method="get" id="sparepart-form-validate" name="sparepart-form-validate">
 	<div class="customfieldset advanced-search">
 		<ul class="form-list" id="advanced-search-list">
 			<li>
@@ -82,7 +82,7 @@
 	<!-- Sending Hidden input for New tab-->
 	<input type="hidden" value="3" name="product_use_type[]" id="product_use_type" />
 	<div class="buttons">
-        <button type="submit" title="<?php echo $this->__('Search') ?>" class="button"><span><span><?php echo $this->__('Search') ?></span></span></button>
+        <button type="submit" title="<?php echo $this->__('Search') ?>"><span><span><img src="<?php echo Mage::getBaseUrl('skin') . '/frontend/default/cbrme/images/text_field_button.png'?>" alt="search"/></span></span></button>
     </div>
 </form>
 <script type="text/javascript">
