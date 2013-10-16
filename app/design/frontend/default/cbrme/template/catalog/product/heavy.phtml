@@ -1,7 +1,7 @@
 <div class="heavy">
 <div class="heavy-title"><img src="<?php echo $this->getSkinUrl("images/heavy_duty.jpg") ?>" alt="" /></div>
 <ul class="heavy-categories">
-<?php $cat = Mage::getModel('catalog/category')->load(4);
+<?php $cat = Mage::getModel('catalog/category')->load(6);
 $subcats = $cat->getChildren();
 
 foreach(explode(',',$subcats) as $subCatid)
