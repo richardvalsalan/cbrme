@@ -2,7 +2,7 @@
 <script type="text/javascript">
 
 jQuery(document).ready(function() {
-    jQuery('#mycarousel').jcarousel({
+    jQuery('#trailercarousel').jcarousel({
         vertical: true,
         scroll: 2
     });
@@ -11,10 +11,10 @@ jQuery(document).ready(function() {
 </script>
 
 <div class="heavy jcarousel" id="jcarousel1">
-<div class="heavy-title"><img src="<?php echo $this->getSkinUrl("images/heavy_duty.jpg") ?>" alt="" /></div>
+<div class="heavy-title"><img src="<?php echo $this->getSkinUrl("images/trailer.jpg") ?>" alt="" /></div>
 	<div id="wrap">
-		<ul class="heavy-categories jcarousel jcarousel-skin-tango" id="mycarousel">
-			<?php $cat = Mage::getModel('catalog/category')->load(6);
+		<ul class="heavy-categories jcarousel jcarousel-skin-tango" id="trailercarousel">
+			<?php $cat = Mage::getModel('catalog/category')->load(59);
 			$subcats = $cat->getChildren();
 
 			foreach(explode(',',$subcats) as $subCatid)
@@ -30,6 +30,3 @@ jQuery(document).ready(function() {
 		</ul>
 	</div>
 </div>
-
-
-

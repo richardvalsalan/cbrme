@@ -1,0 +1,86 @@
+
+
+#mycarousel{
+    color: #404040;
+    /*margin: 0 12%;*/
+    margin: 20px 40px;
+}
+
+#mycarousel li {
+    border-bottom : solid 2px #DFDFDF;
+    width : 207px;
+    height: 25px;
+}
+
+#mycarousel li a {
+    color : #666666;
+    margin-left : 30px;
+    text-decoration : none !important;
+}
+
+#mycarousel li:hover {
+    background : #FFE4CF;
+}
+
+#truckcarousel{
+    color: #404040;
+    /*margin: 0 12%;*/
+    margin: 20px 40px;
+}
+
+#truckcarousel li {
+    border-bottom : solid 2px #DFDFDF;
+    width : 207px;
+    height: 25px;
+}
+
+#truckcarousel li a {
+    color : #666666;
+    margin-left : 30px;
+    text-decoration : none !important;
+}
+
+#truckcarousel li:hover {
+    background : #FFE4CF;
+}
+
+#trailercarousel{
+    color: #404040;
+    /*margin: 0 12%;*/
+    margin: 20px 40px;
+}
+
+#trailercarousel li {
+    border-bottom : solid 2px #DFDFDF;
+    width : 207px;
+    height: 25px;
+}
+
+#trailercarousel li a {
+    color : #666666;
+    margin-left : 30px;
+    text-decoration : none !important;
+}
+
+#trailercarousel li:hover {
+    background : #FFE4CF;
+}
+
+
+pre, code, tt, dt {
+    font: 100% monospace;
+    margin: 20px 0;
+}
+
+pre, blockquote {
+    padding: 15px;
+    background-color: #f0f0f0;
+    margin: 20px 0;
+    -moz-border-radius: 10px;
+}
+
+td pre {
+    font: 85% monospace;
+    padding: 5px;
+    margin: 5px 0;
+}
