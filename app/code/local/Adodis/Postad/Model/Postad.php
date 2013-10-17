@@ -31,6 +31,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         $product->setHour($request->getParam('hours'));
         $product->setMake($request->getParam('make'));
         $product->setCondition($request->getParam('condition'));
+        $product->setProductUseType($request->getParam('type_of_ad'));
 
     	$product->setWebsiteIds(array(Mage::app()->getStore(true)->getWebsite()->getId()));
 
