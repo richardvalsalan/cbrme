@@ -1863,6 +1863,8 @@ tr.summary-details-excluded { font-style:italic; }
 .tab2-content { background:#FFFFFF;border: 1px solid #CCCCCC;clear: both; height: 310px;  width: 490px; display: none;}
 .tab3-content { background:#FFFFFF;border: 1px solid #CCCCCC;clear: both; height: 310px;  width: 490px; display: none;}
 .tab4-content { background:#FFFFFF;border: 1px solid #CCCCCC;clear: both; height: 310px;  width: 490px; display: none;}
+.tab5-content { background:#FFFFFF;border: 1px solid #CCCCCC;clear: both; height: 310px;  width: 490px; display: none;}
+	
 .home-bottom-left { float: left; margin-right: 5px; margin-top: 10px;width: 165px;}
 .home-bottom-right { float: left; margin-top: 10px;width: 165px;}
 .home-bottom-middle { float: left; height: 600px; margin-left: 5px; margin-top: 10px; width: 645px;}
@@ -1925,6 +1927,11 @@ form#new-form-validate .buttons {
 	padding-right: 40px;
 }
 
+form#new-form-validate .buttons button {
+	background : none;
+	border : 0;
+}
+
 form#used-form-validate ul {
 	list-style-type: none;
     margin-bottom: 0;
@@ -1975,6 +1982,11 @@ form#used-form-validate .buttons {
 	padding-right: 40px;
 }
 
+form#used-form-validate .buttons button {
+	background : none;
+	border : 0;
+}
+
 form#rental-form-validate ul {
 	list-style-type: none;
     margin-bottom: 0;
@@ -2023,6 +2035,12 @@ form#rental-form-validate ul li:nth-child(10) div.input-box {
 form#rental-form-validate .buttons {
 	float : right;
 	padding-right: 40px;
+	border : 0 !important;
+}
+
+form#rental-form-validate .buttons button {
+	background : none;
+	border : 0;
 }
 
 form#sparepart-form-validate ul {
@@ -2077,6 +2095,11 @@ form#sparepart-form-validate .buttons {
 form#sparepart-form-validate .buttons {
 	float : right;
 	padding-right: 40px;
+}
+
+form#sparepart-form-validate .buttons button {
+	background : none;
+	border : 0;
 }
 
 .foo-left{background:url(../images/footer_left.png) no-repeat; float:left;height: 42px; width: 12px;}
