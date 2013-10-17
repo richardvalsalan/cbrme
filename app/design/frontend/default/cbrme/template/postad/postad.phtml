@@ -1,4 +1,14 @@
-<h4><?php echo $this->__('Module List') ?></h4>
-<?php
 
-?>
+<div id="postadtypelist">
+	<ul>
+		<li><input type="radio" name="postadradio" id="bannerad" onclick="postAdRedirect('<?php echo Mage::getUrl();?>')"/> <label for="bannerad" name="bannerad_label" id="bannerad_label">Banner Ad</label></li>
+		<li><input type="radio" name="postadradio" id="classified" onclick="postAdRedirect('<?php echo Mage::getUrl('postad/index/classifiedad');?>')"/> <label for="classified" name="classified_label" id="classified_label">Classified Ad</label></li>
+	</ul>
+</div>
+
+<script>
+	function postAdRedirect(url)
+	{
+		window.location.replace(url);
+	}
+</script>
