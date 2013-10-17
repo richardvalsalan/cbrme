@@ -110,4 +110,10 @@ class Adodis_Postad_IndexController extends Mage_Core_Controller_Front_Action
     {
         return Mage::getSingleton('checkout/cart');
     }
+
+    public function banneradAction()
+    {
+        $this->loadLayout();
+        $this->renderLayout();
+    }
 }

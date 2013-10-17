@@ -16,7 +16,18 @@
         </reference>
         
         <reference name="content">
-            <block type="postad/postad" name="postad" template="postad/classifiedad.phtml" />
+            <block type="postad/postad" name="postclassified" template="postad/classifiedad.phtml" />
         </reference>
     </postad_index_classifiedad>
+
+    <postad_index_bannerad>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        
+        <reference name="content">
+            <block type="postad/postad" name="postbanner" template="postad/bannerad.phtml" />
+        </reference>
+    </postad_index_bannerad>
+
 </layout>
