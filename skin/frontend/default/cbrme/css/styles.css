@@ -2120,5 +2120,17 @@ div#postadtypelist ul {
 	list-style-type: none;
 }
 
+/*classfiedform*/
 
+div#classfiedform {
+	border : solid 3px #DFDFDF;
+}
+
+div#classfiedform form {
+	width : 100%;
+}
+
+div#classfiedform form p {
+	margin: 30px 0 20px 300px;
+}
 /* ======================================================================================= */

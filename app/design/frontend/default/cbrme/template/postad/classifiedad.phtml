@@ -1,138 +1,140 @@
-<form action="<?php echo $this->getClassifiedSaveUrl();?>" method="post" id="classified-ad-form" name="classified-ad-form" enctype="multipart/form-data">
-	
-	<p>
-		<label for="type_of_ad" name="type_of_ad_label" id="type_of_ad_label">Type Of Ad</label>
-		<select id="type_of_ad" name="type_of_ad" class="validate-select">
-			<option value="">Choose</option>
-			<option value="6">New</option>
-			<option value="5">Used</option>
-			<option value="4">Rental</option>
-			<option value="3">Spare Parts</option>
-		</select>
-	</p>
+<div id="classfiedform">
+	<form action="<?php echo $this->getClassifiedSaveUrl();?>" method="post" id="classified-ad-form" name="classified-ad-form" enctype="multipart/form-data">
+		
+		<p>
+			<label for="type_of_ad" name="type_of_ad_label" id="type_of_ad_label">Type Of Ad</label>
+			<select id="type_of_ad" name="type_of_ad" class="validate-select">
+				<option value="">Choose</option>
+				<option value="6">New</option>
+				<option value="5">Used</option>
+				<option value="4">Rental</option>
+				<option value="3">Spare Parts</option>
+			</select>
+		</p>
 
-	<p>
-		<label for="category" name="category_label" id="category_label">Category</label>
-		<select name="category" id="category" class="validate-select">
-			<option value="">Choose</option>
+		<p>
+			<label for="category" name="category_label" id="category_label">Category</label>
+			<select name="category" id="category" class="validate-select">
+				<option value="">Choose</option>
 
-			<?php foreach ( Mage::helper('catalog/category')->getStoreCategories() as $_category) { ?>
-				<?php if($_category->hasChildren()){ ?>
-					<option class="parent-cat" value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName();?></option>
+				<?php foreach ( Mage::helper('catalog/category')->getStoreCategories() as $_category) { ?>
+					<?php if($_category->hasChildren()){ ?>
+						<option class="parent-cat" value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName();?></option>
 
-					<?php foreach ($_category->getChildren() as $subcategory) { ?>
-						<?php if($subcategory->getIsActive()) { ?>
-							<option value="<?php echo $subcategory->getId(); ?>"<?php echo ($this->getRequest()->getQuery('category') == $subcategory->getId() ? ' selected="selected"': "") ?>>---<?php echo $subcategory->getName(); ?></option>
+						<?php foreach ($_category->getChildren() as $subcategory) { ?>
+							<?php if($subcategory->getIsActive()) { ?>
+								<option value="<?php echo $subcategory->getId(); ?>"<?php echo ($this->getRequest()->getQuery('category') == $subcategory->getId() ? ' selected="selected"': "") ?>>---<?php echo $subcategory->getName(); ?></option>
+							<?php } ?>
 						<?php } ?>
+					<?php } else if ($_category->getIsActive()) { ?>
+						<option value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName();?></option>
 					<?php } ?>
-				<?php } else if ($_category->getIsActive()) { ?>
-					<option value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName();?></option>
 				<?php } ?>
-			<?php } ?>
-		</select>
-	</p>
+			</select>
+		</p>
 
-	<p>
-		<label for="name" id="name_label" name="name_label">Name</label>
-		<input name="name" id="name" value="" type="text" class="required-entry"/>
-	</p>
+		<p>
+			<label for="name" id="name_label" name="name_label">Name</label>
+			<input name="name" id="name" value="" type="text" class="required-entry"/>
+		</p>
 
-	<p>
-		<label for="description" id="description_label" name="description_label">Description</label>
-		<textarea id="description" cols="25" rows="5" name="description" class="required-entry"></textarea>
-	</p>
+		<p>
+			<label for="description" id="description_label" name="description_label">Description</label>
+			<textarea id="description" cols="25" rows="5" name="description" class="required-entry"></textarea>
+		</p>
 
-	<p>
-		<label for="make" name="make_label" id="make_label">Make</label>
-		<select id="make" name="make" class="validate-select">
-			<option value="" id="make_default" name="make_default">Choose</option>
+		<p>
+			<label for="make" name="make_label" id="make_label">Make</label>
+			<select id="make" name="make" class="validate-select">
+				<option value="" id="make_default" name="make_default">Choose</option>
 
-			<?php foreach (Mage::helper('postad')->getAttributeOptions('manufacturer') as $option) { ?>
-				<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
-			<?php } ?>
+				<?php foreach (Mage::helper('postad')->getAttributeOptions('manufacturer') as $option) { ?>
+					<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
+				<?php } ?>
 
-		</select>
-	</p>
+			</select>
+		</p>
 
-	<p>
-		<label for="year" name="year_label" id="year_label">Year</label>
-		<input type="text" name="year" id="year" value="" class="required-entry"/>
-	</p>
+		<p>
+			<label for="year" name="year_label" id="year_label">Year</label>
+			<input type="text" name="year" id="year" value="" class="required-entry"/>
+		</p>
 
-	<p>
-		<label for="hours" name="hours_label" id="year_label">Hours</label><span>(eg. : 2500)</span>
-		<input type="text" name="hours" id="hours" value="" class="required-entry" />
-	</p>
+		<p>
+			<label for="hours" name="hours_label" id="year_label">Hours</label><span>(eg. : 2500)</span>
+			<input type="text" name="hours" id="hours" value="" class="required-entry" />
+		</p>
 
-	<p>
-		<label for="weight" name="weight_label" id="weight_label">Weight</label>
-		<input type="text" name="weight" id="weight" value="" class="required-entry" />
-	</p>
+		<p>
+			<label for="weight" name="weight_label" id="weight_label">Weight</label>
+			<input type="text" name="weight" id="weight" value="" class="required-entry" />
+		</p>
 
-	<p>
-		<label for="sku" name="sku_label" id="sku_label">Serial Number</label>
-		<input type="text" name="sku" id="sku" value="" class="required-entry" />
-	</p>
+		<p>
+			<label for="sku" name="sku_label" id="sku_label">Serial Number</label>
+			<input type="text" name="sku" id="sku" value="" class="required-entry" />
+		</p>
 
-	<p>
-		<label for="condition" name="condition_label" id="condition_label">Condition</label>
-		<select name="condition" id="condition" class="validate-select">
-			<option value="">Choose</option>
+		<p>
+			<label for="condition" name="condition_label" id="condition_label">Condition</label>
+			<select name="condition" id="condition" class="validate-select">
+				<option value="">Choose</option>
 
-			<?php foreach (Mage::helper('postad')->getAttributeOptions('condition') as $option) { ?>
-				<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
-			<?php } ?>
+				<?php foreach (Mage::helper('postad')->getAttributeOptions('condition') as $option) { ?>
+					<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
+				<?php } ?>
 
-		</select>
-	</p>
+			</select>
+		</p>
 
-	<p>
-		<label ></label>
-	</p>
+		<p>
+			<label ></label>
+		</p>
 
-	<p><input type="file" name="filename1" id="filename1"></p>
-	<p><input type="file" name="filename2" id="filename2"></p>
-	<p><input type="file" name="filename3" id="filename3"></p>
-	<p><input type="file" name="filename4" id="filename4"></p>
+		<p><input type="file" name="filename1" id="filename1"/></p>
+		<p><input type="file" name="filename2" id="filename2"/></p>
+		<p><input type="file" name="filename3" id="filename3"/></p>
+		<p><input type="file" name="filename4" id="filename4"/></p>
 
-	<p>
-		<label for="country" name="country_label" id="country_label">Country</label>
-		<select name="country" name="country" id="country">
-			
-			<?php foreach (Mage::helper('postad')->getAttributeOptions('product_country') as $option) { ?>
-				<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
-			<?php } ?>
+		<p>
+			<label for="country" name="country_label" id="country_label">Country</label>
+			<select name="country" name="country" id="country">
+				
+				<?php foreach (Mage::helper('postad')->getAttributeOptions('product_country') as $option) { ?>
+					<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
+				<?php } ?>
 
-		</select>
-	</p>
+			</select>
+		</p>
 
-	<p>
-		<label for="state" name="state_label" id="state_label">State</label>
-		<select name="state" name="state" id="state" class="validate-select">
-			<option value="">Choose</option>
+		<p>
+			<label for="state" name="state_label" id="state_label">State</label>
+			<select name="state" name="state" id="state" class="validate-select">
+				<option value="">Choose</option>
 
-			<?php foreach (Mage::helper('postad')->getAttributeOptions('product_state') as $option) { ?>
-				<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
-			<?php } ?>
+				<?php foreach (Mage::helper('postad')->getAttributeOptions('product_state') as $option) { ?>
+					<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
+				<?php } ?>
 
-		</select>
-	</p>
+			</select>
+		</p>
 
-	<p>
-		<label for="city" name="city_label" id="city_label" >City</label>
-		<select name="city" name="city" id="city" class="validate-select">
-			<option value="">Choose</option>
+		<p>
+			<label for="city" name="city_label" id="city_label" >City</label>
+			<select name="city" name="city" id="city" class="validate-select">
+				<option value="">Choose</option>
 
-			<?php foreach (Mage::helper('postad')->getAttributeOptions('product_city') as $option) { ?>
-				<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
-			<?php } ?>
+				<?php foreach (Mage::helper('postad')->getAttributeOptions('product_city') as $option) { ?>
+					<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
+				<?php } ?>
 
-		</select>
-	</p>
+			</select>
+		</p>
 
-	<p><input type="submit" name="submit" value="Submit">
+		<p><input type="submit" name="submit" value="Submit">
 
-</form>
+	</form>
+</div>
 
 <script type="text/javascript">
 //< ![CDATA[
