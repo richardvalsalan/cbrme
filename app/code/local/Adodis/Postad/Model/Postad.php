@@ -35,6 +35,9 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
 
     	$product->setWebsiteIds(array(Mage::app()->getStore(true)->getWebsite()->getId()));
 
+        $product->setProductState($request->getParam('state'));
+        $product->setProductCity($request->getParam('city'));
+        
     	$stockData = $product->getStockData();
     	$stockData['qty'] = 1;
     	$stockData['is_in_stock'] = 1;
