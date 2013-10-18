@@ -10,7 +10,7 @@ class Adodis_Postad_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml_Bloc
             'index'     =>  'enable_ad',
         ));
 
-        $this->addColumnsOrder('order_type', 'billing_name');
+        $this->addColumnsOrder('enable_ad', 'shipping_name');
 
         return parent::_prepareColumns();
 	}
