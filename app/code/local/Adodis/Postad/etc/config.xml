@@ -110,6 +110,12 @@
             <postad>
                 <class>Adodis_Postad_Block</class>
             </postad>
+
+            <adminhtml>
+                <rewrite>
+                    <sales_order_view>Adodis_Postad_Block_Adminhtml_Sales_Order_View</sales_order_view>
+                </rewrite>
+            </adminhtml>
         </blocks>
         <helpers>
             <postad>

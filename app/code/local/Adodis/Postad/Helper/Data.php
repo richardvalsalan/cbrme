@@ -9,4 +9,20 @@ class Adodis_Postad_Helper_Data extends Mage_Core_Helper_Abstract
 
 		return $options;
 	}
+
+	public function buttonNeedToAppear($orderId)
+	{
+		$order = Mage::getModel('sales/order')->load($orderId);
+		
+		foreach ($order->getAllItems() as $item) {
+			$product = Mage::getModel('catalog/product')->load($item->getProductId());
+
+			if ($product->getStatus() == 2) {
+
+				return true;
+			}
+		}
+
+		return false;
+	}
 }

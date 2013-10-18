@@ -17,6 +17,37 @@ class Adodis_Postad_Adminhtml_PostadController extends Mage_Adminhtml_Controller
         $this->_initAction()->renderLayout();
     }
 
+    public function postadAction()
+    {
+        $orderId = $this->getRequest()->getParam('order_id');
+
+        $order = Mage::getModel('sales/order')->load($orderId);
+
+        foreach ($order->getAllItems() as $item) {
+            $product = Mage::getModel('catalog/product')->load($item->getProductId());
+
+            $product->setProductCanBeDisplayed(15);
+            $product->setStatus(1);
+
+            $stockData = $product->getStockData();
+
+            $stockData['qty'] = 1;
+            $stockData['is_in_stock'] = 1;
+            $product->setStockData($stockData);
+            
+            $product->save();
+
+            Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('postad')->__('The Ad Has Been Made Visible'));
+
+            // To Redirect to previous page
+            $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
+
+            return $this->_redirectUrl($url);
+
+        }
+        
+    }
+
     public function editAction()
     {
         $id = $this->getRequest()->getParam('id');
