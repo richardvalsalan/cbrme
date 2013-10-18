@@ -23,6 +23,9 @@ class Adodis_Postad_Adminhtml_PostadController extends Mage_Adminhtml_Controller
 
         $order = Mage::getModel('sales/order')->load($orderId);
 
+        $order->setEnableAd('No');
+        $order->save();
+
         foreach ($order->getAllItems() as $item) {
             $product = Mage::getModel('catalog/product')->load($item->getProductId());
 

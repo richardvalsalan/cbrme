@@ -70,6 +70,16 @@
                 </postad>
             </updates>
         </layout>
+        <events>
+            <adminhtml_sales_order_create_process_data>
+                <observers>
+                    <postad>
+                        <class>Adodis_Postad_Model_Adminhtml_Observer</class>
+                        <method>adminhtml_sales_order_create_process_data</method>
+                    </postad>
+                </observers>
+            </adminhtml_sales_order_create_process_data>
+        </events>
     </adminhtml>
     <global>
         <models>
@@ -114,6 +124,7 @@
             <adminhtml>
                 <rewrite>
                     <sales_order_view>Adodis_Postad_Block_Adminhtml_Sales_Order_View</sales_order_view>
+                    <sales_order_grid>Adodis_Postad_Block_Adminhtml_Sales_Order_Grid</sales_order_grid>
                 </rewrite>
             </adminhtml>
         </blocks>
