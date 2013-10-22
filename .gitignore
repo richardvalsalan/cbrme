@@ -10,9 +10,11 @@ downloader/**/*
 /var/report/*
 /var/import/*
 /var/package/*
+/var/resource_config.json
 
 /media/catalog/product/cache/**/*
 /media/catalog/product/*
+/media/custom/*
 /media/js/*
 /media/css/*.css
 /media/slideshow/*
