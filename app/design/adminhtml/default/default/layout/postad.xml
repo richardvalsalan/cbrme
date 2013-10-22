@@ -5,4 +5,8 @@
             <block type="postad/adminhtml_postad" name="postad" />
         </reference>
     </postad_adminhtml_postad_index>
+
+    <postad_adminhtml_postad_displaydetails>
+    	<block type="postad/adminhtml_postad" name="root" output="toHtml" template="postad/postad.phtml"/>
+    </postad_adminhtml_postad_displaydetails>
 </layout>

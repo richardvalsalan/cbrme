@@ -1,5 +1,7 @@
 quickCatCreate.php
 
+downloader/**/*
+
 /var/cache/**/*
 /var/session/**/*
 /var/session/*
@@ -7,6 +9,7 @@ quickCatCreate.php
 /var/locks/*
 /var/report/*
 /var/import/*
+/var/package/*
 
 /media/catalog/product/cache/**/*
 /media/catalog/product/*

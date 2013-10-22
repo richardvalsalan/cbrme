@@ -27,6 +27,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
     	$product->setVisibility(4);
     	$product->setStatus(1);
 
+        $product->setYear($request->getParam('model'));
         $product->setYear($request->getParam('year'));
         $product->setHour($request->getParam('hours'));
         $product->setMake($request->getParam('make'));
@@ -37,6 +38,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
 
         $product->setProductState($request->getParam('state'));
         $product->setProductCity($request->getParam('city'));
+        $product->setProductTelephone($request->getParam('telephone'));
         
     	$stockData = $product->getStockData();
     	$stockData['qty'] = 1;

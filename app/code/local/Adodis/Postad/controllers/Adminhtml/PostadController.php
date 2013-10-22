@@ -51,6 +51,20 @@ class Adodis_Postad_Adminhtml_PostadController extends Mage_Adminhtml_Controller
         
     }
 
+    public function displaydetailsAction()
+    {
+        $productId = $this->getRequest()->getParam('productid');
+        
+        $product = Mage::getModel('catalog/product')->load($productId);
+
+        //$this->loadLayout()->renderLayout();
+        $block = $this->getLayout()->createBlock('postad/adminhtml_postad')
+            ->setData('product',$product)
+            ->setTemplate('postad/postad.phtml');
+        
+        echo $block->renderView();
+    }
+
     public function editAction()
     {
         $id = $this->getRequest()->getParam('id');
