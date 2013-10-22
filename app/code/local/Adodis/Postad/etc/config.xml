@@ -14,6 +14,14 @@
                     <frontName>postad</frontName>
                 </args>
             </postad>
+
+            <checkout>
+                <args>
+                    <modules>
+                        <Adodis_Postad before="Mage_Checkout">Adodis_Postad_Checkout</Adodis_Postad>
+                    </modules>
+                </args>
+            </checkout>
         </routers>
         <layout>
             <updates>
