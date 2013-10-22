@@ -3,7 +3,7 @@
 		
 		<p>
 			<label for="type_of_ad" name="type_of_ad_label" id="type_of_ad_label">Type Of Ad</label>
-			<select id="type_of_ad" name="type_of_ad" class="validate-select">
+			<select id="type_of_ad" name="type_of_ad" class="validate-select" onchange="valueCheck()">
 				<option value="">Choose</option>
 				<option value="6">New</option>
 				<option value="5">Used</option>
@@ -65,7 +65,7 @@
 			<input type="text" name="year" id="year" value="" class="required-entry"/>
 		</p>
 
-		<p>
+		<p id="hours_p" style="display:block">
 			<label for="hours" name="hours_label" id="year_label">Hours</label><span>(eg. : 2500)</span>
 			<input type="text" name="hours" id="hours" value="" class="required-entry" />
 		</p>
@@ -150,4 +150,18 @@
 //< ![CDATA[
 	var myForm = new VarienForm('classified-ad-form', true);
 //]]>
+</script>
+
+<script type="text/javascript">
+	function valueCheck()
+	{
+		if (jQuery("#type_of_ad").val() == '6') {
+			jQuery("#hours").removeClass("required-entry");
+			jQuery("#hours_p").hide();
+		} else {
+			jQuery("#hours").addClass("required-entry");
+			jQuery("#hours_p").show();
+		}
+	}
+
 </script>
