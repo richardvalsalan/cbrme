@@ -18,10 +18,23 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
     	$product->setName($request->getParam('name'));
     	$product->setDescription($request->getParam('description'));
     	$product->setShortDescription($request->getParam('description'));
-    	$product->setPrice(100);
+    	$product->setPrice(500);
     	$product->setTypeId('simple');
     	$product->setAttributeSetId(4);
-    	$product->setCategoryIds(array($request->getParam('category')));
+        
+        $recievedCategoryId = $request->getParam('category');
+        $categoryIds = $recievedCategoryId;
+
+        //geting the parent id of the category selected
+        $parentId = Mage::getModel('catalog/category')->load($recievedCategoryId)->getParentId();
+
+        //using this if condition to check if the selected category is not a parent category (other than the root category)
+        if ($parentId != 2) {
+            $categoryIds = array($parentId, $recievedCategoryId);
+        }
+
+
+    	$product->setCategoryIds($categoryIds);
     	$product->setWeight($request->getParam('weight'));
     	$product->setTaxClassId(2);
     	$product->setVisibility(4);
@@ -47,7 +60,6 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
     	$stockData['use_config_manage_stock'] = 0;
     	$product->setStockData($stockData);
 
-    	echo "saved the product";
     	$productId = $product->save()->getId();
 
         return $productId;
