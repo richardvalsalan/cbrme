@@ -1,0 +1,44 @@
+<?php $_product = $this->getProduct() ?>
+<?php $galleryImages = $_product->getMediaGalleryImages(); ?>
+<?php $_helper = Mage::helper('catalog/output'); ?>
+
+<div id="product-box" class="product-box">
+	<div id="product-image">
+		<?php
+			$_img = '<img id="image" src="'. Mage::helper('catalog/image')->init($_product, 'image')->resize(150, 150) .'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
+
+			echo $_helper->productAttribute($_product, $_img, 'image');
+		?>
+
+		<div class="more-views">
+	    <h2><?php echo $this->__('More Views') ?></h2>
+	    <ul>
+	    <?php foreach ($galleryImages as $_image): ?>
+	        <li>
+	            <a href="#" onclick="popWin('<?php echo Mage::getUrl('catalog/product/gallery/id/' . $_product->getId() . '/image/' . $_image->getValueId() . '/'); ?>', 'gallery', 'width=300,height=300,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes'); return false;" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>"><img src="<?php echo Mage::helper('catalog/image')->init($_product, 'thumbnail', $_image->getFile())->resize(56); ?>" width="56" height="56" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" /></a>
+	        </li>
+	    <?php endforeach; ?>
+	    </ul>
+		</div>
+	</div>
+	<div id="product-info">
+		<ul>
+			<li><b>Name</b> : <?php echo $_product->getName();?></li>
+			<li><b>Description</b> : <?php echo $_product->getDescription();?></li>
+			<li><b>Serial Number</b> : <?php echo $_product->getSku()?></li>
+			<li><b>Model</b> : <?php echo $_product->getModel()?></li>
+			<li><b>Use Type</b> : <?php echo $_product->getAttributeText('product_use_type')?></li>
+
+			<?php if ($_product->getAttributeText('product_use_type') != 'New') { ?>
+				<p><b>Hours</b> : <?php echo $_product->getHour()?></li>
+			<?php } ?>
+
+			<li><b>Make</b> : <?php echo $_product->getManufacturer()?></li>
+			<li><b>City</b> : <?php echo $_product->getProductCity()?></li>
+			<li><b>State</b> : <?php echo $_product->getProductState()?></li>
+			<li><b>Country</b> : <?php echo $_product->getProductCountry()?></li>
+		</ul>
+
+	</div>
+</div>
+
