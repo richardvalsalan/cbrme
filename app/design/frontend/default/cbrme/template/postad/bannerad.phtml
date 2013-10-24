@@ -1,6 +1,43 @@
 <div id="classfiedform">
-	<form>
-		<p>Contact us test@example.com</p>
-		<p>call us on 999999999999</p>
+	<form name="banner_ad_form" id="banner_ad_form" method="post" action="<?php echo Mage::getUrl('postad/index/banneradsave')?>" enctype="multipart/form-data">
+		<p>
+			<label for="company_name" id="company_name_label" name="company_name_label">Enter The Company Name </label>
+			<input name="company_name" id="company_name" type="text" value="" />
+		</p>
+		
+		<p>
+			<label for="banner-ad-display-area" id="banner-ad-display-area-label" name="banner-ad-display-area-label">Please Select Where The Ad To Be Displayed</label>
+			<select id="banner-ad-display-area" name="banner-ad-display-area" class="validate-select">
+				<option value="" id="banner-ad-display-area_default" name="banner-ad-display-area_default">Choose</option>
+
+				<?php foreach (Mage::helper('postad')->getAttributeOptions('banner_dispay_position') as $option) { ?>
+					<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
+				<?php } ?>
+
+			</select>
+		</p>
+
+		<p><label><b>Please Select The Categories Of The Ad</b><label></p>
+			
+		<p>
+			<input type="checkbox" name="heavyequipmentcategory" id="heavyequipmentcategory"  value="6"/>
+			<label for="heavyequipmentcategory" id="heavyequipmentcategory-label" name="heavyequipmentcategory-label">Heavy Equipment</label>
+		</p>
+
+		<p>
+			<input type="checkbox" name="truckcategory" id="truckcategory" value="53" />
+			<label for="truckcategory" id="truckcategory-label" name="truckcategory-label">Truck</label>
+		</p>
+
+		<p>
+			<input type="checkbox" name="cranecategory" id="cranecategory" value="62" />
+			<label for="cranecategory" id="cranecategory-label" name="cranecategory-label">Crane</label>
+		</p>
+
+		
+		<p><input type="file" name="filename" id="filename"/></p>
+
+		<p><input type="submit" name="submit" value="Submit"></p>
+
 	<form>
 </div>

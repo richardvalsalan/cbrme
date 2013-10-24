@@ -19,6 +19,7 @@ downloader/**/*
 /media/css/*.css
 /media/slideshow/*
 /media/productUploadTempFolder/*
+/media/bannerimages/*
 
 
 /errors/local.xml

@@ -45,6 +45,7 @@ class Adodis_Postad_IndexController extends Mage_Core_Controller_Front_Action
     {
     	
         $saveAdAndGetId = Mage::getModel('postad/postad')->saveAd();
+        $product = Mage::getModel('catalog/product')->load($saveAdAndGetId);
 
         for ($i = 1; $i <= 4 ; $i++ ) {
             
@@ -88,8 +89,6 @@ class Adodis_Postad_IndexController extends Mage_Core_Controller_Front_Action
 
                 $imgUrl = Mage::getBaseDir('media') . DS . 'productUploadTempFolder/' . $_FILES['filename' . $i]['name'];
 
-                $product = Mage::getModel('catalog/product')->load($saveAdAndGetId);
-
                 $product->addImageToMediaGallery($imgUrl , $mediaAttribute, false, false ); 
                 $product->save();
 
@@ -100,6 +99,60 @@ class Adodis_Postad_IndexController extends Mage_Core_Controller_Front_Action
         }
         
     	$this->_addToCart($product);
+    }
+
+    public function banneradsaveAction()
+    {
+        $saveAdAndGetId = Mage::getModel('postad/postad')->saveBannerAd();
+
+        $product = Mage::getModel('catalog/product')->load($saveAdAndGetId);
+        $sku = $product->getSku();
+        
+        if (isset($_FILES['filename']['name']) && $_FILES['filename']['name'] != '') {
+            try {
+
+                /* Starting upload */
+                $uploader = new Varien_File_Uploader('filename');
+
+                // Any extention would work
+                $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
+
+                $uploader->setAllowRenameFiles(false);
+
+                // Set the file upload mode
+                // false -> get the file directly in the specified folder
+                // true -> get the file in the product like folders
+                //  (file.jpg will go in something like /media/f/i/file.jpg)
+
+                $uploader->setFilesDispersion(false);
+
+                mkdir(Mage::getBaseDir('media') . DS  . 'bannerimages' . DS  . $sku);
+
+                // We set media as the upload dir
+                $path = Mage::getBaseDir('media') . DS  . 'bannerimages/' . $sku;
+                
+                $uploader->save($path, $_FILES['filename']['name'] );
+                
+            } catch (Exception $e) {
+                Mage::getSingleton('core/session')->addError($this->_('There has Been an error,while upload.Please try a little later'));
+            }
+
+            //this way the name is saved in DB
+            $data['filename'] = $_FILES['filename']['name'];
+
+            $mediaAttribute = array(
+                    'thumbnail',
+                    'small_image',
+                    'image'
+            );
+
+            $imgUrl = Mage::getBaseDir('media') . DS  . 'bannerimages/' . $sku . '/' . $_FILES['filename']['name'];
+
+            $product->addImageToMediaGallery($imgUrl , $mediaAttribute, false, false ); 
+            $product->save();
+        }
+
+        $this->_addToCart($product);
     }
 
     protected function _addToCart($product)
