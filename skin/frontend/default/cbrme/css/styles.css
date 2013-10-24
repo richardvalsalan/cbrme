@@ -1869,6 +1869,12 @@ tr.summary-details-excluded { font-style:italic; }
 .home-bottom-right { float: left; margin-top: 10px;width: 165px;}
 .home-bottom-middle { float: left; height: 600px; margin-left: 5px; margin-top: 10px; width: 645px;}
 
+div.home-bottom-middle div#home-bottom-category-heading {
+	background:url(../images/search_e.jpg) no-repeat;
+	float: left;
+	width: 100%;
+}
+
 /* custom advanced search */
 
 
@@ -2110,6 +2116,7 @@ form#sparepart-form-validate .buttons button {
 .home-bottom-middle2 { float: left; height: 420px; margin-right: 5px; width: 210px;}
 .home-bottom-middle3 { float: left; height: 420px; width: 210px;}
 .heavy-categories .sub_cat{ list-style: none outside none;}
+
 
 
 
