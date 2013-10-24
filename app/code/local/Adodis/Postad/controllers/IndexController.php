@@ -14,6 +14,33 @@ class Adodis_Postad_IndexController extends Mage_Core_Controller_Front_Action
         $this->renderLayout();
     }
 
+    public function subcategoryAction()
+    {
+        $categoryId = $this->getRequest()->getParam('categoryid');
+
+        $hasChildren = Mage::getModel('catalog/category')->load($categoryId)->getChildren();
+
+        if (!empty($hasChildren)) {
+
+            $subcategories = Mage::getModel('catalog/category')->getCategories($categoryId);
+
+            $tmp = array();
+            $return = array();
+            
+            $tmp['0'] = 'Choose';
+
+            foreach($subcategories as $subcategory)
+            {
+                $tmp[$subcategory->getId()] = $subcategory->getName();
+            }
+
+            $tmp['other_sub'] = 'Other';
+
+            echo json_encode($tmp);
+        }
+
+    }
+
     public function classifiedadsaveAction()
     {
     	

@@ -11,6 +11,29 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
     public function saveAd()
     {
     	$request = Mage::app()->getRequest();
+        $categoryIds = array();
+        $mailInfo = array();
+
+        $categoryOther = $request->getParam('category_other');
+        $subCategoryOther = $request->getParam('sub_category_other');
+        $subCategory = $request->getParam('sub_category');
+        
+        if (!empty($categoryOther)) {
+            $mailInfo['category'] = $categoryOther;
+        } else {
+            
+            $recievedCategoryId = $request->getParam('category');
+            $categoryIds[] = $recievedCategoryId;
+        }
+
+        if (!empty($subCategoryOther)) {
+            $mailInfo['subcategory'] = $subCategoryOther;
+        } else if ($subCategory != 0){
+            $categoryIds[] = $subCategory;
+        }
+
+        // if New Make is required Implode add to array
+
     
         $product = Mage::getModel('catalog/product');
 
@@ -22,25 +45,16 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
     	$product->setTypeId('simple');
     	$product->setAttributeSetId(4);
         
-        $recievedCategoryId = $request->getParam('category');
-        $categoryIds = $recievedCategoryId;
-
-        //geting the parent id of the category selected
-        $parentId = Mage::getModel('catalog/category')->load($recievedCategoryId)->getParentId();
-
-        //using this if condition to check if the selected category is not a parent category (other than the root category)
-        if ($parentId != 2) {
-            $categoryIds = array($parentId, $recievedCategoryId);
+        if (!isset($categoryIds)) {
+    	   $product->setCategoryIds($categoryIds);
         }
 
-
-    	$product->setCategoryIds($categoryIds);
     	$product->setWeight($request->getParam('weight'));
     	$product->setTaxClassId(2);
     	$product->setVisibility(4);
     	$product->setStatus(1);
 
-        $product->setYear($request->getParam('model'));
+        $product->setModel($request->getParam('model'));
         $product->setYear($request->getParam('year'));
         $product->setHour($request->getParam('hours'));
         $product->setMake($request->getParam('make'));
@@ -61,6 +75,40 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
     	$product->setStockData($stockData);
 
     	$productId = $product->save()->getId();
+        
+        //send mail with the product Info as well as the Main Category Id, Subcategory Id, Make
+        $to = 'richard@adodis.com';
+        $dt = date('d-m-Y');
+        $subject = "New Customer Suggestion for " . $dt;
+
+        $message = "<html>
+            <head>
+                <title></title>
+            </head>
+            <body>
+                <table border='1' cellpadding='4' cellspacing='0' width='60%'>
+                    <tr>
+                      <td align='center' colspan='2' height='30' ><b>New Customer Requirement</b></td>
+                    </tr>
+                    <tr>
+                        <td align='right' width='40%'><b>Category:</b></td>
+                        <td width='55%'>".$mailInfo['category']."</td>
+                    </tr>
+                    <tr>
+                        <td align='right' width='40%'><b>Sub Category:</b></td>
+                        <td width='55%'>".$mailInfo['subcategory']."</td>
+                    </tr>
+                </table>
+            </body>
+            </html>";
+
+        $mail = new Zend_Mail();
+        $mail->setBodyHtml($message);
+        $mail->setFrom('info@cbrme.com', 'Customer');
+        $mail->addTo($to, 'Site Admin');
+        $mail->setSubject($subject);
+
+        $mail->send();
 
         return $productId;
  

@@ -14,23 +14,33 @@
 
 		<p>
 			<label for="category" name="category_label" id="category_label">Category</label>
-			<select name="category" id="category" class="validate-select">
+			<select name="category" id="category" class="validate-select" onchange="subcategorySelect();categoryOtherSelect()">
 				<option value="">Choose</option>
 
 				<?php foreach ( Mage::helper('catalog/category')->getStoreCategories() as $_category) { ?>
-					<?php if($_category->hasChildren()){ ?>
-						<option class="parent-cat" value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName();?></option>
-
-						<?php foreach ($_category->getChildren() as $subcategory) { ?>
-							<?php if($subcategory->getIsActive()) { ?>
-								<option value="<?php echo $subcategory->getId(); ?>"<?php echo ($this->getRequest()->getQuery('category') == $subcategory->getId() ? ' selected="selected"': "") ?>>---<?php echo $subcategory->getName(); ?></option>
-							<?php } ?>
-						<?php } ?>
-					<?php } else if ($_category->getIsActive()) { ?>
+					<?php if($_category->getIsActive()){ ?>
 						<option value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName();?></option>
 					<?php } ?>
 				<?php } ?>
+				<option value="other_main">Other</option>
 			</select>
+		</p>
+
+		<p id="category_other_p" style="display:none">
+			<label for="category_other" name="category_other_label" id="category_other_label">Please Enter The Category</label>
+			<input name="category_other" type="text" class="required-entry" id="category_other" value=""/>
+		</p>
+
+		<p id="subcategory_p" style="display:none">
+			<label for="sub_category" name="sub_category_label" id="sub_category_label">Sub Category</label>
+			<select name="sub_category" id="sub_category"  onchange="subCategoryOtherSelect()">
+				<option value="0">Choose</option>
+			</select>
+		</p>
+
+		<p id="subcategory_other_p" style="display:none">
+			<label for="sub_category_other" name="sub_category_other_label" id="sub_category_other_label">Please Enter The Subcategory</label>
+			<input name="sub_category_other" type="text" id="sub_category_other" value=""/>
 		</p>
 
 		<p>
@@ -161,6 +171,56 @@
 		} else {
 			jQuery("#hours").addClass("required-entry");
 			jQuery("#hours_p").show();
+		}
+	}
+
+	function subcategorySelect()
+	{
+		var value = jQuery("#category").val();
+
+		if (value != 'other_main' ) {
+			var reloadurl = '<?php echo $this->getUrl('postad/index/subcategory')?>';
+
+			new Ajax.Request(reloadurl, {
+				method: 'post',
+				parameters: {
+	            	categoryid : value
+	        	},
+
+	        	onComplete: function(transport) {
+	        		var data = transport.responseText.evalJSON();
+
+	        		$('sub_category').update($H(data).map(function(o){
+	        			return '<option value="' + o.key + '">' + o.value + '</option>';
+	        		}).join(''));
+
+	        		Element.show('subcategory_p');
+	        	}
+			});
+		}
+	}
+
+	function categoryOtherSelect()
+	{
+		if ($(category).getValue() == 'other_main') {
+			Element.show('category_other_p');
+			Element.show('subcategory_other_p');
+
+			$('sub_category').childElements()[0].selected=true
+			
+			Element.hide('subcategory_p');
+		} else {
+			Element.hide('category_other_p');
+			Element.hide('subcategory_other_p');
+		}
+	}
+
+	function subCategoryOtherSelect()
+	{
+		if ($(sub_category).getValue() == 'other_sub') {
+			Element.show('subcategory_other_p');
+		} else {
+			Element.hide('subcategory_other_p');
 		}
 	}
 
