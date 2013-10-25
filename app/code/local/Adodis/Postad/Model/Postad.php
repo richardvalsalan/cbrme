@@ -11,7 +11,6 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
     public function saveAd()
     {
     	$request = Mage::app()->getRequest();
-        $categoryIds = array();
         $mailInfo = array();
 
         $categoryOther = $request->getParam('category_other');
@@ -45,7 +44,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
     	$product->setTypeId('simple');
     	$product->setAttributeSetId(4);
         
-        if (!isset($categoryIds)) {
+        if (isset($categoryIds)) {
     	   $product->setCategoryIds($categoryIds);
         }
 
@@ -123,8 +122,6 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
 
         $sku = $request->getParam('company_name') . '-' . $_FILES['filename']['name'] . '-' . date("Y-m-d");
 
-        $categoryIds =  array();
-
         $heavyEquipCategory = $request->getParam('heavyequipmentcategory');
         $truckCategory = $request->getParam('truckcategory');
         $craneCategory = $request->getParam('cranecategory');
@@ -140,6 +137,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         if (!empty($craneCategory)) {
             $categoryIds[] = $craneCategory;
         }
+
 
 
         $product = Mage::getModel('catalog/product');
@@ -180,7 +178,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         $product->setTypeId('simple');
         $product->setAttributeSetId(4);
 
-        if (!isset($categoryIds)) {
+        if (isset($categoryIds)) {
            $product->setCategoryIds($categoryIds);
         }
 
