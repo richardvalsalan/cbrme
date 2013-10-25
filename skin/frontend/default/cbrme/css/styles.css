@@ -1869,10 +1869,100 @@ tr.summary-details-excluded { font-style:italic; }
 .home-bottom-right { float: left; margin-top: 10px;width: 165px;}
 .home-bottom-middle { float: left; height: 600px; margin-left: 5px; margin-top: 10px; width: 645px;}
 
-div.home-bottom-middle div#home-bottom-category-heading {
-	background:url(../images/search_e.jpg) no-repeat;
+div.home-bottom-middle div#home-bottom-manufacture-listing {
 	float: left;
 	width: 100%;
+}
+
+#home-bottom-manufacture-listing .manufacturer-listing .manufacturer-table{
+	border : 2px solid #DBDBDB;
+	height: 224px;
+	width: 100%;
+}
+
+div.manufacturer-table div.manufacturer-heavyequipment
+{
+	border : 2px solid #DBDBDB;
+	float: left;
+	width : 464px;
+}
+
+div.manufacturer-table div.manufacturer-heavyequipment div.manufacturer-heavyequipment-title
+{
+	border : 2px solid #DBDBDB;
+	height : 20.8px;
+	width : 100%;
+}
+
+div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-first-column
+{
+	border : 2px solid #DBDBDB;
+	float : left;
+	height : 179.2px;
+	line-height : 100%;
+	width : 34%;
+}
+
+div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-first-column ul {
+	list-style-type: none;
+}
+
+div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-first-column li {
+	font-size : 10px;
+}
+
+div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-second-column
+{
+	border : 2px solid #DBDBDB;
+	float : left;
+	height : 179.2px;
+	width : 34%;
+}
+
+div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-third-column
+{
+	border : 2px solid #DBDBDB;
+	float : left;
+	height : 179.2px;
+	width : 29%;
+}
+
+div.manufacturer-table div.truck-crane
+{
+	border : 2px solid #DBDBDB;
+	width : 100%;
+}
+
+div.truck-crane div.truck-title
+{
+	border : 2px solid #DBDBDB;
+	float : left;
+	height : 44.8px;
+	width : 27%;
+}
+
+div.manufacturer-table div.truck-crane div.truck-column
+{
+	border : 2px solid #DBDBDB;
+	float: left;
+	height : 67.2px;
+	width : 27%;
+}
+
+div.manufacturer-table div.truck-crane div.crane-title
+{
+	border : 2px solid #DBDBDB;
+	float : left;
+	height : 44.8px;
+	width : 27%;
+}
+
+div.manufacturer-table div.truck-crane div.crane-column
+{
+	border : 2px solid #DBDBDB;
+	float: left;
+	height : 67.2px;
+	width : 27%;
 }
 
 /* custom advanced search */
@@ -2112,9 +2202,9 @@ form#sparepart-form-validate .buttons button {
 .foo-mid{background:url(../images/footer_middle.png) repeat-x; float:left;height: 42px; width: 961px;}
 .foo-right{background:url(../images/footer_right.png) no-repeat; float:left;height: 42px; width: 12px;}
 
-.home-bottom-middle1 { float: left; height: 420px; margin-right: 5px; width: 210px;}
-.home-bottom-middle2 { float: left; height: 420px; margin-right: 5px; width: 210px;}
-.home-bottom-middle3 { float: left; height: 420px; width: 210px;}
+.home-bottom-middle1 { float: left; height: 334px; margin-right: 5px; width: 210px;}
+.home-bottom-middle2 { float: left; height: 334px; margin-right: 5px; width: 210px;}
+.home-bottom-middle3 { float: left; height: 334px; width: 210px;}
 .heavy-categories .sub_cat{ list-style: none outside none;}
 
 

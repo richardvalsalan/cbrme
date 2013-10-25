@@ -1,0 +1,9 @@
+<?php
+	$collection = Mage::helper('postad')->getHeavyEquipmentFirstColCollection();
+?>
+
+<?php foreach ($collection as $record) { ?>
+	<ul>
+		<li><?php echo $record ?></li>
+	</ul>
+<?php } ?>
