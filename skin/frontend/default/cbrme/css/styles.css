@@ -2060,6 +2060,7 @@ form#new-form-validate .buttons {
 form#new-form-validate .buttons button {
 	background : none;
 	border : 0;
+	cursor : pointer;
 }
 
 form#used-form-validate ul {
@@ -2115,6 +2116,7 @@ form#used-form-validate .buttons {
 form#used-form-validate .buttons button {
 	background : none;
 	border : 0;
+	cursor : pointer;
 }
 
 form#rental-form-validate ul {
@@ -2171,6 +2173,7 @@ form#rental-form-validate .buttons {
 form#rental-form-validate .buttons button {
 	background : none;
 	border : 0;
+	cursor : pointer;
 }
 
 form#sparepart-form-validate ul {
@@ -2230,6 +2233,7 @@ form#sparepart-form-validate .buttons {
 form#sparepart-form-validate .buttons button {
 	background : none;
 	border : 0;
+	cursor : pointer;
 }
 
 .foo-left{background:url(../images/footer_left.png) no-repeat; float:left;height: 42px; width: 12px;}

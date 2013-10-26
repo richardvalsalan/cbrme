@@ -92,4 +92,62 @@
 //<![CDATA[
     var dataForm = new VarienForm('new-form-validate', true);
 //]]>
+
+	jQuery(document).ready(function(){
+		jQuery("#new-form-validate #product_country").change(function() {
+			if (jQuery("#new-form-validate #product_country").val() == '26') {
+
+				jQuery('#new-form-validate #product_state').val('');
+				jQuery('#new-form-validate li:nth-child(8)').hide();
+
+				jQuery('#new-form-validate #product_city').val('');
+				jQuery('#new-form-validate li:nth-child(9)').hide();
+			} else {
+				jQuery('#new-form-validate li:nth-child(8)').show();
+				jQuery('#new-form-validate li:nth-child(9)').show();
+			}
+		});
+
+		jQuery("#used-form-validate #product_country").change(function() {
+			if (jQuery("#used-form-validate #product_country").val() == '26') {
+
+				jQuery('#used-form-validate #product_state').val('');
+				jQuery('#used-form-validate li:nth-child(9)').hide();
+
+				jQuery('#used-form-validate #product_city').val('');
+				jQuery('#used-form-validate li:nth-child(10)').hide();
+			} else {
+				jQuery('#used-form-validate li:nth-child(9)').show();
+				jQuery('#used-form-validate li:nth-child(10)').show();
+			}
+		});
+
+		jQuery("#rental-form-validate #product_country").change(function() {
+			if (jQuery("#rental-form-validate #product_country").val() == '26') {
+
+				jQuery('#rental-form-validate #product_state').val('');
+				jQuery('#rental-form-validate li:nth-child(9)').hide();
+
+				jQuery('#rental-form-validate #product_city').val('');
+				jQuery('#rental-form-validate li:nth-child(10)').hide();
+			} else {
+				jQuery('#rental-form-validate li:nth-child(9)').show();
+				jQuery('#rental-form-validate li:nth-child(10)').show();
+			}
+		});
+
+		jQuery("#sparepart-form-validate #product_country").change(function() {
+			if (jQuery("#sparepart-form-validate #product_country").val() == '26') {
+
+				jQuery('#sparepart-form-validate #product_state').val('');
+				jQuery('#sparepart-form-validate li:nth-child(9)').hide();
+
+				jQuery('#sparepart-form-validate #product_city').val('');
+				jQuery('#sparepart-form-validate li:nth-child(10)').hide();
+			} else {
+				jQuery('#sparepart-form-validate li:nth-child(9)').show();
+				jQuery('#sparepart-form-validate li:nth-child(10)').show();
+			}
+		});
+	});
 </script>
