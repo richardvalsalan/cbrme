@@ -51,4 +51,55 @@ class Adodis_Postad_Helper_Data extends Mage_Core_Helper_Abstract
 
 		return $tmp;
 	}
+
+	public function getTruckCollection()
+	{
+		$category = Mage::getModel('catalog/category')->load(53);
+
+		$productCollection = Mage::getResourceModel('catalog/product_collection')
+			// ->addAttributeToFilter('banner_ad', array(
+			// 	'eq' => '25'
+			// ))
+			->addCategoryFilter($category);
+
+		$i = 0;
+
+		foreach ($productCollection as $product) {
+			$i++;
+
+			$_product = Mage::getModel('catalog/product')->load($product->getId());
+
+			$tmp[] = $_product->getName();
+			
+		}
+
+		return $tmp;
+
+	}
+
+	public function getCraneCollection()
+	{
+		$category = Mage::getModel('catalog/category')->load(62);
+
+		$productCollection = Mage::getResourceModel('catalog/product_collection')
+			// ->addAttributeToFilter('banner_ad', array(
+			// 	'eq' => '25'
+			// ))
+			->addCategoryFilter($category);
+			
+
+		$i = 0;
+
+		foreach ($productCollection as $product) {
+			$i++;
+
+			$_product = Mage::getModel('catalog/product')->load($product->getId());
+
+			$tmp[] = $_product->getName();
+			
+		}
+
+		return $tmp;
+
+	}
 }

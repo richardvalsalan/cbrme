@@ -14,7 +14,7 @@ jQuery(document).ready(function() {
 <div class="heavy-title"><img src="<?php echo $this->getSkinUrl("images/trailer.jpg") ?>" alt="" /></div>
 	<div id="wrap">
 		<ul class="heavy-categories jcarousel jcarousel-skin-tango" id="trailercarousel">
-			<?php $cat = Mage::getModel('catalog/category')->load(59);
+			<?php $cat = Mage::getModel('catalog/category')->load(62);
 			$subcats = $cat->getChildren();
 
 			foreach(explode(',',$subcats) as $subCatid)

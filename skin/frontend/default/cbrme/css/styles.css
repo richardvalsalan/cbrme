@@ -1867,103 +1867,137 @@ tr.summary-details-excluded { font-style:italic; }
 	
 .home-bottom-left { float: left; margin-right: 5px; margin-top: 10px;width: 165px;}
 .home-bottom-right { float: left; margin-top: 10px;width: 165px;}
-.home-bottom-middle { float: left; height: 600px; margin-left: 5px; margin-top: 10px; width: 645px;}
+.home-bottom-middle { float: left; height: 625px; margin-left: 5px; margin-top: 10px; width: 645px;}
+
+.home-bottom-middle div.home-button-middle-category {
+	height: 334px;
+}
+
+.category-title-new {
+	color : #4C2F17;
+	font-weight : bold;
+	padding: 10px 30px 0 10px;
+}
 
 div.home-bottom-middle div#home-bottom-manufacture-listing {
 	float: left;
 	width: 100%;
 }
 
-#home-bottom-manufacture-listing .manufacturer-listing .manufacturer-table{
-	border : 2px solid #DBDBDB;
-	height: 224px;
-	width: 100%;
+div.manufacturer-listing .manufacturer-table {
+	border : 1px solid #FFFFFF;
+	height: 247px !important;
+	width: 100% !important;
 }
 
-div.manufacturer-table div.manufacturer-heavyequipment
-{
-	border : 2px solid #DBDBDB;
-	float: left;
-	width : 464px;
-}
-
-div.manufacturer-table div.manufacturer-heavyequipment div.manufacturer-heavyequipment-title
-{
-	border : 2px solid #DBDBDB;
-	height : 20.8px;
-	width : 100%;
-}
-
-div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-first-column
-{
-	border : 2px solid #DBDBDB;
+div.manufacturer-table div.manufacturer-heavyequipment {
+	border-right : .5px solid #FFFFFF;
 	float : left;
-	height : 179.2px;
-	line-height : 100%;
-	width : 34%;
+	height: 246px !important;
+	width: 34% !important;
 }
 
-div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-first-column ul {
+div.manufacturer-table div.manufacturer-heavyequipment div.manufacturer-heavyequipment-title {
+	background-color : #FBCBA3;
+	height: 38px !important;
+	width: 100% !important;
+}
+
+div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-column {
+	background-color : #F08229;
+	height: 210px !important;
+	width: 100% !important;
+}
+
+div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-column ul {
 	list-style-type: none;
 }
 
-div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-first-column li {
-	font-size : 10px;
+div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-column ul li {
+	height: 20px !important;
+	width: 100% !important;
 }
 
-div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-second-column
-{
-	border : 2px solid #DBDBDB;
+div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-column ul li a{
+	color: #FDF5ED;
+	margin-left: 10px;
+    text-decoration : none !important;
+}
+
+div.manufacturer-table div.manufacturer-truck {
+	border : .5px solid #FFFFFF;
+	border-top : none;
+	border-bottom:none;
 	float : left;
-	height : 179.2px;
-	width : 34%;
+	height: 246px !important;
+	width: 34% !important;
 }
 
-div.manufacturer-table div.manufacturer-heavyequipment div.heavyequipment-third-column
-{
-	border : 2px solid #DBDBDB;
+div.manufacturer-table div.manufacturer-truck div.truck-title {
+	background-color : #FBCBA3;
+	height: 38px !important;
+	width: 100% !important;
+}
+
+div.manufacturer-table div.manufacturer-truck div.truck-title span{
+	text-decoration : none !important;
+}
+
+div.manufacturer-table div.manufacturer-truck div.truck-column {
+	background-color : #F08229;
+	height: 210px !important;
+	width: 100% !important;
+}
+
+div.manufacturer-table div.manufacturer-truck div.truck-column ul {
+	list-style-type: none;
+}
+
+div.manufacturer-table div.manufacturer-truck div.truck-column ul li {
+	height: 20px !important;
+	width: 100% !important;
+}
+
+div.manufacturer-table div.manufacturer-truck div.truck-column ul li a{
+	color: #FDF5ED;
+	margin-left: 10px;
+    text-decoration : none !important;
+}
+
+div.manufacturer-table div.manufacturer-crane {
+	border-left : .5px solid #FFFFFF;
 	float : left;
-	height : 179.2px;
-	width : 29%;
+	height: 246px !important;
+	width: 31% !important;
 }
 
-div.manufacturer-table div.truck-crane
-{
-	border : 2px solid #DBDBDB;
-	width : 100%;
+div.manufacturer-table div.manufacturer-crane div.crane-title {
+	background-color : #FBCBA3;
+	height: 38px !important;
+	width: 100% !important;
 }
 
-div.truck-crane div.truck-title
-{
-	border : 2px solid #DBDBDB;
-	float : left;
-	height : 44.8px;
-	width : 27%;
+div.manufacturer-table div.manufacturer-crane div.crane-column {
+	background-color : #F08229;
+	height: 210px !important;
+	width: 100% !important;
 }
 
-div.manufacturer-table div.truck-crane div.truck-column
-{
-	border : 2px solid #DBDBDB;
-	float: left;
-	height : 67.2px;
-	width : 27%;
+div.manufacturer-table div.manufacturer-crane div.crane-column ul {
+	list-style-type: none;
 }
 
-div.manufacturer-table div.truck-crane div.crane-title
-{
-	border : 2px solid #DBDBDB;
-	float : left;
-	height : 44.8px;
-	width : 27%;
+div.manufacturer-table div.manufacturer-crane div.crane-column ul li {
+	height: 20px !important;
+	width: 100% !important;
 }
 
-div.manufacturer-table div.truck-crane div.crane-column
-{
-	border : 2px solid #DBDBDB;
-	float: left;
-	height : 67.2px;
-	width : 27%;
+div.manufacturer-table div.manufacturer-crane div.crane-column ul li a{
+	color: #FDF5ED;
+	margin-left: 10px;
+    text-decoration : none !important;
 }
+
 
 /* custom advanced search */
 

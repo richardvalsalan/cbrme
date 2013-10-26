@@ -17,7 +17,7 @@
 (function($) {
     // Default configuration properties.
     var defaults = {
-        vertical: false,
+        vertical: true,
         rtl: false,
         start: 1,
         offset: 1,

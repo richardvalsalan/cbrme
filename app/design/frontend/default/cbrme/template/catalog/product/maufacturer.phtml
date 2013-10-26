@@ -6,32 +6,30 @@
 	<div class="manufacturer-table">
 		<div class="manufacturer-heavyequipment">
 			<div class="manufacturer-heavyequipment-title">
-				<span>Heavy Equipments</span>
+				<div class="category-title-new">Heavy Equipments</div>
 			</div>
-			<div class="heavyequipment-first-column">
+			<div class="heavyequipment-column" id="heavyequipment-first-column">
 				<?php  echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/product/heavyequipfirstcol.phtml')->toHtml(); ?>
 			</div>
-			<div class="heavyequipment-second-column">
-				
-			</div>
-			<div class="heavyequipment-third-column">
-				
-			</div>
 		</div>
-		<div class="truck-crane">
+		<div class="manufacturer-truck">
 			<div class="truck-title">
-				<span>Trucks</span>
+				<div class="category-title-new">Trucks</div>
 			</div>
 			<div class="truck-column">
-				
+				<?php  echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/product/truck-column.phtml')->toHtml(); ?>
 			</div>
+		</div>
+		<div class="manufacturer-crane">
 			<div class="crane-title">
-				<span>Cranes</span>
+				<div class="category-title-new">Cranes</div>
 			</div>
 			<div class="crane-column">
-				
+				<?php  echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/product/crane-column.phtml')->toHtml(); ?>
 			</div>
 		</div>
 	</div>
 
 </div>
+
+

@@ -1,8 +1,8 @@
 <?php
-	$collection = Mage::helper('postad')->getHeavyEquipmentFirstColCollection();
+	$collection = $collection = Mage::helper('postad')->getCraneCollection();
 ?>
 
-<ul class="heavyequiptmentest jcarousel jcarousel-skin-tango">
+<ul class="cranecollisting jcarousel jcarousel-skin-tango">
 <?php foreach ($collection as $record) { ?>
 		<li><a><?php echo $record ?></a></li>
 <?php } ?>
@@ -11,14 +11,14 @@
 
 <script type="text/javascript">
 	jQuery(document).ready(function() {
-		jQuery('.heavyequiptmentest').jcarousel({
+		jQuery('.cranecollisting').jcarousel({
 			auto: 2,
 			wrap: 'last',
-        	//initCallback: heavyequiptmentest_initCallback
+        	//initCallback: cranecollisting_initCallback
 		});
 	});
 
-	function heavyequiptmentest_initCallback(carousel)
+	function cranecollisting_initCallback(carousel)
 	{
 	    // Disable autoscrolling if the user clicks the prev or next button.
 	    carousel.buttonNext.bind('click', function() {

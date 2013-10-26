@@ -106,14 +106,14 @@
 			<label ></label>
 		</p>
 
-		<p><input type="file" name="filename1" id="filename1"/></p>
-		<p><input type="file" name="filename2" id="filename2"/></p>
-		<p><input type="file" name="filename3" id="filename3"/></p>
-		<p><input type="file" name="filename4" id="filename4"/></p>
+		<p><input type="file" name="filename1" id="filename1" class="required-entry"/></p>
+		<p><input type="file" name="filename2" id="filename2" class="required-entry"/></p>
+		<p><input type="file" name="filename3" id="filename3" class="required-entry"/></p>
+		<p><input type="file" name="filename4" id="filename4" class="required-entry"/></p>
 
 		<p>
 			<label for="country" name="country_label" id="country_label">Country</label>
-			<select name="country" name="country" id="country">
+			<select name="country" name="country" id="country" onchange="countrySelect()">
 				
 				<?php foreach (Mage::helper('postad')->getAttributeOptions('product_country') as $option) { ?>
 					<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
@@ -122,7 +122,7 @@
 			</select>
 		</p>
 
-		<p>
+		<p id="state_p">
 			<label for="state" name="state_label" id="state_label">State</label>
 			<select name="state" name="state" id="state" class="validate-select">
 				<option value="">Choose</option>
@@ -134,7 +134,7 @@
 			</select>
 		</p>
 
-		<p>
+		<p id="city_p">
 			<label for="city" name="city_label" id="city_label" >City</label>
 			<select name="city" name="city" id="city" class="validate-select">
 				<option value="">Choose</option>
@@ -171,6 +171,27 @@
 		} else {
 			jQuery("#hours").addClass("required-entry");
 			jQuery("#hours_p").show();
+		}
+
+		if (jQuery("#type_of_ad").val() == '3') {
+			jQuery("#filename1").removeClass("required-entry");
+			jQuery("#advice-required-entry-filename1").removeClass("validation-advice").hide();
+			jQuery("#filename2").removeClass("required-entry");
+			jQuery("#advice-required-entry-filename2").removeClass("validation-advice").hide();
+			jQuery("#filename3").removeClass("required-entry");
+			jQuery("#advice-required-entry-filename3").removeClass("validation-advice").hide();
+			jQuery("#filename4").removeClass("required-entry");
+			jQuery("#advice-required-entry-filename4").removeClass("validation-advice").hide();
+
+		} else {
+			jQuery("#filename1").addClass("required-entry");
+			jQuery("#advice-required-entry-filename1").addClass("validation-advice")
+			jQuery("#filename2").addClass("required-entry");
+			jQuery("#advice-required-entry-filename2").addClass("validation-advice")
+			jQuery("#filename3").addClass("required-entry");
+			jQuery("#advice-required-entry-filename3").addClass("validation-advice")
+			jQuery("#filename4").addClass("required-entry");
+			jQuery("#advice-required-entry-filename4").addClass("validation-advice")
 		}
 	}
 
@@ -221,6 +242,21 @@
 			Element.show('subcategory_other_p');
 		} else {
 			Element.hide('subcategory_other_p');
+		}
+	}
+
+	function countrySelect()
+	{
+		if ($(country).getValue() == '26') {
+
+			$(state).childElements()[0].selected=true
+			Element.hide(state_p);
+
+			$(city).childElements()[0].selected=true
+			Element.hide(city_p);
+		} else {
+			Element.show(state_p);
+			Element.show(city_p);
 		}
 	}
 
