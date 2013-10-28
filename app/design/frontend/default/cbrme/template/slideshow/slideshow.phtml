@@ -106,6 +106,14 @@ $pausetime=$cat->getPausetime();
 			animSpeed: <?php echo $animationspeed; ?>,
 			pauseTime: <?php echo $pausetime; ?>
 		});
+
+		jQuery('#slider11').nivoSlider({
+			effect:'<?php echo $effect;?>',
+			directionNav:<?php if($directionnav==2){echo 'false';}elseif($directionnav==1){echo 'true';}else{echo ' ';}?>,
+			controlNav:<?php if($controlnav==2){echo 'false';}elseif($controlnav==1){echo 'true';}else{echo ' ';}?>,
+			animSpeed: <?php echo $animationspeed; ?>,
+			pauseTime: <?php echo $pausetime; ?>
+		});
 		 
     });
 </script>

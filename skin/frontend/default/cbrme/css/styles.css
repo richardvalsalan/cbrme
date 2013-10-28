@@ -1935,6 +1935,10 @@ tr.summary-details-excluded { font-style:italic; }
 	height: 334px;
 }
 
+.home-bottom-banner {
+	float : left;
+}
+
 .category-title-new {
 	color : #4C2F17;
 	font-weight : bold;
