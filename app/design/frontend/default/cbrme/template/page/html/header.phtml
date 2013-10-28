@@ -36,8 +36,8 @@
         <?php else:?>
         <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
         <?php endif?>
-		<div class="header-login"><img src="<?php echo $this->getSkinUrl("images/login.png") ?>" alt="" /></div>
-		<div class="header-register"><img src="<?php echo $this->getSkinUrl("images/register.png") ?>" alt="" /></div>
+		<div class="header-login"><a href="<?php echo Mage::getUrl('customer/account/login/')?>"><img src="<?php echo $this->getSkinUrl("images/login.png") ?>" alt="" /></a></div>
+		<div class="header-register"><a href="<?php echo Mage::getUrl('customer/account/create/')?>"><img src="<?php echo $this->getSkinUrl("images/register.png") ?>" alt="" /></a></div>
 	</div>
 	<div class="header-inner-right"></div>
 	
@@ -46,9 +46,9 @@
 	<div class="header-menu-middle">
 	<ul class="header-menu">
 	<li class="homel2"><a href="<?php echo Mage::getUrl()?>">Home</a></li>
-	<li><a href="">About Us</a></li>
-	<li><a href="">Services</a></li>
-	<li><a href="">Contact Us</a></li>
+	<li><a href="<?php echo Mage::getUrl('about-magento-demo-store')?>">About Us</a></li>
+	<li><a href="<?php echo Mage::getUrl('customer-service')?>">Services</a></li>
+	<li><a href="<?php echo Mage::getUrl('postad/index/contact')?>">Contact Us</a></li>
 	</ul>
 	</div>
 	<div class="header-menu-right"></div>

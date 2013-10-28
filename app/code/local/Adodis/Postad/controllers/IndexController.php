@@ -8,6 +8,64 @@ class Adodis_Postad_IndexController extends Mage_Core_Controller_Front_Action
         $this->renderLayout();
     }
 
+    public function contactAction()
+    {
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
+    public function contactprocessAction()
+    {
+        if($this->getRequest()->getParams()) {
+            $to = 'shirdisaicorporate@gmail.com';
+            $dt = date('d-m-Y');
+            $subject = "contact of  " . $dt;
+
+            $message = "<html>
+                <head>
+                    <title></title>
+                </head>
+                <body>
+                    <table border='1' cellpadding='4' cellspacing='0' width='60%'>
+                        <tr>
+                          <td align='center' colspan='2' height='30' ><b>Contact Info</b></td>
+                        </tr>
+                        <tr>
+                            <td align='right' width='40%'><b>Category:</b></td>
+                            <td width='55%'>".$this->getRequest()->getParam('contact-name')."</td>
+                        </tr>
+                        <tr>
+                            <td align='right' width='40%'><b>Sub Category:</b></td>
+                            <td width='55%'>".$this->getRequest()->getParam('contact-email')."</td>
+                        </tr>
+                        <tr>
+                            <td align='right' width='40%'><b>Sub Category:</b></td>
+                            <td width='55%'>".$this->getRequest()->getParam('contact-no')."</td>
+                        </tr>
+                        <tr>
+                            <td align='right' width='40%'><b>Sub Category:</b></td>
+                            <td width='75%'>".$this->getRequest()->getParam('contact-message')."</td>
+                        </tr>
+                    </table>
+                </body>
+                </html>";
+            
+            $mail = new Zend_Mail();
+            $mail->setBodyHtml($message);
+            $mail->setFrom('info@cbrme.com', 'Customer');
+            $mail->addTo($to, 'Site Admin');
+            $mail->setSubject($subject);
+
+            $mail->send();
+
+            Mage::getSingleton('core/session')->addSuccess($this->_('The Contact Mail has been send'));
+
+            $this->_redirect();
+
+            return;
+        }
+    }
+
     public function classifiedadAction()
     {
     	$this->loadLayout();

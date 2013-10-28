@@ -78,7 +78,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         if (!empty($mailInfo)) {
         
             //send mail with the product Info as well as the Main Category Id, Subcategory Id, Make
-            $to = 'richard@adodis.com';
+            $to = 'shirdisaicorporate@gmail.com';
             $dt = date('d-m-Y');
             $subject = "New Customer Suggestion for " . $dt;
 

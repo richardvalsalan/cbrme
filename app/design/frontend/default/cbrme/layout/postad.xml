@@ -30,4 +30,14 @@
         </reference>
     </postad_index_bannerad>
 
+    <postad_index_contact>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+
+        <reference name="content">
+            <block type="postad/postad" name="postad.contactus" template="postad/contact-us.phtml" />
+        </reference>
+    </postad_index_contact>
+
 </layout>
