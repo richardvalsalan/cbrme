@@ -9,6 +9,7 @@ Any unauthorized copying or editing will be subject to prosecution under strict 
 ?>
 <?php
 $mediapath = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'slideshow//';
+$categoryId = $this->getCategoryId();
 $slidemodel= $this->slideCollection();
 $categoryModel = $this->categoryCollection();
 $enabletoggle=Mage::getStoreConfig('slideshow/slideshow_group/slideshow_select');
@@ -31,18 +32,84 @@ $pausetime=$cat->getPausetime();
 
 <div class="home-content">
 <script type="text/javascript">
+	var jQuery = jQuery.noConflict();
+
     jQuery(window).load(function() {
-        jQuery('#slider').nivoSlider({
+        jQuery('#slider1').nivoSlider({
 		effect:'<?php echo $effect;?>',
 		directionNav:<?php if($directionnav==2){echo 'false';}elseif($directionnav==1){echo 'true';}else{echo ' ';}?>,
 		controlNav:<?php if($controlnav==2){echo 'false';}elseif($controlnav==1){echo 'true';}else{echo ' ';}?>,
 		animSpeed: <?php echo $animationspeed; ?>,
 		pauseTime: <?php echo $pausetime; ?>
 	});
+
+		jQuery('#slider2').nivoSlider({
+			effect:'<?php echo $effect;?>',
+			directionNav:<?php if($directionnav==2){echo 'false';}elseif($directionnav==1){echo 'true';}else{echo ' ';}?>,
+			controlNav:<?php if($controlnav==2){echo 'false';}elseif($controlnav==1){echo 'true';}else{echo ' ';}?>,
+			animSpeed: <?php echo $animationspeed; ?>,
+			pauseTime: <?php echo $pausetime; ?>
+		});
+
+		jQuery('#slider4').nivoSlider({
+			effect:'<?php echo $effect;?>',
+			directionNav:<?php if($directionnav==2){echo 'false';}elseif($directionnav==1){echo 'true';}else{echo ' ';}?>,
+			controlNav:<?php if($controlnav==2){echo 'false';}elseif($controlnav==1){echo 'true';}else{echo ' ';}?>,
+			animSpeed: <?php echo $animationspeed; ?>,
+			pauseTime: <?php echo $pausetime; ?>
+		});
+
+		jQuery('#slider5').nivoSlider({
+			effect:'<?php echo $effect;?>',
+			directionNav:<?php if($directionnav==2){echo 'false';}elseif($directionnav==1){echo 'true';}else{echo ' ';}?>,
+			controlNav:<?php if($controlnav==2){echo 'false';}elseif($controlnav==1){echo 'true';}else{echo ' ';}?>,
+			animSpeed: <?php echo $animationspeed; ?>,
+			pauseTime: <?php echo $pausetime; ?>
+		});
+
+		jQuery('#slider6').nivoSlider({
+			effect:'<?php echo $effect;?>',
+			directionNav:<?php if($directionnav==2){echo 'false';}elseif($directionnav==1){echo 'true';}else{echo ' ';}?>,
+			controlNav:<?php if($controlnav==2){echo 'false';}elseif($controlnav==1){echo 'true';}else{echo ' ';}?>,
+			animSpeed: <?php echo $animationspeed; ?>,
+			pauseTime: <?php echo $pausetime; ?>
+		});
+
+		jQuery('#slider7').nivoSlider({
+			effect:'<?php echo $effect;?>',
+			directionNav:<?php if($directionnav==2){echo 'false';}elseif($directionnav==1){echo 'true';}else{echo ' ';}?>,
+			controlNav:<?php if($controlnav==2){echo 'false';}elseif($controlnav==1){echo 'true';}else{echo ' ';}?>,
+			animSpeed: <?php echo $animationspeed; ?>,
+			pauseTime: <?php echo $pausetime; ?>
+		});
+
+		jQuery('#slider8').nivoSlider({
+			effect:'<?php echo $effect;?>',
+			directionNav:<?php if($directionnav==2){echo 'false';}elseif($directionnav==1){echo 'true';}else{echo ' ';}?>,
+			controlNav:<?php if($controlnav==2){echo 'false';}elseif($controlnav==1){echo 'true';}else{echo ' ';}?>,
+			animSpeed: <?php echo $animationspeed; ?>,
+			pauseTime: <?php echo $pausetime; ?>
+		});
+
+		jQuery('#slider9').nivoSlider({
+			effect:'<?php echo $effect;?>',
+			directionNav:<?php if($directionnav==2){echo 'false';}elseif($directionnav==1){echo 'true';}else{echo ' ';}?>,
+			controlNav:<?php if($controlnav==2){echo 'false';}elseif($controlnav==1){echo 'true';}else{echo ' ';}?>,
+			animSpeed: <?php echo $animationspeed; ?>,
+			pauseTime: <?php echo $pausetime; ?>
+		});
+
+		jQuery('#slider10').nivoSlider({
+			effect:'<?php echo $effect;?>',
+			directionNav:<?php if($directionnav==2){echo 'false';}elseif($directionnav==1){echo 'true';}else{echo ' ';}?>,
+			controlNav:<?php if($controlnav==2){echo 'false';}elseif($controlnav==1){echo 'true';}else{echo ' ';}?>,
+			animSpeed: <?php echo $animationspeed; ?>,
+			pauseTime: <?php echo $pausetime; ?>
+		});
 		 
     });
 </script>
-<div id="slider" class="nivoSlider" style="height:<?php echo $height.'px';?>;width:<?php echo $width.'px';?>">
+<div id="<?php echo "slider" . $categoryId ?>" class="nivoSlider <?php echo "slider" . $categoryId ?>" style="height:<?php echo $height.'px';?>;width:<?php echo $width.'px';?>">
 <?php foreach ($slidemodel as $slides){?>
 <?php $imagename= $slides->getFilename();$url=$slides->getUrl();?>
 <a href="<?php echo $url;?>"><img src="<?php echo $mediapath.$imagename;?>" style="height:<?php echo $height.'px';?>;width:<?php echo $width.'px';?>" alt="" /> </a>
