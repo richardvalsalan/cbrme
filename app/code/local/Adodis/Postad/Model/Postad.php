@@ -16,6 +16,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         $categoryOther = $request->getParam('category_other');
         $subCategoryOther = $request->getParam('sub_category_other');
         $subCategory = $request->getParam('sub_category');
+        $make = $request->getParam('new-make');
         
         if (!empty($categoryOther)) {
             $mailInfo['category'] = $categoryOther;
@@ -56,7 +57,13 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         $product->setModel($request->getParam('model'));
         $product->setYear($request->getParam('year'));
         $product->setHour($request->getParam('hours'));
-        $product->setMake($request->getParam('make'));
+
+        if (!empty($make)) {
+            $mailInfo['make'] = $make;
+        } else {
+            $product->setMake($request->getParam('make'));   
+        }
+
         $product->setCondition($request->getParam('condition'));
         $product->setProductUseType($request->getParam('type_of_ad'));
 
@@ -98,6 +105,10 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
                         <tr>
                             <td align='right' width='40%'><b>Sub Category:</b></td>
                             <td width='55%'>".$mailInfo['subcategory']."</td>
+                        </tr>
+                        <tr>
+                            <td align='right' width='40%'><b>Sub Category:</b></td>
+                            <td width='55%'>".$mailInfo['make']."</td>
                         </tr>
                     </table>
                 </body>

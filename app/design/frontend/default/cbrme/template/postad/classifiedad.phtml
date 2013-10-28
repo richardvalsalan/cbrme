@@ -63,6 +63,12 @@
 				<?php } ?>
 
 			</select>
+			<button type="button" name="new-make-button" id="new-make-button" onclick="enableNewMake()">Add Make</button>
+
+			<div class="new-make-div" style="display:none">
+				<label for="new-make" name="new-make-label" id="new-make-label">Please Enter The Manufacturer</label>
+				<input name="new-make" value="" id="new-make" type="text" />
+			</div>
 		</p>
 
 		<p>
@@ -258,6 +264,11 @@
 			Element.show(state_p);
 			Element.show(city_p);
 		}
+	}
+
+	function enableNewMake()
+	{
+		jQuery(".new-make-div").show()
 	}
 
 </script>
