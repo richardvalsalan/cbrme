@@ -9,20 +9,20 @@
 			<li>
 				<label for="category_search_field" >Category</label>
 
-				<select name="category" id="category_search_field">
-					<option value="">-- Any Category --</option>
-					<?php foreach ($this->getStoreCategories() as $_category) { ?>
-						<?php if($_category->hasChildren()){ ?>
-							<option class="parent-cat" value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName();?></option>
-							<?php foreach ($_category->getChildren() as $subcategory) { ?>
-								<?php if($subcategory->getIsActive()) { ?>
-									<option value="<?php echo $subcategory->getId(); ?>"<?php echo ($this->getRequest()->getQuery('category') == $subcategory->getId() ? ' selected="selected"': "") ?>>---<?php echo $subcategory->getName(); ?></option>
-								<?php } ?>
-							<?php } ?>
-						<?php } else if ($_category->getIsActive()) {?>
+				<select name="category" id="category_search_field" onchange="rentalSubcategorySelect()">
+					<option value="">Choose</option>
+
+					<?php foreach ( Mage::helper('catalog/category')->getStoreCategories() as $_category) { ?>
+						<?php if($_category->getIsActive()){ ?>
 							<option value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName();?></option>
 						<?php } ?>
 					<?php } ?>
+				</select>
+			</li>
+			<li id="subcategory_li_spare" style="display:none">
+				<label for="sub_category_search_field" >Sub-Cat</label>
+				<select name="category" id="sub_category_spare">
+					<option value="0">Choose</option>
 				</select>
 			</li>
 			<li>
@@ -82,11 +82,48 @@
 	<!-- Sending Hidden input for New tab-->
 	<input type="hidden" value="3" name="product_use_type[]" id="product_use_type" />
 	<div class="buttons">
-        <button type="submit" title="<?php echo $this->__('Search') ?>"><span><span><img src="<?php echo Mage::getBaseUrl('skin') . '/frontend/default/cbrme/images/text_field_button.png'?>" alt="search"/></span></span></button>
+        <button type="button" title="<?php echo $this->__('Search') ?>" onclick="spareSubmitForm()"><span><span><img src="<?php echo Mage::getBaseUrl('skin') . '/frontend/default/cbrme/images/text_field_button.png'?>" alt="search"/></span></span></button>
     </div>
 </form>
 <script type="text/javascript">
 //<![CDATA[
     var dataForm = new VarienForm('new-form-validate', true);
 //]]>
+
+	function spareSubmitForm() 
+	{
+		if (jQuery("#sub_category_spare").val() == 0) {
+			var value = jQuery("#sparepart-form-validate #category_search_field").val();
+			jQuery("#sub_category_spare").append('<option value='+value+'>Choose</option>');
+			jQuery("#sub_category_spare").val(value);
+		}
+
+		jQuery("#sparepart-form-validate").submit();
+	}
+
+	function rentalSubcategorySelect()
+	{
+		var value = jQuery("#sparepart-form-validate #category_search_field").val();
+
+		if (value != 'other_main' ) {
+			var reloadurl = '<?php echo $this->getUrl('postad/index/subcategory')?>';
+
+			new Ajax.Request(reloadurl, {
+				method: 'post',
+				parameters: {
+	            	categoryid : value
+	        	},
+
+	        	onComplete: function(transport) {
+	        		var data = transport.responseText.evalJSON();
+
+	        		$('sub_category_spare').update($H(data).map(function(o){
+	        			return '<option value="' + o.key + '">' + o.value + '</option>';
+	        		}).join(''));
+
+	        		Element.show('subcategory_li_spare');
+	        	}
+			});
+		}
+	}
 </script>
