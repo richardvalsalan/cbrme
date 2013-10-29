@@ -14,6 +14,12 @@ class Adodis_Postad_IndexController extends Mage_Core_Controller_Front_Action
         $this->renderLayout();
     }
 
+    public function adoptionsAction()
+    {
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
     public function contactprocessAction()
     {
         if($this->getRequest()->getParams()) {

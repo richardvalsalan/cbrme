@@ -40,4 +40,14 @@
         </reference>
     </postad_index_contact>
 
+    <postad_index_adoptions>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+
+        <reference name="content">
+            <block type="postad/postad" name="postad.addoptions" template="postad/addoptions.phtml" />
+        </reference>
+    </postad_index_adoptions>
+
 </layout>

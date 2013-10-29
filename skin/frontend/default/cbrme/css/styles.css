@@ -1827,7 +1827,7 @@ tr.summary-details-excluded { font-style:italic; }
 .header-searchinner-right{background:url(../images/search_2nd_bg_right.png) no-repeat; float:left;height: 46px; width: 17px;}
 
 .header-menu {height: 30px; margin: 14px auto 0; width: 620px;}
-.header-menu li {float: left;padding: 0 50px;}
+.header-menu li {float: left;padding: 0 48px;}
 .header-menu li { background:url("../images/menu_sptr.png") no-repeat scroll 0 4px rgba(0, 0, 0, 0); }
 .header-menu li.homel2{background:none;}
 .header-menu a {color: #FFFFFF;font-size: 14px;text-decoration: none;}
@@ -2344,3 +2344,134 @@ div#classfiedform form p {
     padding: 0 0 0 301px;
 }
 /* ======================================================================================= */
+
+
+/* Ad options ============================================================================ */
+
+div.ad-options {
+	border : 1px solid #D3D3D3;
+	height: 913px;
+	width: 100%;
+}
+
+div.classified-ad-option {
+	height: 330px;
+    width: 100%;
+}
+
+div.classified-ad-option div.classified-types {
+	padding: 20px 0 0 100px;
+	float : left;
+}
+div.classified-ad-option div.classified-ad-option-booknow {
+	float : right;
+	padding: 50px;
+}
+
+div.classified-title {
+	padding: 0 0 0 74px;
+}
+
+div.classified-expiry {
+	height: 96px;
+    left: 120px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+}
+
+div.classified-new {
+	height: 100px;
+    position: relative;
+    width: 250%;
+}
+
+div.classified-used {
+	height: 36px;
+    position: relative;
+    width: 250%;
+}
+
+div.classified-used  div.classified-expiry {
+	height: 21px !important;
+}
+
+div.classified-rental {
+	height: 68px;
+    position: relative;
+    width: 250%;
+}
+
+div.classified-rental  div.classified-expiry {
+	height: 60px !important;
+}
+
+div.classified-spare {
+	 height: 79px;
+    position: relative;
+    width: 250%;
+}
+
+div.classified-spare  div.classified-expiry {
+	height: 60px !important;
+}
+
+div.banner-ad-options {
+    height: 400px;
+    padding: 20px 0 0 114px;
+    width: 100%;
+}
+
+div.banner-title {
+	padding: 0 0 0 74px;
+}
+
+div.banner-expiry {
+	height: 96px;
+    left: 230px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+}
+
+
+div.banner-top {
+	height: 100px;
+    position: relative;
+    width: 250%;
+}
+
+div.banner-side-right {
+	height: 100px;
+    position: relative;
+    width: 250%;
+}
+
+div.banner-side-left {
+	height: 100px;
+    position: relative;
+    width: 250%;
+}
+
+div.banner-bottom {
+	height: 100px;
+    position: relative;
+    width: 250%;
+}
+
+
+div.banner-ad-option-contact {
+	float : right;
+	padding: 50px;
+	margin: 0 128px 0 0;
+}
+
+
+.contact-us-block {
+    float: left;
+}
+
+.contact-address {
+    float: right;
+    padding: 0 242px 0 0;
+}

@@ -47,7 +47,7 @@ class Adodis_Postad_Helper_Data extends Mage_Core_Helper_Abstract
 
 		if (count($tmp) == 0) {
 
-			$tmp[] = 'No Heavy Equipment Manufacturers';
+			$tmp[] = ' ';
 
 			return $tmp;
 		}
@@ -78,7 +78,7 @@ class Adodis_Postad_Helper_Data extends Mage_Core_Helper_Abstract
 
 		if (count($tmp) == 0) {
 
-			$tmp[] = 'No Truck Manufacturers';
+			$tmp[] = ' ';
 
 			return $tmp;
 		}
@@ -108,7 +108,7 @@ class Adodis_Postad_Helper_Data extends Mage_Core_Helper_Abstract
 
 		if (count($tmp) == 0) {
 
-			$tmp[] = 'No Crane Manufacturers';
+			$tmp[] = ' ';
 
 			return $tmp;
 		}

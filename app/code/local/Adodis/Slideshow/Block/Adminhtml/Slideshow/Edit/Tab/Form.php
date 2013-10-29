@@ -40,6 +40,14 @@ class Adodis_Slideshow_Block_Adminhtml_Slideshow_Edit_Tab_Form extends Mage_Admi
           'label'     => Mage::helper('slideshow')->__('Url'),
           'name'      => 'url',
       ));
+
+      $fieldset->addField('product_sku', 'text', array(
+          'label'     => Mage::helper('slideshow')->__('Banner Ad Sku'),
+          'class'     => 'required-entry',
+          'required'  => true,
+          'name'      => 'product_sku',
+      ));
+
       $fieldset->addField('category_id', 'select', array(
           'label'     => Mage::helper('slideshow')->__('category'),
           'name'      => 'category_id',

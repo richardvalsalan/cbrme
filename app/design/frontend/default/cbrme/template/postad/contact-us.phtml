@@ -1,35 +1,57 @@
 <h1>Contact Us</h1>
 
-<div class="contact-us-block">
-	<div class="contact-description">
-	</div>
-	<div class="contact-form-block">
-		<form name="contact-form" id="new-contact-form" action="<?php echo Mage::getUrl('postad/index/contactprocess')?>" method="post">
-			<p>
-				<label for="contact-name">Name :</label>
-				<input name="contact-name" id="contact-name" value=""/>
-			</p>
+<div class="Contact-us">
 
-			<p>
-				<label for="contact-email">Email : </label>
-				<input name="contact-email" id="contact-email" value=""/>
-			</p>
+	<div class="contact-us-block">
+		<div class="contact-description">
+		</div>
+		<div class="contact-form-block">
+			<form name="contact-form" id="new-contact-form" action="<?php echo Mage::getUrl('postad/index/contactprocess')?>" method="post">
+				<p>
+					<label for="contact-name">Name :</label>
+					<input name="contact-name" id="contact-name" value=""/>
+				</p>
 
-			<p>
-				<label for="contact-no">Telephone :</label>
-				<input name="contact-no" id="contact-no" value=""/>
-			</p>
+				<p>
+					<label for="contact-email">Email : </label>
+					<input name="contact-email" id="contact-email" value=""/>
+				</p>
 
-			<p>
-				<label for="contact-message">Message : </label>
-				<textarea id="contact-message" cols="25" rows="5" name="contact-message"></textarea>
-			</p>
+				<p>
+					<label for="contact-no">Telephone :</label>
+					<input name="contact-no" id="contact-no" value=""/>
+				</p>
 
-			<button type="submit" name="contact-submit" class="contact-submit">Submit</button>
+				<p>
+					<label for="contact-message">Message : </label>
+					<textarea id="contact-message" cols="25" rows="5" name="contact-message"></textarea>
+				</p>
 
-		</form>
+				<button type="submit" name="contact-submit" class="contact-submit">Submit</button>
+
+			</form>
+		</div>
+		<div class="contact-address">
+			
+		</div>
 	</div>
 	<div class="contact-address">
-		
+		<p>
+			<ul>
+				<li>Shirdisai Corporate Pvt Ltd</li>
+
+				<li>002, AECS Layout, Tamarind Elegance,</li>
+
+				<li>Kundanhalli, Brookefield,</li>
+
+				<li>Bangalore 37, India</li>
+
+	 
+
+				<li>Tel:</li>
+
+				<li>Email: info@cbrme.com</li>
+			</ul>
+		</p>
 	</div>
 </div>
