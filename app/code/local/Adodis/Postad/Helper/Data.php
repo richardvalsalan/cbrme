@@ -31,22 +31,18 @@ class Adodis_Postad_Helper_Data extends Mage_Core_Helper_Abstract
 		$category = Mage::getModel('catalog/category')->load(6);
 
 		$productCollection = Mage::getResourceModel('catalog/product_collection')
-			// ->addAttributeToFilter('banner_ad', array(
-			// 	'eq' => '25'
-			// ))
+			->addAttributeToFilter('banner_ad', array(
+				'eq' => '25'
+			))
 			->addCategoryFilter($category);
-
-		$i = 0;
 
 		foreach ($productCollection as $product)
 		{
-			$i++;
+	
+			$_product = Mage::getModel('catalog/product')->load($product->getId());
 
-			if ($i <= 22) {
-				$_product = Mage::getModel('catalog/product')->load($product->getId());
-
-				$tmp[] = $_product->getName();
-			}
+			$tmp[] = $_product->getName();
+			
 		}
 
 		return $tmp;
@@ -57,9 +53,9 @@ class Adodis_Postad_Helper_Data extends Mage_Core_Helper_Abstract
 		$category = Mage::getModel('catalog/category')->load(53);
 
 		$productCollection = Mage::getResourceModel('catalog/product_collection')
-			// ->addAttributeToFilter('banner_ad', array(
-			// 	'eq' => '25'
-			// ))
+			->addAttributeToFilter('banner_ad', array(
+				'eq' => '25'
+			))
 			->addCategoryFilter($category);
 
 		$i = 0;
@@ -71,6 +67,13 @@ class Adodis_Postad_Helper_Data extends Mage_Core_Helper_Abstract
 
 			$tmp[] = $_product->getName();
 			
+		}
+
+		if (count($tmp) == 0) {
+
+			$tmp[] = 'No Truck Manufacturers';
+
+			return $tmp;
 		}
 
 		return $tmp;
@@ -82,13 +85,10 @@ class Adodis_Postad_Helper_Data extends Mage_Core_Helper_Abstract
 		$category = Mage::getModel('catalog/category')->load(62);
 
 		$productCollection = Mage::getResourceModel('catalog/product_collection')
-			// ->addAttributeToFilter('banner_ad', array(
-			// 	'eq' => '25'
-			// ))
+			->addAttributeToFilter('banner_ad', array(
+				'eq' => '25'
+			))
 			->addCategoryFilter($category);
-			
-
-		$i = 0;
 
 		foreach ($productCollection as $product) {
 			$i++;
@@ -96,10 +96,16 @@ class Adodis_Postad_Helper_Data extends Mage_Core_Helper_Abstract
 			$_product = Mage::getModel('catalog/product')->load($product->getId());
 
 			$tmp[] = $_product->getName();
-			
+		
+		}
+
+		if (count($tmp) == 0) {
+
+			$tmp[] = 'No Crane Manufacturers';
+
+			return $tmp;
 		}
 
 		return $tmp;
-
 	}
 }
