@@ -2085,35 +2085,35 @@ form#new-form-validate .separator {
     margin: 0 3px;
 }
 
-form#new-form-validate ul li:nth-child(8) {
+form#new-form-validate ul li:nth-child(9) {
 	display: inline-block;
 }
 
-form#new-form-validate ul li:nth-child(8) div.input-box {
+form#new-form-validate ul li:nth-child(9) div.input-box {
 	display: block;
 	width: 137px;
 }
 
-form#new-form-validate ul li:nth-child(8) select{
+form#new-form-validate ul li:nth-child(9) select{
 	width : 165px;
 	float : left
 }
 
-form#new-form-validate ul li:nth-child(9){
+form#new-form-validate ul li:nth-child(10){
 	display: inline-block;
 }
 
-form#new-form-validate ul li:nth-child(9) label{
+form#new-form-validate ul li:nth-child(10) label{
 	padding-left : 30px;
 	width : 10px;
 }
 
-form#new-form-validate ul li:nth-child(9) select{
+form#new-form-validate ul li:nth-child(10) select{
 
 	width : 155px;
 }
 
-form#new-form-validate ul li:nth-child(9) div.input-box {
+form#new-form-validate ul li:nth-child(10) div.input-box {
 	display: block;
 	width: 137px;
 }
@@ -2337,5 +2337,10 @@ div#classfiedform form p {
 
 .new-make-div {
     padding: 0 0 0 298px;
+}
+
+
+.validation-month-div {
+    padding: 0 0 0 301px;
 }
 /* ======================================================================================= */

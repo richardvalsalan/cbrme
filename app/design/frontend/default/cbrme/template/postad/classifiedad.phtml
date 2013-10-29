@@ -10,6 +10,14 @@
 				<option value="4">Rental</option>
 				<option value="3">Spare Parts</option>
 			</select>
+
+			<div class="validation-month-div">
+				<div id="expiry_months_3_div" style="display:none"><input type="radio" name="expiry_months" value="3" id="expiry_months_3" checked="checked"/> <label for="expiry_months_3" id="expiry_months_3_label">3 Month Validity</label></div>
+
+				<div id="expiry_months_6_div" style="display:none"><input type="radio" name="expiry_months" value="6" id="expiry_months_6"/> <label for="expiry_months_6" id="expiry_months_6_label">6 Month Validity</label></div>
+
+				<div id="expiry_months_12_div" style="display:none"><input type="radio" name="expiry_months" value="12" id="expiry_months_12" /> <label for="expiry_months_12" id="expiry_months_12_label">12 Month Validity</label></div>
+			</div>
 		</p>
 
 		<p>
@@ -83,7 +91,7 @@
 
 		<p id="hours_p" style="display:block">
 			<label for="hours" name="hours_label" id="year_label">Hours</label><span>(eg. : 2500)</span>
-			<input type="text" name="hours" id="hours" value="" class="required-entry" />
+			<input type="text" name="hours" id="hours" value=""/>
 		</p>
 
 		<p>
@@ -157,6 +165,11 @@
 			<input type="text" name="telephone" id="telephone" value="" class="required-entry"/>
 		</p>
 
+		<p>
+			<label for="email" name="email_label" id="email_label">Email</label>
+			<input type="text" name="email" id="email" value="" class="required-entry validate-email"/>
+		</p>
+
 		<p><input type="submit" name="submit" value="Submit">
 
 	</form>
@@ -172,11 +185,39 @@
 	function valueCheck()
 	{
 		if (jQuery("#type_of_ad").val() == '6') {
-			jQuery("#hours").removeClass("required-entry");
 			jQuery("#hours_p").hide();
+
+			jQuery("#expiry_months_3_div").show();
+			jQuery("#expiry_months_6_div").show();
+			jQuery("#expiry_months_12_div").show();
+
+		} else if (jQuery("#type_of_ad").val() == '5') {
+			jQuery("#hours_p").show();
+
+			jQuery("#expiry_months_3_div").show();
+
+			jQuery("#expiry_months_3")
+			jQuery("#expiry_months_6_div").hide();
+			jQuery("#expiry_months_12_div").hide();
+		} else if (jQuery("#type_of_ad").val() == '4') {
+			jQuery("#hours_p").show();
+
+			jQuery("#expiry_months_3_div").show();
+			jQuery("#expiry_months_6_div").show();
+			jQuery("#expiry_months_12_div").hide();
+		} else if (jQuery("#type_of_ad").val() == '3') {
+			jQuery("#hours_p").show();
+
+			jQuery("#expiry_months_3_div").show();
+			jQuery("#expiry_months_6_div").show();
+			jQuery("#expiry_months_12_div").show();
 		} else {
 			jQuery("#hours").addClass("required-entry");
 			jQuery("#hours_p").show();
+
+			jQuery("#expiry_months_3_div").hide();
+			jQuery("#expiry_months_6_div").hide();
+			jQuery("#expiry_months_12_div").hide();
 		}
 
 		if (jQuery("#type_of_ad").val() == '3') {

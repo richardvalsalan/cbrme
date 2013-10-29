@@ -66,12 +66,14 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
 
         $product->setCondition($request->getParam('condition'));
         $product->setProductUseType($request->getParam('type_of_ad'));
+        $product->setExpiryMonth($request->getParam('expiry_months'));
 
     	$product->setWebsiteIds(array(Mage::app()->getStore(true)->getWebsite()->getId()));
 
         $product->setProductState($request->getParam('state'));
         $product->setProductCity($request->getParam('city'));
         $product->setProductTelephone($request->getParam('telephone'));
+        $product->setEmail($request->getParam('email'));
         
     	$stockData = $product->getStockData();
     	$stockData['qty'] = 1;
@@ -159,6 +161,9 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         $product->setShortDescription($request->getParam('company_name'));
 
         $product->setBannerAd(25);
+
+        $product->setExpiryMonth($request->getParam('expiry_months'));
+        $product->setEmail($request->getParam('email'));
 
         if ($request->getParam('banner-ad-display-area') == 23)
         {
