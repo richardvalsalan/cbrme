@@ -1726,7 +1726,7 @@ tr.summary-details-excluded { font-style:italic; }
 .footer li.last { border-right: none !important;}
 .footer li.last { background:none !important; padding-right:0 !important; }
 .footer-container .bottom-container { margin:0 0 5px; }
-.company { color: #B6B6B6; float: right; margin-top: 13px;}
+.company { display:none;color: #B6B6B6; float: right; margin-top: 13px;}
 /* ======================================================================================= */
 
 /* Sample Data============================================================================ */
