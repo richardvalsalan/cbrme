@@ -1,14 +1,99 @@
 <h3>SELECT TYPE OF AD</h3>
 <div id="postadtypelist">
 	<ul>
-		<li><input type="radio" name="postadradio" id="classified" onclick="postAdRedirect('<?php echo Mage::getUrl('postad/index/classifiedad');?>')"/> <label for="classified" name="classified_label" id="classified_label">Classified Ad</label></li>
-		<li><input type="radio" name="postadradio" id="bannerad" onclick="postAdRedirect('<?php echo Mage::getUrl('postad/index/bannerad');?>')"/> <label for="bannerad" name="bannerad_label" id="bannerad_label">Banner Ad</label></li>
+		<li><a id="classified-link" href="#classified-section">Classified Ad</a></li>
+		<li><a id="bannerad-link" href="#banner-ad-section">Banner Ad</a></li>
 	</ul>
 </div>
 
-<script>
+
+
+
+<div class="ad-options-home" style="display:none">
+	<div class="classified-section" id="classified-section">
+		<h3>CLASSIFIED AD</h3>
+		<div class="classified-new-home">	
+			<ul>
+				<ul><b>New :</b></ul>
+				<li>Validity 3 Months for one Ad  @ Rs 9000 inclusive of Service Tax, 4 images of product can be uploaded .</li>
+				<li>Validity 6 Months for one Ad  @ Rs 17000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+				<li>Validity 12 Months for one Ad@ Rs33000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+			</ul>
+		</div>
+		<div class="classified-pre-owned-home">
+			<ul>
+				<li><b>Pre Owned :</b></li>
+				<li>Validity 3 Months for one Ad  @ Rs 9000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+			</ul>
+		</div>
+		<div class="classified-rental-home">
+			<ul>
+				<li><b>Rental :</b></li>
+				<li>Validity 3 Months  for one Ad @ Rs 9000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+				<li>Validity 6 Months  for one Ad @ Rs 17000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+			</ul>
+		</div>
+		<div class="classified-spareparts-home">
+			<ul>
+				<li><b>Spare Parts :</b></li>
+				<li>Validity 3 Months  for one Ad @Rs9000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+				<li>Validity 6 Months for one  Ad @Rs 17000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+				<li>Validity 12 Months for one Ad@Rs 33000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+			</ul>
+		</div>
+		<div class="classified-book-now-home">
+			<button type="button" name="classified-book-now-home-button" id="classified-book-now-home-button" onclick="postAdRedirect('<?php echo Mage::getUrl('postad/index/classifiedad');?>')">BOOK NOW</button>
+		</div>
+	</div>
+	<div class="banner-ad-section" id="banner-ad-section">
+		<h3>BANNER AD</h3>
+		<div class="bannerad-top">
+			<ul>
+				<li><b>Top Right  Of The Home Page (470x344 Px Image & duration - 7 sec) :</b></li>
+				<li>Validity3 Months</li>
+				<li>Validity 6 Months</li>
+				<li>Validity 12 Months</li>
+			</ul>
+		</div>
+		<div class="bannerad-side">
+			<ul>
+				<li><b>Right / Left Of Home page Vertical Placement(165x158 Px Image & duration - 7 sec) :</b></li>
+				<li>Validity 3 Months</li>
+				<li>Validity 6 Months</li>
+				<li>Validity 12 Months</li>
+			</ul>
+		</div>
+		<div class="bannerad-bottom">
+			<ul>
+				<li><b>Banner at Bottom of Home Page (980x133 Px Image & duration - 7 sec) : </b></li>
+				<li>Validity 3 Months</li>
+				<li>Validity 6 Months</li>
+				<li>Validity 12 Months</li>
+			</ul>        
+		</div>
+		<div class="banner-contactus">
+			<button type="button" name="baner-contact-button" id="baner-contact-button" onclick="postAdRedirect('<?php echo Mage::getUrl('postad/index/contact');?>')">CONTACT US</button>
+		</div>
+	</div>	
+</div>
+
+<script language="JavaScript" type="text/javascript">
 	function postAdRedirect(url)
 	{
 		window.location.replace(url);
 	}
+
+ jQuery(document).ready(function() {
+ 	jQuery("#classified-link").fancybox({
+        'titlePosition'     : 'inside',
+        'transitionIn'      : 'none',
+        'transitionOut'     : 'none'
+    });
+
+    jQuery("#bannerad-link").fancybox({
+        'titlePosition'     : 'inside',
+        'transitionIn'      : 'none',
+        'transitionOut'     : 'none'
+    });
+ });
 </script>

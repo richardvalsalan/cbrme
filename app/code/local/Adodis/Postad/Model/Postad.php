@@ -17,6 +17,8 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         $subCategoryOther = $request->getParam('sub_category_other');
         $subCategory = $request->getParam('sub_category');
         $make = $request->getParam('new-make');
+
+        $expiryMonths = $request->getParam('expiry_months');
         
         if (!empty($categoryOther)) {
             $mailInfo['category'] = $categoryOther;
@@ -41,7 +43,22 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
     	$product->setName($request->getParam('name'));
     	$product->setDescription($request->getParam('description'));
     	$product->setShortDescription($request->getParam('description'));
-    	$product->setPrice(500);
+
+        switch ($expiryMonths) 
+        {
+            case 3 :
+    	       $product->setPrice(9000);
+               break;
+
+            case 6 :
+                $product->setPrice(17000);
+                break;
+
+            case 12 :
+                $product->setPrice(33000);
+                break;
+        }
+
     	$product->setTypeId('simple');
     	$product->setAttributeSetId(4);
         

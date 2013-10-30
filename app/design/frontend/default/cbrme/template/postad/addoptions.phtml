@@ -1,94 +1,67 @@
-<div class="ad-options">
-	<div class="classified-ad-option">
-		<div class="classified-types">
-			<h3>Classified Ad</h3>
-			<div class="classified-new">
-				<div class="classified-title">
-					<p>New :</p>
-				</div>
-				<div class="classified-expiry">
-					<p>3 Months</p>
-					<p>6 Months</p>
-					<p>12 Months</p>
-				</div>
-			</div>
-			<div class="classified-used">
-				<div class="classified-title">
-					<p>Used :</p>
-				</div>
-				<div class="classified-expiry">
-					<p>3 Months</p>
-				</div>
-			</div>
-			<div class="classified-rental">
-				<div class="classified-title">
-					<p>Rental :</p>
-				</div>
-				<div class="classified-expiry">
-					<p>3 Months</p>
-					<p>6 Months</p>
-				</div>
-			</div>
-			<div class="classified-spare">
-				<div class="classified-title">
-					<p>Spare :</p>
-				</div>
-				<div class="classified-expiry">
-					<p>3 Months</p>
-					<p>6 Months</p>
-					<p>12 Months</p>
-				</div>
-			</div>
+<div class="ad-options-home">
+	<div class="classified-section" id="classified-section">
+		<h3>CLASSIFIED AD</h3>
+		<div class="classified-new-home">	
+			<ul>
+				<ul><b>New :</b></ul>
+				<li>Validity 3 Months for one Ad  @ Rs 9000 inclusive of Service Tax, 4 images of product can be uploaded .</li>
+				<li>Validity 6 Months for one Ad  @ Rs 17000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+				<li>Validity 12 Months for one Ad@ Rs33000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+			</ul>
 		</div>
-		<div class="classified-ad-option-booknow">
-			<button style="cursor:pointer" onclick="setLocation('<?php echo Mage::getUrl('postad/index/classifiedad')?>')" type="button" name="book-now" class="book-now-button">Book Now </button>
-		</div>	
+		<div class="classified-pre-owned-home">
+			<ul>
+				<li><b>Pre Owned :</b></li>
+				<li>Validity 3 Months for one Ad  @ Rs 9000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+			</ul>
+		</div>
+		<div class="classified-rental-home">
+			<ul>
+				<li><b>Rental :</b></li>
+				<li>Validity 3 Months  for one Ad @ Rs 9000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+				<li>Validity 6 Months  for one Ad @ Rs 17000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+			</ul>
+		</div>
+		<div class="classified-spareparts-home">
+			<ul>
+				<li><b>Spare Parts :</b></li>
+				<li>Validity 3 Months  for one Ad @Rs9000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+				<li>Validity 6 Months for one  Ad @Rs 17000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+				<li>Validity 12 Months for one Ad@Rs 33000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
+			</ul>
+		</div>
+		<div class="classified-book-now-home">
+			<button type="button" name="classified-book-now-home-button" id="classified-book-now-home-button" onclick="postAdRedirect('<?php echo Mage::getUrl('postad/index/classifiedad');?>')">BOOK NOW</button>
+		</div>
 	</div>
-	<div class="banner-ad-options">
-		<h3>Banner Ad</h3>
-		<div class="banner-top">
-			<div class="banner-title">
-				<p>Top Part Of The Webiste :</p>
-			</div>
-			<div class="banner-expiry">
-				<p>3 Months</p>
-				<p>6 Months</p>
-				<p>12 Months</p>
-			</div>
+	<div class="banner-ad-section" id="banner-ad-section">
+		<h3>BANNER AD</h3>
+		<div class="bannerad-top">
+			<ul>
+				<li><b>Top Right  Of The Home Page (470x344 Px Image & duration - 7 sec) :</b></li>
+				<li>Validity3 Months</li>
+				<li>Validity 6 Months</li>
+				<li>Validity 12 Months</li>
+			</ul>
 		</div>
-		<div class="banner-side-right">
-			<div class="banner-title">
-				<p>Right Side Of The Webiste :</p>
-			</div>
-			<div class="banner-expiry">
-				<p>3 Months</p>
-				<p>6 Months</p>
-				<p>12 Months</p>
-			</div>
+		<div class="bannerad-side">
+			<ul>
+				<li><b>Right / Left Of Home page Vertical Placement(165x158 Px Image & duration - 7 sec) :</b></li>
+				<li>Validity 3 Months</li>
+				<li>Validity 6 Months</li>
+				<li>Validity 12 Months</li>
+			</ul>
 		</div>
-		<div class="banner-side-left">
-			<div class="banner-title">
-				<p>Left Side Of The Webiste :</p>
-			</div>
-			<div class="banner-expiry">
-				<p>3 Months</p>
-				<p>6 Months</p>
-				<p>12 Months</p>
-			</div>
+		<div class="Banner at Bottom of Home Page">
+			<ul>
+				<li><b>Banner at Bottom of Home Page (980x133 Px Image & duration - 7 sec) : </b></li>
+				<li>Validity 3 Months</li>
+				<li>Validity 6 Months</li>
+				<li>Validity 12 Months</li>
+			</ul>        
 		</div>
-		<div class="banner-bottom">
-			<div class="banner-title">
-				<p>Bottom Part Of The Webiste :</p>
-			</div>
-			<div class="banner-expiry">
-				<p>3 Months</p>
-				<p>6 Months</p>
-				<p>12 Months</p>
-			</div>
+		<div class="banner-contactus">
+			<button type="button" name="baner-contact-button" id="baner-contact-button" onclick="postAdRedirect('<?php echo Mage::getUrl('postad/index/contact');?>')">CONTACT US</button>
 		</div>
-
-		<div class="banner-ad-option-contact">
-			<button style="cursor:pointer" type="button" name="contact" onclick="setLocation('<?php echo Mage::getUrl('postad/index/contact')?>')" class="contact-button">Contact Us</button>
-		</div>	
-	</div>
+	</div>	
 </div>
