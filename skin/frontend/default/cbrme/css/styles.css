@@ -2551,10 +2551,19 @@ div.ad-options-home ul {
     cursor: pointer;
 }
 
-#classified-ad-form input{width:215px;height:25px;}
+
+#classified-ad-form input {
+    height: 25px;
+    width: 180px;
+}
+
 #classified-ad-form select{width:215px;height:25px;}
 #classified-ad-form textarea{width:215px;height:80px;}
 
 .contact-us-block input{width:215px;height:25px;}
 .contact-us-block select{width:215px;height:25px;}
 .contact-us-block textarea{width:215px;height:80px;}
+
+.all-rates-notice {
+	font-size : 10px;
+}

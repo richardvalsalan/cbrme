@@ -29,6 +29,9 @@
 				<li>Validity 6 Months for one  Ad @Rs 17000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
 				<li>Validity 12 Months for one Ad@Rs 33000 inclusive of Service Tax, 4 images of product can be uploaded.</li>
 			</ul>
+
+			<br />
+			<p class="all-rates-notice">(ALL RATES ARE INCLUSIVE OF TAXES .RATES ARE SOLE DISCRETION OF THE COMPNAY AND CAN BE CHANGED ANYTIME.)</p>
 		</div>
 		<div class="classified-book-now-home">
 			<button type="button" name="classified-book-now-home-button" id="classified-book-now-home-button" onclick="postAdRedirect('<?php echo Mage::getUrl('postad/index/classifiedad');?>')">BOOK NOW</button>
@@ -65,3 +68,24 @@
 		</div>
 	</div>	
 </div>
+
+<script language="JavaScript" type="text/javascript">
+	function postAdRedirect(url)
+	{
+		window.location.replace(url);
+	}
+
+ jQuery(document).ready(function() {
+ 	jQuery("#classified-link").fancybox({
+        'titlePosition'     : 'inside',
+        'transitionIn'      : 'none',
+        'transitionOut'     : 'none'
+    });
+
+    jQuery("#bannerad-link").fancybox({
+        'titlePosition'     : 'inside',
+        'transitionIn'      : 'none',
+        'transitionOut'     : 'none'
+    });
+ });
+</script>

@@ -1,4 +1,5 @@
 <?php if ($this->isOnepageCheckoutAllowed()):?>
 <button type="button" title="<?php echo $this->__('Proceed to Checkout') ?>" class="button btn-proceed-checkout btn-checkout<?php if (!$this->checkEnable()){ echo 'no-checkout'; }?>"<?php if (!$this->checkEnable()){ echo ' disabled="disabled" ';} ?> onclick="window.location='<?php echo $this->getOnepageCheckoutUrl() ?>';"><span><span><?php echo $this->__('Proceed to Checkout') ?></span></span></button>
+<p class="all-rates-notice">(ALL RATES ARE INCLUSIVE OF TAXES .RATES ARE SOLE DISCRETION OF THE COMPNAY AND CAN BE CHANGED ANYTIME.)</p>
 <?php endif?>
 
