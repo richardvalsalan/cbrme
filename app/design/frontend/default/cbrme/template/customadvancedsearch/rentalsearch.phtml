@@ -9,7 +9,7 @@
 			<li>
 				<label for="category_search_field" >Category</label>
 
-				<select name="category" id="category_search_field" onchange="rentalSubcategorySelect()">
+				<select name="category" id="category_search_field" onchange="rentalsubcategorySelect()">
 					<option value="">Choose</option>
 
 					<?php foreach ( Mage::helper('catalog/category')->getStoreCategories() as $_category) { ?>
@@ -101,7 +101,7 @@
 		jQuery("#rental-form-validate").submit();
 	}
 
-	function rentalSubcategorySelect()
+	function rentalsubcategorySelect()
 	{
 		var value = jQuery("#rental-form-validate #category_search_field").val();
 

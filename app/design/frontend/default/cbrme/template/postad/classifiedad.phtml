@@ -1,12 +1,17 @@
+<?php
+	$freeTrial = Mage::app()->getRequest()->getParam('type');
+?>
 <div id="classfiedform">
 	<form action="<?php echo $this->getClassifiedSaveUrl();?>" method="post" id="classified-ad-form" name="classified-ad-form" enctype="multipart/form-data">
 		
+		<h3>Classified Ad Form</h3>
+		<input type="hidden" name="classifiedtype" value="<?php echo $freeTrial?>" id="trialperiod" />
 		<p>
 			<label for="type_of_ad" name="type_of_ad_label" id="type_of_ad_label">Type Of Ad</label>
 			<select id="type_of_ad" name="type_of_ad" class="validate-select" onchange="valueCheck()">
 				<option value="">Choose</option>
 				<option value="6">New</option>
-				<option value="5">Used</option>
+				<option value="5">Pre-Owned</option>
 				<option value="4">Rental</option>
 				<option value="3">Spare Parts</option>
 			</select>
@@ -31,7 +36,7 @@
 					<?php } ?>
 				<?php } ?>
 				<option value="other_main">Other</option>
-			</select>
+			</select> (Click  Other to add New Category )
 		</p>
 
 		<p id="category_other_p" style="display:none">
@@ -43,7 +48,7 @@
 			<label for="sub_category" name="sub_category_label" id="sub_category_label">Sub Category</label>
 			<select name="sub_category" id="sub_category"  onchange="subCategoryOtherSelect()">
 				<option value="0">Choose</option>
-			</select>
+			</select> (Click  Other to add New Sub-Category )
 		</p>
 
 		<p id="subcategory_other_p" style="display:none">
@@ -52,7 +57,7 @@
 		</p>
 
 		<p>
-			<label for="name" id="name_label" name="name_label">Name</label>
+			<label for="name" id="name_label" name="name_label">Company Name</label>
 			<input name="name" id="name" value="" type="text" class="required-entry"/>
 		</p>
 
@@ -61,7 +66,7 @@
 			<textarea id="description" cols="25" rows="5" name="description" class="required-entry"></textarea>
 		</p>
 
-		<p>
+		<p id="make_p">
 			<label for="make" name="make_label" id="make_label">Make</label>
 			<select id="make" name="make" class="validate-select">
 				<option value="" id="make_default" name="make_default">Choose</option>
@@ -79,34 +84,29 @@
 			</div>
 		</p>
 
-		<p>
+		<p id="model_p">
 			<label for="model" id="model_label" name="model_label">Model</label>
 			<input type="text" id="model" cols="25" rows="5" name="model" class="required-entry" />
 		</p>
 
-		<p>
+		<p id="year_p">
 			<label for="year" name="year_label" id="year_label">Year</label>
 			<input type="text" name="year" id="year" value="" class="required-entry"/>
 		</p>
 
-		<p id="hours_p" style="display:block">
-			<label for="hours" name="hours_label" id="year_label">Hours</label><span>(eg. : 2500)</span>
-			<input type="text" name="hours" id="hours" value=""/>
-		</p>
-
-		<p>
+		<p id="weight_p">
 			<label for="weight" name="weight_label" id="weight_label">Weight</label>
-			<input type="text" name="weight" id="weight" value="" class="required-entry" />
+			<input type="text" name="weight" id="weight" value="" />
 		</p>
 
-		<p>
+		<p id="sku_p">
 			<label for="sku" name="sku_label" id="sku_label">Serial Number</label>
-			<input type="text" name="sku" id="sku" value="" class="required-entry" />
+			<input type="text" name="sku" id="sku" value="" class="" />
 		</p>
 
-		<p>
+		<p id="condition_p">
 			<label for="condition" name="condition_label" id="condition_label">Condition</label>
-			<select name="condition" id="condition" class="validate-select">
+			<select name="condition" id="condition" class="">
 				<option value="">Choose</option>
 
 				<?php foreach (Mage::helper('postad')->getAttributeOptions('condition') as $option) { ?>
@@ -120,10 +120,10 @@
 			<label ></label>
 		</p>
 
-		<p><input type="file" name="filename1" id="filename1" class="required-entry"/></p>
-		<p><input type="file" name="filename2" id="filename2" class="required-entry"/></p>
-		<p><input type="file" name="filename3" id="filename3" class="required-entry"/></p>
-		<p><input type="file" name="filename4" id="filename4" class="required-entry"/></p>
+		<p><input type="file" name="filename1" id="filename1"/></p>
+		<p><input type="file" name="filename2" id="filename2"/></p>
+		<p><input type="file" name="filename3" id="filename3"/></p>
+		<p><input type="file" name="filename4" id="filename4"/></p>
 
 		<p>
 			<label for="country" name="country_label" id="country_label">Country</label>
@@ -184,61 +184,138 @@
 <script type="text/javascript">
 	function valueCheck()
 	{
-		if (jQuery("#type_of_ad").val() == '6') {
-			jQuery("#hours_p").hide();
+		if (jQuery("#trialperiod").val() != 'free') {
+			if (jQuery("#type_of_ad").val() == '6') {
 
-			jQuery("#expiry_months_3_div").show();
-			jQuery("#expiry_months_6_div").show();
-			jQuery("#expiry_months_12_div").show();
+				jQuery("#expiry_months_3_div").show();
+				jQuery("#expiry_months_6_div").show();
+				jQuery("#expiry_months_12_div").show();
 
-		} else if (jQuery("#type_of_ad").val() == '5') {
-			jQuery("#hours_p").show();
+				jQuery("#make_p").show();
+				jQuery("#sku_p").show();
+				jQuery("#sku").addClass('required-entry');
 
-			jQuery("#expiry_months_3_div").show();
+				jQuery("#condition").removeClass("validate-select");
+				jQuery("#condition_p").hide();
 
-			jQuery("#expiry_months_3")
-			jQuery("#expiry_months_6_div").hide();
-			jQuery("#expiry_months_12_div").hide();
-		} else if (jQuery("#type_of_ad").val() == '4') {
-			jQuery("#hours_p").show();
+				jQuery("#weight_p").show();
+				jQuery("#model_p").show();
+				jQuery("#year_p").show();
 
-			jQuery("#expiry_months_3_div").show();
-			jQuery("#expiry_months_6_div").show();
-			jQuery("#expiry_months_12_div").hide();
-		} else if (jQuery("#type_of_ad").val() == '3') {
-			jQuery("#hours_p").show();
+			} else if (jQuery("#type_of_ad").val() == '5') {
 
-			jQuery("#expiry_months_3_div").show();
-			jQuery("#expiry_months_6_div").show();
-			jQuery("#expiry_months_12_div").show();
+				jQuery("#expiry_months_3_div").show();
+
+				jQuery("#expiry_months_3")
+				jQuery("#expiry_months_6_div").hide();
+				jQuery("#expiry_months_12_div").hide();
+
+				jQuery("#make_p").show();
+				jQuery("#sku_p").show();
+				jQuery("#sku").addClass('required-entry');
+
+				jQuery("#condition").addClass("validate-select");
+				jQuery("#condition_p").show();
+			
+				jQuery("#weight_p").show();
+				jQuery("#model_p").show();
+				jQuery("#year_p").show();
+			} else if (jQuery("#type_of_ad").val() == '4') {
+
+				jQuery("#expiry_months_3_div").show();
+				jQuery("#expiry_months_6_div").show();
+				jQuery("#expiry_months_12_div").hide();
+
+				jQuery("#make_p").show();
+				jQuery("#sku_p").show();
+				jQuery("#sku").addClass('required-entry');
+
+				jQuery("#condition_p").show();
+				jQuery("#condition").addClass("validate-select");
+
+				jQuery("#weight_p").show();
+				jQuery("#model_p").show();
+				jQuery("#year_p").show();
+			} else if (jQuery("#type_of_ad").val() == '3') {
+
+				jQuery("#make").val("");
+				jQuery("#make_p").hide();
+				
+				jQuery("#sku").val("");
+				jQuery("#sku_p").hide();	
+				jQuery("#sku").removeClass('required-entry');
+
+				jQuery("#condition").addClass("validate-select");
+				jQuery("#condition").val("").removeClass("validate-select");
+				jQuery("#condition_p").hide();
+
+				jQuery("#weight_p").hide();
+
+				jQuery("#model_p").hide();
+				jQuery("#model").val("");
+
+				jQuery("#year_p").hide();
+				jQuery("#year").val("");
+
+				jQuery("#expiry_months_3_div").show();
+				jQuery("#expiry_months_6_div").show();
+				jQuery("#expiry_months_12_div").show();
+			} else {
+
+				jQuery("#expiry_months_3_div").hide();
+				jQuery("#expiry_months_6_div").hide();
+				jQuery("#expiry_months_12_div").hide();
+
+				jQuery("#make_p").show();
+				jQuery("#sku_p").show();
+				jQuery("#condition").addClass("validate-select");
+				jQuery("#condition_p").show();
+				jQuery("#weight_p").show();
+			}
 		} else {
-			jQuery("#hours").addClass("required-entry");
-			jQuery("#hours_p").show();
+			if (jQuery("#type_of_ad").val() == '6') {
+				jQuery("#make_p").show();
+				jQuery("#sku_p").show();
 
-			jQuery("#expiry_months_3_div").hide();
-			jQuery("#expiry_months_6_div").hide();
-			jQuery("#expiry_months_12_div").hide();
-		}
+				jQuery("#condition").removeClass("validate-select");
+				jQuery("#condition_p").hide();
 
-		if (jQuery("#type_of_ad").val() == '3') {
-			jQuery("#filename1").removeClass("required-entry");
-			jQuery("#advice-required-entry-filename1").removeClass("validation-advice").hide();
-			jQuery("#filename2").removeClass("required-entry");
-			jQuery("#advice-required-entry-filename2").removeClass("validation-advice").hide();
-			jQuery("#filename3").removeClass("required-entry");
-			jQuery("#advice-required-entry-filename3").removeClass("validation-advice").hide();
-			jQuery("#filename4").removeClass("required-entry");
-			jQuery("#advice-required-entry-filename4").removeClass("validation-advice").hide();
+				jQuery("#weight_p").show();
+				jQuery("#model_p").show();
+			} else if (jQuery("#type_of_ad").val() == '5') {
+				jQuery("#make_p").show();
+				jQuery("#sku_p").show();
 
-		} else {
-			jQuery("#filename1").addClass("required-entry");
-			jQuery("#advice-required-entry-filename1").addClass("validation-advice")
-			jQuery("#filename2").addClass("required-entry");
-			jQuery("#advice-required-entry-filename2").addClass("validation-advice")
-			jQuery("#filename3").addClass("required-entry");
-			jQuery("#advice-required-entry-filename3").addClass("validation-advice")
-			jQuery("#filename4").addClass("required-entry");
-			jQuery("#advice-required-entry-filename4").addClass("validation-advice")
+				jQuery("#condition").addClass("validate-select");
+				jQuery("#condition_p").show();
+			
+				jQuery("#weight_p").show();
+				jQuery("#model_p").show();
+			} else if (jQuery("#type_of_ad").val() == '4') {
+				jQuery("#make_p").show();
+				jQuery("#sku_p").show();
+
+				jQuery("#condition_p").show();
+				jQuery("#condition").addClass("validate-select");
+
+				jQuery("#weight_p").show();
+				jQuery("#model_p").show();
+			} else if (jQuery("#type_of_ad").val() == '3') {
+				jQuery("#make").val("");
+				jQuery("#make_p").hide();
+				
+				jQuery("#sku").val("");
+				jQuery("#sku_p").hide();	
+
+				jQuery("#condition").addClass("validate-select");
+				jQuery("#condition").val("").removeClass("validate-select");
+				jQuery("#condition_p").hide();
+
+				jQuery("#weight_p").hide();
+
+				jQuery("#model_p").hide();
+				jQuery("#model").val("");
+			}
 		}
 	}
 

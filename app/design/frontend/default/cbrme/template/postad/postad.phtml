@@ -1,7 +1,11 @@
 <h3>SELECT TYPE OF AD</h3>
 <div id="postadtypelist">
 	<ul>
-		<li><a id="classified-link" href="#classified-section">Classified Ad</a></li>
+		<li><a>Classified Ad</a></li>
+		<ul>
+			<li><a id="sub-classified-free-link" href="#free-classified-section">Post ad for Free</a></li>
+			<li><a id="sub-classified-paid-link" href="#paid-classified-section">Paid ads</a></li>
+		</ul>
 		<li><a id="bannerad-link" href="#banner-ad-section">Banner Ad</a></li>
 	</ul>
 </div>
@@ -10,8 +14,12 @@
 
 
 <div class="ad-options-home" style="display:none">
-	<div class="classified-section" id="classified-section">
-		<h3>CLASSIFIED AD</h3>
+	<div class="classified-section" id="free-classified-section">
+		<P>Avail a 15 day trial period by posting your ad now</P>
+		<button type="button" name="classified-book-now-home-button" id="classified-book-now-home-button" onclick="postAdRedirect('<?php echo Mage::getUrl('postad/index/classifiedad/type/free');?>')">BOOK NOW</button>
+	</div>
+	<div class="classified-section" id="paid-classified-section">
+		<h3>PAID CLASSIFIED AD</h3>
 		<div class="classified-new-home">	
 			<ul>
 				<ul><b>New :</b></ul>
@@ -45,7 +53,7 @@
 			<p class="all-rates-notice">(ALL RATES ARE INCLUSIVE OF TAXES .RATES ARE SOLE DISCRETION OF THE COMPANY AND CAN BE CHANGED ANYTIME.)</p>
 		</div>
 		<div class="classified-book-now-home">
-			<button type="button" name="classified-book-now-home-button" id="classified-book-now-home-button" onclick="postAdRedirect('<?php echo Mage::getUrl('postad/index/classifiedad');?>')">BOOK NOW</button>
+			<button type="button" name="classified-book-now-home-button" id="classified-book-now-home-button" onclick="postAdRedirect('<?php echo Mage::getUrl('postad/index/classifiedad/');?>')">BOOK NOW</button>
 		</div>
 	</div>
 	<div class="banner-ad-section" id="banner-ad-section">
@@ -87,7 +95,13 @@
 	}
 
  jQuery(document).ready(function() {
- 	jQuery("#classified-link").fancybox({
+ 	jQuery("#sub-classified-free-link").fancybox({
+        'titlePosition'     : 'inside',
+        'transitionIn'      : 'none',
+        'transitionOut'     : 'none'
+    });
+
+ 	jQuery("#sub-classified-paid-link").fancybox({
         'titlePosition'     : 'inside',
         'transitionIn'      : 'none',
         'transitionOut'     : 'none'

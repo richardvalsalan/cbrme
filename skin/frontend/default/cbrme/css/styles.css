@@ -2539,6 +2539,7 @@ div.ad-options-home ul {
 .classified-book-now-home > button {
     background-color: #616161;
     cursor: pointer;
+    height: 30px;
 }
 
 .banner-contactus {

@@ -17,6 +17,13 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         $subCategoryOther = $request->getParam('sub_category_other');
         $subCategory = $request->getParam('sub_category');
         $make = $request->getParam('new-make');
+        $sku = $request->getParam('sku');
+
+        $classifiedType = $request->getParam('classifiedtype');
+
+        if (empty($sku)) {
+            $sku = $request->getParam('name') . '_' . date("Y-m-d h:m:s");
+        }
 
         $expiryMonths = $request->getParam('expiry_months');
         
@@ -39,24 +46,32 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
     
         $product = Mage::getModel('catalog/product');
 
-    	$product->setSku($request->getParam('sku'));
+    	$product->setSku($sku);
     	$product->setName($request->getParam('name'));
     	$product->setDescription($request->getParam('description'));
     	$product->setShortDescription($request->getParam('description'));
 
-        switch ($expiryMonths) 
-        {
-            case 3 :
-    	       $product->setPrice(9000);
-               break;
+        if ($classifiedType != "free") {
+            switch ($expiryMonths) 
+            {
+                case 3 :
+        	       $product->setPrice(9000);
+                   break;
 
-            case 6 :
-                $product->setPrice(17000);
-                break;
+                case 6 :
+                    $product->setPrice(17000);
+                    break;
 
-            case 12 :
-                $product->setPrice(33000);
-                break;
+                case 12 :
+                    $product->setPrice(33000);
+                    break;
+            }
+
+            $product->setClassifiedType("paid");
+            $product->setExpiryMonth($request->getParam('expiry_months'));
+        } else {
+            $product->setPrice(0);
+            $product->setClassifiedType("15 day Trial");
         }
 
     	$product->setTypeId('simple');
@@ -83,8 +98,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
 
         $product->setCondition($request->getParam('condition'));
         $product->setProductUseType($request->getParam('type_of_ad'));
-        $product->setExpiryMonth($request->getParam('expiry_months'));
-
+        
     	$product->setWebsiteIds(array(Mage::app()->getStore(true)->getWebsite()->getId()));
 
         $product->setProductState($request->getParam('state'));
@@ -150,7 +164,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
     {
         $request = Mage::app()->getRequest();
 
-        $sku = $request->getParam('company_name') . '-' . $_FILES['filename']['name'] . '-' . date("Y-m-d");
+        $sku = $request->getParam('company_name') . '-' . $_FILES['filename']['name'] . '-' . date("Y-m-d h:m:s");
 
         $heavyEquipCategory = $request->getParam('heavyequipmentcategory');
         $truckCategory = $request->getParam('truckcategory');

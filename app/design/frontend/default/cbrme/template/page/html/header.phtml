@@ -37,7 +37,7 @@
         <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
         <?php endif?>
 		<div class="header-login"><a href="<?php echo Mage::getUrl('customer/account/login/')?>"><img src="<?php echo $this->getSkinUrl("images/login.png") ?>" alt="" /></a></div>
-		<div class="header-register"><a href="<?php echo Mage::getUrl('customer/account/create/')?>"><img src="<?php echo $this->getSkinUrl("images/register.png") ?>" alt="" /></a></div>
+		<div class="header-register"><a href="#free-classified-section" id="free-day-trial"><img src="<?php echo $this->getSkinUrl("images/register.png") ?>" alt="" /></a></div>
 	</div>
 	<div class="header-inner-right"></div>
 	
@@ -74,3 +74,25 @@
     </div>
 </div>
 <!--<?php echo $this->getChildHtml('topMenu') ?>-->
+
+<div class="ad-options-home" style="display:none">
+	<div class="classified-section" id="free-classified-section">
+		<P>Avail a 15 day trial period by posting your ad now</P>
+		<button type="button" name="classified-book-now-home-button" id="classified-book-now-home-button" onclick="postAdRedirect('<?php echo Mage::getUrl('postad/index/classifiedad/type/free');?>')">BOOK NOW</button>
+	</div>
+</div>
+
+<script language="JavaScript" type="text/javascript">
+	function postAdRedirect(url)
+	{
+		window.location.replace(url);
+	}
+
+ jQuery(document).ready(function() {
+ 	jQuery("#free-day-trial").fancybox({
+        'titlePosition'     : 'inside',
+        'transitionIn'      : 'none',
+        'transitionOut'     : 'none'
+    });
+ });
+</script>
