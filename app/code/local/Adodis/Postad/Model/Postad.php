@@ -10,7 +10,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
 
     public function saveAd()
     {
-    	$request = Mage::app()->getRequest();
+        $request = Mage::app()->getRequest();
         $mailInfo = array();
 
         $categoryOther = $request->getParam('category_other');
@@ -18,6 +18,9 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         $subCategory = $request->getParam('sub_category');
         $make = $request->getParam('new-make');
         $sku = $request->getParam('sku');
+
+        $newState = $request->getParam('add_new_state');
+        $newCity = $request->getParam('add_new_city');
 
         $classifiedType = $request->getParam('classifiedtype');
 
@@ -41,12 +44,22 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
             $categoryIds[] = $subCategory;
         }
 
+        if (!empty($newState)) {
+            $mailInfo['state'] = $newState;
+        }
+
+        if (!empty($newCity)) {
+            $mailInfo['city'] = $newCity;
+        }
+
         // if New Make is required Implode add to array
 
     
         $product = Mage::getModel('catalog/product');
 
     	$product->setSku($sku);
+        
+        $mailInfo['sku'] = $sku;
     	$product->setName($request->getParam('name'));
     	$product->setDescription($request->getParam('description'));
     	$product->setShortDescription($request->getParam('description'));
@@ -104,7 +117,9 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         $product->setProductState($request->getParam('state'));
         $product->setProductCity($request->getParam('city'));
         $product->setProductTelephone($request->getParam('telephone'));
+        $product->setMobile($request->getParam('mobile_telephone'));
         $product->setEmail($request->getParam('email'));
+        $product->setAdPrice($request->getParam('ad_price'));
         
     	$stockData = $product->getStockData();
     	$stockData['qty'] = 1;
@@ -132,6 +147,14 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
                           <td align='center' colspan='2' height='30' ><b>New Customer Requirement</b></td>
                         </tr>
                         <tr>
+                            <td align='right' width='40%'><b>Sku</b></td>
+                            <td width='55%'>".$mailInfo['sku']."</td>
+                        </tr>
+                        <tr>
+                            <td align='right' width='40%'><b>Category:</b></td>
+                            <td width='55%'>".$mailInfo['category']."</td>
+                        </tr>
+                        <tr>
                             <td align='right' width='40%'><b>Category:</b></td>
                             <td width='55%'>".$mailInfo['category']."</td>
                         </tr>
@@ -140,8 +163,16 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
                             <td width='55%'>".$mailInfo['subcategory']."</td>
                         </tr>
                         <tr>
-                            <td align='right' width='40%'><b>Sub Category:</b></td>
+                            <td align='right' width='40%'><b>Make:</b></td>
                             <td width='55%'>".$mailInfo['make']."</td>
+                        </tr>
+                        <tr>
+                            <td align='right' width='40%'><b>State:</b></td>
+                            <td width='55%'>".$mailInfo['State']."</td>
+                        </tr>
+                        <tr>
+                            <td align='right' width='40%'><b>City:</b></td>
+                            <td width='55%'>".$mailInfo['City']."</td>
                         </tr>
                     </table>
                 </body>

@@ -60,6 +60,11 @@
                         <?php echo $this->getReviewsSummaryHtml($_product) ?>
                         <?php endif; ?>
                         <?php //echo $this->getPriceHtml($_product, true) ?>
+
+                        <?php if ($product->getAdPrice()) {?>
+                        <?php echo "Price : " . $product->getAdPrice();?>
+                        <?php } ?>
+                        
                         <?php if($_product->isSaleable()): ?>
                             <!-- <p><button type="button" title="<?php //echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php //echo $this->__('Add to Cart') ?></span></span></button></p> -->
                         <?php else: ?>
@@ -105,6 +110,11 @@
                     <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                     <?php endif; ?>
                     <?php //echo $this->getPriceHtml($_product, true) ?>
+
+                    <?php if ($product->getAdPrice()) {?>
+                        <?php echo "Price : " . $product->getAdPrice();?>
+                    <?php } ?>
+
                     <div class="actions">
                         <?php if($_product->isSaleable()): ?>
                             <!-- <button type="button" title="<?php //echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php //echo $this->__('Add to Cart') ?></span></span></button> -->

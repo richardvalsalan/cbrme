@@ -26,22 +26,43 @@
 		</div>
 	<?php } ?>
 	<div id="product-info">
+		<?php 
+			
+			$categoryIds = array();
+
+			foreach ($_product->getCategoryIds() as $p) {
+				$categoryIds[] = $p;
+			}
+
+			$maincategoryId = reset($categoryIds);
+
+			$cat = Mage::getModel('catalog/category')->load($maincategoryId );
+			$mainCategory = $cat->getName();
+			
+			$subcategoryId = end($categoryIds);
+
+			if ($subcategoryId  != $subcategoryId) {
+				$cat = Mage::getModel('catalog/category')->load($subcategoryId);
+				$subcategory = $cat->getName();
+			}
+
+		?>
+
 		<ul>
 			<li><b>Name</b> : <?php echo $_product->getName();?></li>
 			<li><b>Description</b> : <?php echo $_product->getDescription();?></li>
 			<li><b>Serial Number</b> : <?php echo $_product->getSku()?></li>
+
+			<li><b>Main Category</b> : <?php echo $mainCategory?></li>
+			<li><b>Sub Category</b> : <?php echo $subcategory ?></li>
 			<li><b>Model</b> : <?php echo $_product->getModel()?></li>
 			<li><b>Use Type</b> : <?php echo $_product->getAttributeText('product_use_type')?></li>
 			<li><b>ClassifiedType :</b> <?php echo $_product->getClassifiedType()?></li>
 
-			<?php if ($_product->getAttributeText('product_use_type') != 'New') { ?>
-				<p><b>Hours</b> : <?php echo $_product->getHour()?></li>
-			<?php } ?>
-
-			<li><b>Make</b> : <?php echo $_product->getManufacturer()?></li>
-			<li><b>City</b> : <?php echo $_product->getProductCity()?></li>
-			<li><b>State</b> : <?php echo $_product->getProductState()?></li>
-			<li><b>Country</b> : <?php echo $_product->getProductCountry()?></li>
+			<li><b>Make</b> : <?php echo $_product->getAttributeText('manufacturer')?></li>
+			<li><b>City</b> : <?php echo $_product->getAttributeText('product_city')?></li>
+			<li><b>State</b> : <?php echo $_product->getAttributeText('product_state') ?></li>
+			<li><b>Country</b> : <?php echo $_product->getAttributeText('product_country')?></li>
 		</ul>
 
 	</div>

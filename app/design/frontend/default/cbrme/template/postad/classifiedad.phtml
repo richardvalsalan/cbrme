@@ -79,7 +79,7 @@
 			<button type="button" name="new-make-button" id="new-make-button" onclick="enableNewMake()">Add Make</button>
 
 			<div class="new-make-div" style="display:none">
-				<label for="new-make" name="new-make-label" id="new-make-label">Please Enter The Manufacturer</label>
+				<label for="new-make" name="new-make-label" id="new-make-label">Enter Make</label>
 				<input name="new-make" value="" id="new-make" type="text" />
 			</div>
 		</p>
@@ -116,6 +116,18 @@
 			</select>
 		</p>
 
+		<p id="hours_p">
+			<label>Hours</label>
+			<input type="text" name="hours" id="hours" value="" class="" />
+		</p>
+
+		<p id="price_p">
+			<label>Price INR &#8377; </label>
+			<input type="text" name="ad_price" id="ad_price" value="" class="" />
+		</p>
+			
+		</p>
+
 		<p>
 			<label ></label>
 		</p>
@@ -138,31 +150,42 @@
 
 		<p id="state_p">
 			<label for="state" name="state_label" id="state_label">State</label>
-			<select name="state" name="state" id="state" class="validate-select">
+			<select name="state" name="state" id="state" class="validate-select" onchange="addNewState()">
 				<option value="">Choose</option>
 
 				<?php foreach (Mage::helper('postad')->getAttributeOptions('product_state') as $option) { ?>
 					<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
 				<?php } ?>
+				<option value="other_state"><?php echo 'other'?></label>
 
-			</select>
+			</select>(Click  Other to add State )
+
+			<p id="add_new_state_p" style="display:none"><label>Enter The New State: </label><input name="add_new_state" id="add_new_state" value="" type="text"/></p>
 		</p>
 
 		<p id="city_p">
 			<label for="city" name="city_label" id="city_label" >City</label>
-			<select name="city" name="city" id="city" class="validate-select">
+			<select name="city" name="city" id="city" class="validate-select" onchange="addNewCity()">
 				<option value="">Choose</option>
 
 				<?php foreach (Mage::helper('postad')->getAttributeOptions('product_city') as $option) { ?>
 					<option value="<?php echo $option['value'] ?>"><?php echo $option['label']?></option>
 				<?php } ?>
 
-			</select>
+				<option value="other_city"><?php echo 'other'?></label>
+			</select> (Click  Other to add City)
+
+			<p id="add_new_city_p" style="display:none"><label>Enter The New City: </label><input name="add_new_city" id="add_new_city" value="" type="text"/></p>
 		</p>
 
 		<p>
-			<label for="telephone" name="telephone_label" id="telephone_label">Telephone</label>
+			<label for="telephone" name="telephone_label" id="telephone_label">Land Line</label>
 			<input type="text" name="telephone" id="telephone" value="" class="required-entry"/>
+		</p>
+
+		<p>
+			<label for="mobile_telephone" name="mobile_telephone_label" id="telephone_label">Mobile</label>
+			<input type="text" name="mobile_telephone" id="mobile_telephone" value="" class="required-entry"/>
 		</p>
 
 		<p>
@@ -182,6 +205,26 @@
 </script>
 
 <script type="text/javascript">
+	function addNewState()
+	{
+		if (jQuery("#state").val() == "other_state")	{
+			jQuery("#add_new_state_p").show();
+		} else {
+			jQuery("#add_new_state_p").hide();
+			jQuery("#add_new_state").val("");
+		}
+	}
+
+	function addNewCity()
+	{
+		if (jQuery("#city").val() == "other_city")	{
+			jQuery("#add_new_city_p").show();
+		} else {
+			jQuery("#add_new_city_p").hide();
+			jQuery("#add_new_city").val("");
+		}
+	}
+
 	function valueCheck()
 	{
 		if (jQuery("#trialperiod").val() != 'free') {
@@ -198,9 +241,14 @@
 				jQuery("#condition").removeClass("validate-select");
 				jQuery("#condition_p").hide();
 
+				jQuery("#price_p").show();
+
 				jQuery("#weight_p").show();
 				jQuery("#model_p").show();
 				jQuery("#year_p").show();
+
+				jQuery("#hours_p").hide();
+				jQuery("#hours").val("");
 
 			} else if (jQuery("#type_of_ad").val() == '5') {
 
@@ -220,6 +268,11 @@
 				jQuery("#weight_p").show();
 				jQuery("#model_p").show();
 				jQuery("#year_p").show();
+
+				jQuery("#price_p").show();
+
+				jQuery("#hours_p").show();
+
 			} else if (jQuery("#type_of_ad").val() == '4') {
 
 				jQuery("#expiry_months_3_div").show();
@@ -236,6 +289,12 @@
 				jQuery("#weight_p").show();
 				jQuery("#model_p").show();
 				jQuery("#year_p").show();
+
+				jQuery("#price_p").hide();
+				jQuery("#ad_price").val("");
+
+				jQuery("#hours_p").show();
+
 			} else if (jQuery("#type_of_ad").val() == '3') {
 
 				jQuery("#make").val("");
@@ -260,6 +319,12 @@
 				jQuery("#expiry_months_3_div").show();
 				jQuery("#expiry_months_6_div").show();
 				jQuery("#expiry_months_12_div").show();
+
+				jQuery("#price_p").hide();
+				jQuery("#ad_price").val("");
+
+				jQuery("#hours_p").hide();
+				jQuery("#hours").val("");
 			} else {
 
 				jQuery("#expiry_months_3_div").hide();
@@ -271,6 +336,9 @@
 				jQuery("#condition").addClass("validate-select");
 				jQuery("#condition_p").show();
 				jQuery("#weight_p").show();
+
+				jQuery("#price_p").hide();
+				jQuery("#ad_price").val("");
 			}
 		} else {
 			if (jQuery("#type_of_ad").val() == '6') {
@@ -280,17 +348,27 @@
 				jQuery("#condition").removeClass("validate-select");
 				jQuery("#condition_p").hide();
 
+				jQuery("#year_p").show();
+
 				jQuery("#weight_p").show();
 				jQuery("#model_p").show();
+				jQuery("#price_p").show();
+
+				jQuery("#hours_p").hide();
+				jQuery("#hours").val("");
 			} else if (jQuery("#type_of_ad").val() == '5') {
 				jQuery("#make_p").show();
 				jQuery("#sku_p").show();
 
 				jQuery("#condition").addClass("validate-select");
 				jQuery("#condition_p").show();
+
+				jQuery("#year_p").show();
 			
 				jQuery("#weight_p").show();
 				jQuery("#model_p").show();
+				jQuery("#price_p").show();
+				jQuery("#hours_p").show();
 			} else if (jQuery("#type_of_ad").val() == '4') {
 				jQuery("#make_p").show();
 				jQuery("#sku_p").show();
@@ -300,6 +378,14 @@
 
 				jQuery("#weight_p").show();
 				jQuery("#model_p").show();
+
+				jQuery("#year_p").show();
+
+				jQuery("#price_p").hide();
+				jQuery("#ad_price").val("");
+
+				jQuery("#hours_p").show();
+
 			} else if (jQuery("#type_of_ad").val() == '3') {
 				jQuery("#make").val("");
 				jQuery("#make_p").hide();
@@ -315,6 +401,15 @@
 
 				jQuery("#model_p").hide();
 				jQuery("#model").val("");
+
+				jQuery("#year_p").hide();
+				jQuery("#year").val("");
+
+				jQuery("#price_p").hide();
+				jQuery("#ad_price").val("");
+
+				jQuery("#hours_p").hide();
+				jQuery("#hours").val("");
 			}
 		}
 	}
@@ -375,6 +470,12 @@
 
 			$(state).childElements()[0].selected=true
 			Element.hide(state_p);
+
+			Element.hide(add_new_state_p);
+			Element.hide(add_new_city_p);
+
+			jQuery("#add_new_state").val("");
+			jQuery("#add_new_city").val("");
 
 			$(city).childElements()[0].selected=true
 			Element.hide(city_p);

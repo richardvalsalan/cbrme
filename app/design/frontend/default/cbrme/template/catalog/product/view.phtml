@@ -87,6 +87,14 @@
                     </div>
                 <?php endif;?>
 
+                <?php if ($_product->getAdPrice()) {?>
+                    <label>Price :</label> <?php echo $_product->getAdPrice()?>
+                <?php } ?>
+
+                <?php if ($_product->getHour()) { ?>
+                    <label>Hours : </label> <?php echo $_product->getHour()?>
+                <?php } ?>
+
                 <?php echo $this->getChildHtml('other');?>
 
                 <?php if ($_product->isSaleable() && $this->hasOptions()):?>
@@ -170,7 +178,7 @@
             <?php echo $this->getChildHtml('product_additional_data') ?>
         </div>
     </div>
-<?php } else 
+<?php } else {
     
     $url = Mage::getUrl('checkout/cart');
 
@@ -178,4 +186,4 @@
 
     $message = $this->__('The Ad Has Not Been Enabled Yet');
     Mage::getSingleton('core/session')->addNotice($message);
-?>
+} ?>
