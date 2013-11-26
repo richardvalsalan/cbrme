@@ -13,22 +13,22 @@ class Adodis_Customadvancedsearch_Block_Catalogsearch_Advanced_Form extends Mage
 	}
 
 	public function getAttributeSelectElement($attribute)
-    {
-       $extra = '';
-        $options = $attribute->getSource()->getAllOptions(false);
+        {
+               $extra = '';
+                $options = $attribute->getSource()->getAllOptions(false);
 
-        $name = $attribute->getAttributeCode();
+                $name = $attribute->getAttributeCode();
 
-        array_unshift($options, array('value'=>'', 'label'=>Mage::helper('catalogsearch')->__('All')));
+                array_unshift($options, array('value'=>'', 'label'=>Mage::helper('catalogsearch')->__('All')));
 
-        return $this->_getSelectBlock()
-            ->setName($name)
-            ->setId($attribute->getAttributeCode())
-            ->setTitle($this->getAttributeLabel($attribute))
-            //->setExtraParams($extra)
-            ->setValue($this->getAttributeValue($attribute))
-            ->setOptions($options)
-           // ->setClass('multiselect')
-            ->getHtml();
-    }
+                return $this->_getSelectBlock()
+                    ->setName($name)
+                    ->setId($attribute->getAttributeCode())
+                    ->setTitle($this->getAttributeLabel($attribute))
+                    //->setExtraParams($extra)
+                    ->setValue($this->getAttributeValue($attribute))
+                    ->setOptions($options)
+                   // ->setClass('multiselect')
+                    ->getHtml();
+        }
 }
