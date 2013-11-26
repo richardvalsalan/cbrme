@@ -41,7 +41,7 @@
 			
 			$subcategoryId = end($categoryIds);
 
-			if ($subcategoryId  != $subcategoryId) {
+			if ($maincategoryId  != $subcategoryId) {
 				$cat = Mage::getModel('catalog/category')->load($subcategoryId);
 				$subcategory = $cat->getName();
 			}

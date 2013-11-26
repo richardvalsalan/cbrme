@@ -87,10 +87,12 @@
                 </thead>
                 <tfoot>
                     <tr>
-                        <td colspan="50" class="a-right">
+                        <td colspan="80" class="a-right">
                             <?php if($this->getContinueShoppingUrl()): ?>
                                 <button type="button" title="<?php echo $this->__('Place Another Ad') ?>" class="button btn-continue" onclick="setLocation('<?php echo Mage::getUrl('postad') ?>')"><span><span><?php echo $this->__('Place Another Ad') ?></span></span></button>
                             <?php endif; ?>
+                            
+                            <button type="button" title="<?php echo $this->__('Submit Order') ?>" class="button btn-continue" onclick="setLocation('<?php echo Mage::getUrl('onepagecheckout') ?>')"><span><span><?php echo $this->__('Submit Order') ?></span></span></button>
                             
                             <!--[if lt IE 8]>
                             <input type="hidden" id="update_cart_action_container" />

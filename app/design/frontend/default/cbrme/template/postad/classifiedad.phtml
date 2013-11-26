@@ -95,13 +95,13 @@
 		</p>
 
 		<p id="weight_p">
-			<label for="weight" name="weight_label" id="weight_label">Weight</label>
+			<label for="weight" name="weight_label" id="weight_label">Weight(Kg)</label>
 			<input type="text" name="weight" id="weight" value="" />
 		</p>
 
-		<p id="sku_p">
-			<label for="sku" name="sku_label" id="sku_label">Serial Number</label>
-			<input type="text" name="sku" id="sku" value="" class="" />
+		<p id="serial_num_p">
+			<label for="serial_num" name="serial_num_label" id="serial_num_label">Serial Number</label>
+			<input type="text" name="serial_num" id="serial_num" value="" class="" />
 		</p>
 
 		<p id="condition_p">
@@ -146,6 +146,11 @@
 				<?php } ?>
 
 			</select>
+		</p>
+
+		<p>
+			<label>Address</label>
+			<input type="text" name="address" id="address" value="" class="required-entry"/>
 		</p>
 
 		<p id="state_p">
@@ -235,8 +240,8 @@
 				jQuery("#expiry_months_12_div").show();
 
 				jQuery("#make_p").show();
-				jQuery("#sku_p").show();
-				jQuery("#sku").addClass('required-entry');
+				jQuery("#serial_num_p").show();
+				jQuery("#serial_num").addClass('required-entry');
 
 				jQuery("#condition").removeClass("validate-select");
 				jQuery("#condition_p").hide();
@@ -259,8 +264,8 @@
 				jQuery("#expiry_months_12_div").hide();
 
 				jQuery("#make_p").show();
-				jQuery("#sku_p").show();
-				jQuery("#sku").addClass('required-entry');
+				jQuery("#serial_num_p").show();
+				jQuery("#serial_num").addClass('required-entry');
 
 				jQuery("#condition").addClass("validate-select");
 				jQuery("#condition_p").show();
@@ -280,8 +285,8 @@
 				jQuery("#expiry_months_12_div").hide();
 
 				jQuery("#make_p").show();
-				jQuery("#sku_p").show();
-				jQuery("#sku").addClass('required-entry');
+				jQuery("#serial_num_p").show();
+				jQuery("#serial_num").addClass('required-entry');
 
 				jQuery("#condition_p").show();
 				jQuery("#condition").addClass("validate-select");
@@ -300,9 +305,9 @@
 				jQuery("#make").val("");
 				jQuery("#make_p").hide();
 				
-				jQuery("#sku").val("");
-				jQuery("#sku_p").hide();	
-				jQuery("#sku").removeClass('required-entry');
+				jQuery("#serial_num").val("");
+				jQuery("#serial_num_p").hide();	
+				jQuery("#serial_num").removeClass('required-entry');
 
 				jQuery("#condition").addClass("validate-select");
 				jQuery("#condition").val("").removeClass("validate-select");
@@ -332,7 +337,7 @@
 				jQuery("#expiry_months_12_div").hide();
 
 				jQuery("#make_p").show();
-				jQuery("#sku_p").show();
+				jQuery("#serial_num_p").show();
 				jQuery("#condition").addClass("validate-select");
 				jQuery("#condition_p").show();
 				jQuery("#weight_p").show();
@@ -343,7 +348,7 @@
 		} else {
 			if (jQuery("#type_of_ad").val() == '6') {
 				jQuery("#make_p").show();
-				jQuery("#sku_p").show();
+				jQuery("#serial_num_p").show();
 
 				jQuery("#condition").removeClass("validate-select");
 				jQuery("#condition_p").hide();
@@ -358,7 +363,7 @@
 				jQuery("#hours").val("");
 			} else if (jQuery("#type_of_ad").val() == '5') {
 				jQuery("#make_p").show();
-				jQuery("#sku_p").show();
+				jQuery("#serial_num_p").show();
 
 				jQuery("#condition").addClass("validate-select");
 				jQuery("#condition_p").show();
@@ -371,7 +376,7 @@
 				jQuery("#hours_p").show();
 			} else if (jQuery("#type_of_ad").val() == '4') {
 				jQuery("#make_p").show();
-				jQuery("#sku_p").show();
+				jQuery("#serial_num_p").show();
 
 				jQuery("#condition_p").show();
 				jQuery("#condition").addClass("validate-select");
@@ -390,8 +395,8 @@
 				jQuery("#make").val("");
 				jQuery("#make_p").hide();
 				
-				jQuery("#sku").val("");
-				jQuery("#sku_p").hide();	
+				jQuery("#serial_num").val("");
+				jQuery("#serial_num_p").hide();	
 
 				jQuery("#condition").addClass("validate-select");
 				jQuery("#condition").val("").removeClass("validate-select");

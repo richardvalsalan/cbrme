@@ -80,20 +80,96 @@
                     </div>
                 <?php endif; ?>
 
-                <?php if ($_product->getShortDescription()):?>
+                <?php if ($_product->getDescription()):?>
                     <div class="short-description">
-                        <h2><?php echo $this->__('Quick Overview') ?></h2>
-                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                        <h2><?php echo $this->__('Description') ?></h2>
+                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'short_description') ?></div>
                     </div>
                 <?php endif;?>
 
+                <?php 
+                            
+                    //getting the category Id
+                    $categoryIds = array();
+
+                    foreach ($_product->getCategoryIds() as $p) {
+                        $categoryIds[] = $p;
+                    }
+
+                    $maincategoryId = reset($categoryIds);
+
+                    $cat = Mage::getModel('catalog/category')->load($maincategoryId );
+                    $mainCategory = $cat->getName();
+                    
+                    $subcategoryId = end($categoryIds);
+
+                    if ($maincategoryId  != $subcategoryId) {
+                        $cat = Mage::getModel('catalog/category')->load($subcategoryId);
+                        $subcategory = $cat->getName();
+                    }
+
+                ?>
+
+                <?php if ($mainCategory) { ?>
+                    <p><b>Main Category : </b><?php echo $mainCategory?></p>
+                <?php } ?>
+
+                <?php if ($subcategory) { ?>
+                    <p><b>Sub Category : </b><?php echo $subcategory?></p>
+                <?php } ?>
+
                 <?php if ($_product->getAdPrice()) {?>
-                    <label>Price :</label> <?php echo $_product->getAdPrice()?>
+                    <p><b>Price : </b><?php echo $_product->getAdPrice()?></p> 
+                <?php } ?>
+
+                <?php if ($_product->getProductUseType()) { ?>
+                    <p><b>Item Type : </b><?php echo $_product->getAttributeText('product_use_type');?></p>
+                <?php } ?>
+
+                <?php if($_product->getCondition()) { ?>
+                    <p><b>Condtion: </b><?php echo $_product->getAttributeText('condition');?></p>
+                <?php } ?>
+
+                <?php if ($_product->getManufacturer()) { ?>
+                    <p><b>Make : </b><?php echo $_product->getAttributeText('manufacturer');?></p>
+                <?php } ?>
+
+                <?php if ($_product->getModel()) { ?>
+                    <p><b>Model : </b><?php echo $_product->getModel(); ?></p>
+                <?php } ?>
+
+                 <?php if ($_product->getWeight()) { ?>
+                    <p><b>Weight(Kg) : </b><?php echo $_product->getWeight(); ?></p>
+                <?php } ?>
+
+                <?php if ($_product->getYear()) { ?>
+                    <p><b>Year : </b><?php echo round($_product->getYear())?></p>
                 <?php } ?>
 
                 <?php if ($_product->getHour()) { ?>
-                    <label>Hours : </label> <?php echo $_product->getHour()?>
+                    <p><b>Hours : </b><?php echo $_product->getHour()?></p>
                 <?php } ?>
+
+                <?php if ($_product->getProductTelephone()) { ?>
+                    <p><b>Land Line : </b><?php echo $_product->getProductTelephone();?></p>
+                <?php } ?>
+
+                <?php if ($_product->getAddress()) { ?>
+                    <p><b>Address : </b><?php echo $_product->getAddress();?></p>
+                <?php } ?>
+
+                <?php if ($_product->getState()) { ?>
+                    <p><b>State : </b><?php echo $_product->getState();?></p>
+                <?php } ?>
+
+                <?php if ($_product->getCity()) { ?>
+                    <p><b>City : </b><?php echo $_product->getCity();?></p>
+                <?php } ?>
+
+                <?php if ($_product->getEmail()) { ?>
+                    <p><b>Email : </b><?php echo $_product->getEmail();?></p>
+                <?php } ?>
+
 
                 <?php echo $this->getChildHtml('other');?>
 
@@ -165,18 +241,6 @@
         </script>
         </div>
 
-        <div class="product-collateral">
-    <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html):?>
-            <div class="box-collateral <?php echo "box-{$alias}"?>">
-                <?php if ($title = $this->getChildData($alias, 'title')):?>
-                <h2><?php echo $this->escapeHtml($title); ?></h2>
-                <?php endif;?>
-                <?php echo $html; ?>
-            </div>
-    <?php endforeach;?>
-            <?php echo $this->getChildHtml('upsell_products') ?>
-            <?php echo $this->getChildHtml('product_additional_data') ?>
-        </div>
     </div>
 <?php } else {
     

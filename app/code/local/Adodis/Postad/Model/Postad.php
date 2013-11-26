@@ -17,16 +17,14 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         $subCategoryOther = $request->getParam('sub_category_other');
         $subCategory = $request->getParam('sub_category');
         $make = $request->getParam('new-make');
-        $sku = $request->getParam('sku');
 
         $newState = $request->getParam('add_new_state');
         $newCity = $request->getParam('add_new_city');
 
         $classifiedType = $request->getParam('classifiedtype');
-
-        if (empty($sku)) {
-            $sku = $request->getParam('name') . '_' . date("Y-m-d h:m:s");
-        }
+        
+        $sku = $request->getParam('name') . '_' . date("Y-m-d h:m:s");
+        
 
         $expiryMonths = $request->getParam('expiry_months');
         
@@ -94,7 +92,8 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
     	   $product->setCategoryIds($categoryIds);
         }
 
-    	$product->setWeight($request->getParam('weight'));
+    	$product->setSerialNumber($request->getParam('serial_num'));
+        $product->setWeight($request->getParam('weight'));
     	$product->setTaxClassId(2);
     	$product->setVisibility(4);
     	$product->setStatus(1);
@@ -114,6 +113,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         
     	$product->setWebsiteIds(array(Mage::app()->getStore(true)->getWebsite()->getId()));
 
+        $product->setAddress($request->getParam('address'));
         $product->setProductState($request->getParam('state'));
         $product->setProductCity($request->getParam('city'));
         $product->setProductTelephone($request->getParam('telephone'));
@@ -149,10 +149,6 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
                         <tr>
                             <td align='right' width='40%'><b>Sku</b></td>
                             <td width='55%'>".$mailInfo['sku']."</td>
-                        </tr>
-                        <tr>
-                            <td align='right' width='40%'><b>Category:</b></td>
-                            <td width='55%'>".$mailInfo['category']."</td>
                         </tr>
                         <tr>
                             <td align='right' width='40%'><b>Category:</b></td>

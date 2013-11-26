@@ -28,6 +28,7 @@
 			<li>
 				<?php foreach ($this->getSearchableAttributes() as $_attribute) { ?>
 					<?php $_code = $_attribute->getAttributeCode() ?>
+					<?php //echo "type ::: " . $this->getAttributeInputType($_attribute);?>
 
 					<?php
 						if ($_code == 'tax_class_id' || $_code == 'product_use_type' || $_code == 'hour') {
@@ -154,7 +155,7 @@
 	{
 		if (jQuery("#sub_category").val() == 0) {
 			var value = jQuery("#category_search_field").val();
-			jQuery("#sub_category").append('<option value='+value+'>Narayan</option>');
+			jQuery("#sub_category").append('<option value='+value+'>Choose</option>');
 			jQuery("#sub_category").val(value);
 		}
 
