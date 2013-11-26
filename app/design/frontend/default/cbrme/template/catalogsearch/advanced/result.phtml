@@ -29,9 +29,9 @@
 </div>
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <?php if($this->getResultCount()): ?>
-    <p class="advanced-search-amount">
-        <?php echo $this->helper('catalogsearch')->__('<strong>%d item(s)</strong> were found using the following search criteria', $this->getResultCount()); ?>
-    </p>
+    <!-- <p class="advanced-search-amount">
+        <?php //echo $this->helper('catalogsearch')->__('<strong>%d item(s)</strong> were found using the following search criteria', $this->getResultCount()); ?>
+    </p> -->
 <?php else: ?>
     <p class="error-msg"><?php echo $this->helper('catalogsearch')->__('No items were found using the following search criteria.');?> <a href="<?php echo $this->getFormUrl(); ?>"><?php echo $this->helper('catalogsearch')->__('Modify your search'); ?></a></p>
 <?php endif; ?>
