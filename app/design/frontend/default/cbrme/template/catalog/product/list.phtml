@@ -62,32 +62,58 @@
                         <?php //echo $this->getPriceHtml($_product, true) ?>
 
                         <?php if ($product->getAdPrice()) {?>
-                            <p><?php echo "Price : " . $product->getAdPrice();?></p>
+                            <p><b>Price :</b> <?php echo $product->getAdPrice();?></p>
+                        <?php } else { ?>
+                            <p><b>Price :</b> <?php echo "N/A"?></p>
                         <?php } ?>
 
                         
                         <?php if ($product->getProductTelephone()) { ?>
                             <p><img src="<?php echo $this->getSkinUrl("images/phonePic.png") ?>" alt="" /><?php echo $product->getProductTelephone();?></p>
+                        <?php } else { ?>
+                            <p><b>Landline : </b> <?php echo "N/A" ?></p>
                         <?php } ?>
 
                         <?php if ($product->getMobile()) { ?>
                             <p><img src="<?php echo $this->getSkinUrl("images/phonePic.png") ?>" alt="" /><?php echo $product->getMobile();?></p>
+                        <?php } else { ?>
+                            <p><b>Mobile : </b> <?php echo "N/A" ?></p>
                         <?php } ?>
 
                         <?php if ($product->getAddress()) { ?>
                             <p><img src="<?php echo $this->getSkinUrl("images/house.png") ?>" alt="" /><?php echo $product->getAddress();?></p>
+                        <?php } else { ?>
+                            <p><img src="<?php echo $this->getSkinUrl("images/house.png") ?>" alt="" /><?php echo "N/A";?></p>
                         <?php } ?>
 
-                        <?php if ($product->getState()) { ?>
-                            <p><?php echo $product->getState();?></p>
+                        <?php if ($product->getProductState()) { ?>
+                            <p><b>State : </b><?php echo $product->getAttributeText('product_state');?></p>
+                        <?php } else { ?>
+                            <p><b>State : </b><?php echo "N/A"?></p>
                         <?php } ?>
 
-                        <?php if ($product->getCity()) { ?>
-                            <p><?php echo $product->getCity();?></p>
+                        <?php if ($product->getProductCity()) { ?>
+                            <p><b>City : </b><?php echo $product->getAttributeText('product_city');?></p>
+                        <?php } else { ?>
+                            <p><b>City : </b><?php echo "N/A"?></p>
+                        <?php } ?>
+
+                        <?php if ($product->getProductCountry()) { ?>
+                             <p><b>Country : </b><?php echo $product->getAttributeText('product_country');?></p>
+                        <?php } else { ?>
+                            <p><b>Country : </b><?php echo "N/A"?></p>
                         <?php } ?>
 
                         <?php if ($product->getEmail()) { ?>
-                            <p><?php echo $product->getEmail();?></p>
+                            <p><b>Email : </b><?php echo $product->getEmail();?></p>
+                        <?php } else { ?>
+                            <p><b>Email : </b><?php echo "N/A"?></p>
+                        <?php } ?>
+
+                        <?php if ($product->getWebsite()) { ?>
+                            <p><b>Website : </b><?php echo $product->getWebsite();?></p>
+                        <?php } else { ?>
+                            <p><b>Website : </b><?php echo "N/A";?></p>
                         <?php } ?>
 
                         <?php if($_product->isSaleable()): ?>

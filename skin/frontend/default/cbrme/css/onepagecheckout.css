@@ -184,3 +184,8 @@ p.newsletter label{color:#8E8D8B;}
 * html .d-sh-tl, * html .d-sh-tr { padding-right:42px; }
 /* IE7 fix */
 *:first-child+html .onepagecheckout-window { width: 500px; }
+
+.onepagecheckout-index-index .page-title h1{
+	float: left;
+    padding-left: 130px;
+}

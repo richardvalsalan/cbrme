@@ -42,23 +42,13 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
             $categoryIds[] = $subCategory;
         }
 
-        if (!empty($newState)) {
-            $mailInfo['state'] = $newState;
-        }
-
-        if (!empty($newCity)) {
-            $mailInfo['city'] = $newCity;
-        }
-
-        // if New Make is required Implode add to array
-
     
         $product = Mage::getModel('catalog/product');
 
     	$product->setSku($sku);
         
-        $mailInfo['sku'] = $sku;
     	$product->setName($request->getParam('name'));
+
     	$product->setDescription($request->getParam('description'));
     	$product->setShortDescription($request->getParam('description'));
 
@@ -82,7 +72,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
             $product->setExpiryMonth($request->getParam('expiry_months'));
         } else {
             $product->setPrice(0);
-            $product->setClassifiedType("15 day Trial");
+            $product->setClassifiedType("Free Trial");
         }
 
     	$product->setTypeId('simple');
@@ -107,19 +97,36 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         } else {
             $product->setMake($request->getParam('make'));   
         }
-
+    
         $product->setCondition($request->getParam('condition'));
         $product->setProductUseType($request->getParam('type_of_ad'));
         
     	$product->setWebsiteIds(array(Mage::app()->getStore(true)->getWebsite()->getId()));
 
         $product->setAddress($request->getParam('address'));
-        $product->setProductState($request->getParam('state'));
-        $product->setProductCity($request->getParam('city'));
+
+        if (!empty($newState)) {
+            $mailInfo['state'] = $newState;
+            Mage::getSingleton('core/session')->setAdState($newState);
+        } else {
+            $product->setProductState($request->getParam('state'));
+        }
+
+        if (!empty($newCity)) {
+            $mailInfo['city'] = $newCity;
+            Mage::getSingleton('core/session')->setAdCity($newState);
+        } else {
+
+            $product->setProductCity($request->getParam('city'));
+        }
+
+        $product->setProductCountry($request->getParam('country'));
         $product->setProductTelephone($request->getParam('telephone'));
         $product->setMobile($request->getParam('mobile_telephone'));
         $product->setEmail($request->getParam('email'));
+        
         $product->setAdPrice($request->getParam('ad_price'));
+        $product->setWebsite($request->getParam('website'));
         
     	$stockData = $product->getStockData();
     	$stockData['qty'] = 1;
@@ -129,6 +136,35 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
     	$product->setStockData($stockData);
 
     	$productId = $product->save()->getId();
+        
+        $_product = Mage::getModel('catalog/product')->load($productId);
+
+        //company session
+        Mage::getSingleton('core/session')->setAdCompany($_product->getName());
+
+        //Address Session
+        Mage::getSingleton('core/session')->setAdAddress($_product->getAddress());
+
+        if (empty($newState)) {
+            Mage::getSingleton('core/session')->setAdState($_product->getAttributeText('product_state'));
+        }
+
+        if (empty($newCity)) {
+            Mage::getSingleton('core/session')->setAdCity($_product->getAttributeText('product_city'));
+        }
+
+        $country = $request->getParam('country');
+
+        if ($country == '7') {
+            Mage::getSingleton('core/session')->setAdCountry('India');
+        } else if ($country == '26') {
+            Mage::getSingleton('core/session')->setAdCountry('Foreign');
+        }
+
+        Mage::getSingleton('core/session')->setAdTelephone($request->getParam('telephone'));
+
+        Mage::getSingleton('core/session')->setAdEmail($request->getParam('email'));
+
         
         if (!empty($mailInfo)) {
         
@@ -148,7 +184,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
                         </tr>
                         <tr>
                             <td align='right' width='40%'><b>Sku</b></td>
-                            <td width='55%'>".$mailInfo['sku']."</td>
+                            <td width='55%'>".$sku ."</td>
                         </tr>
                         <tr>
                             <td align='right' width='40%'><b>Category:</b></td>

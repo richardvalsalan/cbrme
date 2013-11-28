@@ -1,5 +1,5 @@
 <?php if ($this->getQuote()->isVirtual()) : return; endif; ?>
-<div id="shipping-method" class="onepagecheckout_block">
+<div id="shipping-method" class="onepagecheckout_block" style="display:none">
     <div class="op_block_title"><?php echo $this->__('Shipping Method') ?></div>
     <div id="checkout-shipping-method-load">
         <?php echo $this->getChildHtml('available') ?>

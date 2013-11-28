@@ -95,6 +95,9 @@ Default layout, loads most of the pages
         <block type="core/text_list" name="additional.product.info" translate="label">
             <label>Additional Product Info</label>
         </block>
+
+        <!-- To remove the top proceed to Checkout -->
+        <remove name="checkout.cart.top_methods" />
     </checkout_cart_index>
 
     <checkout_cart_configure translate="label">

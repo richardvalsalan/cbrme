@@ -1,6 +1,7 @@
 <?php if (!$_agree = $this->getAgreements()) return; ?>
 <ol class="checkout-agreements">
 <?php $_i = 0; foreach ($_agree as $_a): ?>
+    
     <li<?php echo ++$_i === count($_agree) ? ' class="last"' : ''?>>
         <div id="onepagecheckout-agreement-<?php echo $_a->getId() ?>-window"
             class="agreement-content"

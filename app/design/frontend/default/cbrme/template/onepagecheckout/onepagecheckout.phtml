@@ -1,8 +1,8 @@
 <div class="page-title">
-    <h1 class='h1_opc'><?php echo Mage::getStoreConfig('onepagecheckout/general/title') ?></h1>
-    <?php echo $this->__('Fill in the fields below to complete your purchase!') ?>
+    <p style="display:none"><?php echo Mage::getStoreConfig('onepagecheckout/general/title') ?></p>
+    <h1 class='h1_opc'><?php echo $this->__('Please Check The Fields Below And Confirm Order') ?></h1>
     <?php if (!Mage::getSingleton('customer/session')->isLoggedIn()){ ?>
-    <p class="onepagecheckout_loginarea">
+    <p class="onepagecheckout_loginarea" style="float:right;">
         <a href="javascript:void(0)" class="onepagecheckout_loginlink" onclick='open_login();'>
             <?php echo $this->__('Already registered? Click here to login') ?>
         </a>

@@ -112,64 +112,117 @@
 
                 <?php if ($mainCategory) { ?>
                     <p><b>Main Category : </b><?php echo $mainCategory?></p>
+                <?php } else { ?>
+                    <p><b>Main Category : </b><?php echo "N/A"?></p>
                 <?php } ?>
 
                 <?php if ($subcategory) { ?>
                     <p><b>Sub Category : </b><?php echo $subcategory?></p>
+                <?php } else { ?>
+                    <p><b>Sub Category : </b><?php echo "N/A"?></p>
                 <?php } ?>
 
                 <?php if ($_product->getAdPrice()) {?>
                     <p><b>Price : </b><?php echo $_product->getAdPrice()?></p> 
+                <?php } else { ?>
+                    <p><b>Price : </b><?php echo "N/A"?></p>
                 <?php } ?>
 
                 <?php if ($_product->getProductUseType()) { ?>
                     <p><b>Item Type : </b><?php echo $_product->getAttributeText('product_use_type');?></p>
+                <?php } else { ?>
+                    <p><b>Item Type : </b><?php echo "N/A";?></p>
                 <?php } ?>
 
                 <?php if($_product->getCondition()) { ?>
                     <p><b>Condtion: </b><?php echo $_product->getAttributeText('condition');?></p>
+                <?php } else { ?>
+                    <p><b>Condtion: </b><?php echo "N/A"?></p>
                 <?php } ?>
 
                 <?php if ($_product->getManufacturer()) { ?>
                     <p><b>Make : </b><?php echo $_product->getAttributeText('manufacturer');?></p>
+                <?php } else { ?>
+                    <p><b>Make : </b><?php echo "N/A"?></p>
                 <?php } ?>
 
                 <?php if ($_product->getModel()) { ?>
                     <p><b>Model : </b><?php echo $_product->getModel(); ?></p>
+                <?php } else { ?>
+                    <p><b>Model : </b><?php echo "N/A"; ?></p>
                 <?php } ?>
 
                  <?php if ($_product->getWeight()) { ?>
                     <p><b>Weight(Kg) : </b><?php echo $_product->getWeight(); ?></p>
+                <?php } else { ?>
+                    <p><b>Weight(Kg) : </b><?php echo "N/A" ?></p>
                 <?php } ?>
 
                 <?php if ($_product->getYear()) { ?>
                     <p><b>Year : </b><?php echo round($_product->getYear())?></p>
+                <?php } else { ?>
+                    <p><b>Year : </b><?php echo "N/A" ?></p>
+                <?php } ?>
+
+                <?php if ($_product->getSerialNumber()) { ?>
+                    <p><b>Serial Number : </b><?php echo round($_product->getSerialNumber())?></p>
+                <?php } else { ?>
+                    <p><b>Serial Number : </b><?php echo "N/A"?></p>
                 <?php } ?>
 
                 <?php if ($_product->getHour()) { ?>
-                    <p><b>Hours : </b><?php echo $_product->getHour()?></p>
+                    <p><b>Hours : </b><?php echo round($_product->getHour())?></p>
+                <?php } else { ?>
+                    <p><b>Hours : </b><?php echo "N/A"?></p>
                 <?php } ?>
 
                 <?php if ($_product->getProductTelephone()) { ?>
                     <p><b>Land Line : </b><?php echo $_product->getProductTelephone();?></p>
+                <?php } else { ?>
+                    <p><b>Land Line : </b><?php echo "N/A"?></p>
+                <?php } ?>
+
+                <?php if ($_product->getMobile()) { ?>
+                    <p><b>Mobile : </b><?php echo $_product->getMobile();?></p>
+                <?php } else { ?>
+                    <p><b>Mobile : </b><?php echo "N/A"?></p>
                 <?php } ?>
 
                 <?php if ($_product->getAddress()) { ?>
                     <p><b>Address : </b><?php echo $_product->getAddress();?></p>
+                <?php } else { ?>
+                    <p><b>Address : </b><?php echo "N/A"?></p>
                 <?php } ?>
 
-                <?php if ($_product->getState()) { ?>
-                    <p><b>State : </b><?php echo $_product->getState();?></p>
+                <?php if ($_product->getProductState()) { ?>
+                    <p><b>State : </b><?php echo $_product->getAttributeText('product_state');?></p>
+                <?php } else { ?>
+                    <p><b>State : </b><?php echo "N/A";?></p>
                 <?php } ?>
 
-                <?php if ($_product->getCity()) { ?>
-                    <p><b>City : </b><?php echo $_product->getCity();?></p>
+                <?php if ($_product->getProductCity()) { ?>
+                    <p><b>City : </b><?php echo $_product->getAttributeText('product_city');?></p>
+                <?php } else { ?>
+                    <p><b>City : </b><?php echo "N/A" ?></p>
+                <?php } ?>
+
+                <?php if ($_product->getProductCountry()) { ?>
+                    <p><b>Country : </b><?php echo $_product->getAttributeText('product_country');?></p>
+                <?php } else { ?>
+                    <p><b>Country : </b><?php echo "N/A"?></p>
                 <?php } ?>
 
                 <?php if ($_product->getEmail()) { ?>
                     <p><b>Email : </b><?php echo $_product->getEmail();?></p>
+                <?php } else { ?>
+                    <p><b>Email : </b><?php echo "N/A"?></p>
                 <?php } ?>
 
+                <?php if ($_product->getWebsite()) { ?>
+                    <p><b>Website : </b><?php echo $_product->getWebsite();?></p>
+                <?php } else { ?>
+                    <p><b>Website : </b><?php echo "N/A"?></p>
+                <?php } ?>
 
                 <?php echo $this->getChildHtml('other');?>
 
