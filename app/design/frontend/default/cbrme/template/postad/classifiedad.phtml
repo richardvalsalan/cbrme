@@ -1,5 +1,6 @@
 <?php
 	$freeTrial = Mage::app()->getRequest()->getParam('type');
+
 ?>
 <div id="classfiedform">
 	<form action="<?php echo $this->getClassifiedSaveUrl();?>" method="post" id="classified-ad-form" name="classified-ad-form" enctype="multipart/form-data">
@@ -27,7 +28,7 @@
 
 		<p>
 			<label for="category" name="category_label" id="category_label">Category</label>
-			<select name="category" id="category" class="validate-select" onchange="subcategorySelect();categoryOtherSelect()">
+			<select name="category" id="category" class="validate-select" onchange="subcategorySelect();">
 				<option value="">Choose</option>
 
 				<?php foreach ( Mage::helper('catalog/category')->getStoreCategories() as $_category) { ?>
@@ -35,18 +36,18 @@
 						<option value="<?php echo $_category->getId(); ?>"><?php echo $_category->getName();?></option>
 					<?php } ?>
 				<?php } ?>
-				<option value="other_main">Other</option>
-			</select> (Click  Other to add New Category )
+				<!-- <option value="other_main">Other</option> -->
+			</select>
 		</p>
 
-		<p id="category_other_p" style="display:none">
+		<!-- <p id="category_other_p" style="display:none">
 			<label for="category_other" name="category_other_label" id="category_other_label">Please Enter The Category</label>
 			<input name="category_other" type="text" class="required-entry" id="category_other" value=""/>
-		</p>
+		</p> -->
 
 		<p id="subcategory_p" style="display:none">
 			<label for="sub_category" name="sub_category_label" id="sub_category_label">Sub Category</label>
-			<select name="sub_category" id="sub_category"  onchange="subCategoryOtherSelect()">
+			<select name="sub_category" id="sub_category"  class="validate-select" onchange="subCategoryOtherSelect()">
 				<option value="0">Choose</option>
 			</select> (Click  Other to add New Sub-Category )
 		</p>
@@ -68,7 +69,7 @@
 
 		<p id="make_p">
 			<label for="make" name="make_label" id="make_label">Make</label>
-			<select id="make" name="make" class="validate-select">
+			<select id="make" name="make" class="validate-select" onchange="makeSelectAction()">
 				<option value="" id="make_default" name="make_default">Choose</option>
 
 				<?php foreach (Mage::helper('postad')->getAttributeOptions('manufacturer') as $option) { ?>
@@ -80,7 +81,7 @@
 
 			<div class="new-make-div" style="display:none">
 				<label for="new-make" name="new-make-label" id="new-make-label">Enter Make</label>
-				<input name="new-make" value="" id="new-make" type="text" />
+				<input name="new-make" value="" id="new-make" type="text" class=""/>
 			</div>
 		</p>
 
@@ -91,7 +92,7 @@
 
 		<p id="year_p">
 			<label for="year" name="year_label" id="year_label">Year</label>
-			<input type="text" name="year" id="year" value="" class="required-entry"/>
+			<input type="text" name="year" id="year" value="" class=""/>
 		</p>
 
 		<p id="weight_p">
@@ -165,7 +166,7 @@
 
 			</select>(Click  Other to add State )
 
-			<p id="add_new_state_p" style="display:none"><label>Enter The New State: </label><input name="add_new_state" id="add_new_state" value="" type="text"/></p>
+			<p id="add_new_state_p" style="display:none"><label>Enter The New State: </label><input name="add_new_state" id="add_new_state" value="" type="text" class=""/></p>
 		</p>
 
 		<p id="city_p">
@@ -180,7 +181,12 @@
 				<option value="other_city"><?php echo 'other'?></label>
 			</select> (Click  Other to add City)
 
-			<p id="add_new_city_p" style="display:none"><label>Enter The New City: </label><input name="add_new_city" id="add_new_city" value="" type="text"/></p>
+			<p id="add_new_city_p" style="display:none"><label>Enter The New City: </label><input name="add_new_city" id="add_new_city" value="" type="text" class=""/></p>
+		</p>
+
+		<p>
+			<label for="zipcode" name="zipcode_label" id="zipcode_label">Zip Code</label>
+			<input type="text" name="zipcode" id="zipcode" value="" class="required-entry"/>
 		</p>
 
 		<p>
@@ -200,8 +206,10 @@
 
 		<p>
 			<label for="website" name="website_label" id="website_label">Website</label>
-			<input type="text" name="website" id="website" value="" class=""/>
+			<input type="text" name="website" id="website" value="" class="required-entry"/>
 		</p>
+
+		<input type="hidden" id="current_url" name="current_url" value="<?php echo Mage::helper('core/url')->getCurrentUrl();?>" />
 
 		<p><input type="submit" name="submit" value="Submit">
 
@@ -219,9 +227,13 @@
 	{
 		if (jQuery("#state").val() == "other_state")	{
 			jQuery("#add_new_state_p").show();
+
+			jQuery("#add_new_state").addClass("required-entry");
 		} else {
 			jQuery("#add_new_state_p").hide();
 			jQuery("#add_new_state").val("");
+
+			jQuery("#add_new_state").removeClass("required-entry");
 		}
 	}
 
@@ -229,9 +241,13 @@
 	{
 		if (jQuery("#city").val() == "other_city")	{
 			jQuery("#add_new_city_p").show();
+
+			jQuery("#add_new_city").addClass("required-entry");
 		} else {
 			jQuery("#add_new_city_p").hide();
 			jQuery("#add_new_city").val("");
+
+			jQuery("#add_new_city").removeClass("required-entry");
 		}
 	}
 
@@ -448,6 +464,8 @@
 	        	}
 			});
 		}
+
+		jQuery("#sub_category").removeClass("");
 	}
 
 	function categoryOtherSelect()
@@ -469,8 +487,12 @@
 	{
 		if ($(sub_category).getValue() == 'other_sub') {
 			Element.show('subcategory_other_p');
+
+			jQuery("#sub_category_other").addClass("required-entry");
 		} else {
 			Element.hide('subcategory_other_p');
+
+			jQuery("#sub_category_other").removeClass("required-entry");
 		}
 	}
 
@@ -495,9 +517,30 @@
 		}
 	}
 
+	function makeSelectAction()
+	{
+		jQuery("#make").addClass("validate-select");
+		jQuery("#make").removeClass("validation-passed");
+		jQuery("#make").removeClass("validation-advice");
+		jQuery("#new-make").val("");
+		jQuery("#new-make").removeClass("required-entry");
+		jQuery(".new-make-div").hide();
+	}
+
 	function enableNewMake()
 	{
-		jQuery(".new-make-div").show()
+		jQuery("#make").removeClass("validate-select");
+		jQuery("#make").removeClass("validation-advice");
+		jQuery("#new-make").addClass("required-entry");
+		jQuery(".new-make-div").show();
 	}
+
+	jQuery(document).ready(function() {
+		jQuery("#category").change(function() {
+			if (jQuery("#category").val() == "other_main") {
+				jQuery("#subcategory_p").hide();
+			}
+		});
+	});
 
 </script>

@@ -24,7 +24,9 @@ color:#FFFFFF;font:bold 12px/20px Arial,Helvetica,sans-serif;height:20px !import
 #onepagecheckout_orderform .col3-set .col-1{width:27%;}
 #onepagecheckout_orderform .col3-set .col-2{width:33%;margin-left:4%;}
 
-#onepagecheckout_orderform #register-customer-password{margin-bottom:5px;}
+#onepagecheckout_orderform #register-customer-password{
+    margin-bottom: 5px;  
+}
 #onepagecheckout_orderform #ship_address_block{margin-top:35px;}
 
 .onepagecheckout_datafields .op_block_title{text-transform:uppercase;color:#000;font-size:11pt;font-weight:bold;border-bottom:1px solid #000;margin: 25px 0 30px;}
@@ -36,7 +38,13 @@ color:#FFFFFF;font:bold 12px/20px Arial,Helvetica,sans-serif;height:20px !import
 .onepagecheckout_datafields .col-1 .form_fields select { width: 100%; }
 .onepagecheckout_datafields .col-1 .form_fields div.full { margin:0 0 15px; }
 .onepagecheckout_datafields .col-1 .form_fields div.full .data_area { width: 100%; }
-.onepagecheckout_datafields .col-1 .form_fields div.full input.t1 { width: 95%; padding:2px; background:none repeat scroll 0 0 #FFFFFF;border:1px solid #B6B6B6;}
+.onepagecheckout_datafields .col-1 .form_fields div.full input.t1,.col-3 .form_fields div.short input.t1  { width: 95%; padding:2px; background:none repeat scroll 0 0 #FFFFFF;border:1px solid #B6B6B6;}
+.col-3 .password_fields {
+	float: left;
+    margin-left: -230px;
+    position: relative;
+}
+.col-3 .form_fields div.short{width : 50%;float:left}
 .onepagecheckout_datafields .col-1 .form_fields div.full select { width: 97%; }
 
 .onepagecheckout_datafields .col-2 .form_fields div.full .data_area { width: 275px; }
@@ -98,7 +106,7 @@ color:#FFFFFF;font:bold 16px/32px Arial,Helvetica,sans-serif;height:32px !import
 #onepagecheckout_orderform button.btn-checkout span span{background-position:100% 0;padding:0 20px 0 0;}
 */
 
-#onepagecheckout_orderform button.btn-checkout{border:0;margin-bottom:10px;padding:0 20px;
+#onepagecheckout_orderform button.btn-checkout{border:0;margin-top:5px; float: right;padding:0 20px;
 background:url("../images/onepagecheckout/buttonbg.gif") repeat-x scroll 0 0 #00A7D1;
 color:#FFFFFF;font:bold 16px/32px Arial,Helvetica,sans-serif;height:32px !important;text-transform:uppercase;
 box-shadow:0px 0px 8px #555;

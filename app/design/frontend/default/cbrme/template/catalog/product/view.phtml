@@ -206,6 +206,12 @@
                     <p><b>City : </b><?php echo "N/A" ?></p>
                 <?php } ?>
 
+                <?php if ($_product->getZipCode()) { ?>
+                    <p><b>Zip Code : </b><?php echo $_product->getZipCode();?></p>
+                <?php } else { ?>
+                    <p><b>Zip Code : </b><?php echo "N/A" ?></p>
+                <?php } ?>
+
                 <?php if ($_product->getProductCountry()) { ?>
                     <p><b>Country : </b><?php echo $_product->getAttributeText('product_country');?></p>
                 <?php } else { ?>

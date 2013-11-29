@@ -23,6 +23,28 @@ $has_addr	= $this->customerHasAddresses();
 				<?php echo $this->getLayout()->createBlock('onepagecheckout/widget_name')->setObject($this->getBillAddress())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
 			</div>
 			<div class='clr'></div>
+			<?php //$agc = Mage::helper('onepagecheckout')->isGuestCheckoutAllowed();?>
+			<div class="two_fields" id="register-customer-password" <?php if ($agc) { echo ' style="display: none;" '; } ?>>
+					<div class="short">
+						<label for="billing:customer_password" class="required">
+							<?php echo $this->__('Password') ?>
+						</label>
+						<sup>*</sup>
+						<div class="data_area">
+							<input type="password" name="billing[customer_password]" id="billing:customer_password" title="<?php echo $this->__('Password') ?>" class="t1 required-entry validate-password" />
+						</div>
+					</div>
+					<div class="short">
+						<label for="billing:confirm_password" class="required">
+							<?php echo $this->__('Confirm Password') ?>
+						</label>
+						<sup>*</sup>
+						<div class="data_area">
+							<input type="password" name="billing[confirm_password]" title="<?php echo $this->__('Confirm Password') ?>" id="billing:confirm_password" class="t1 required-entry validate-cpassword" />
+						</div>
+					</div>
+					<div class='clr'></div>
+				</div>
 			<?php if (!$logged)  : ?>
 				<div class="full">
 					<label for="billing:email" class="required">
@@ -82,7 +104,7 @@ $has_addr	= $this->customerHasAddresses();
 				$csl	= $this->helper('customer/address')->getStreetLines();
 				for ($i = 2; $i <= $csl; $i++){ 
 				?>
-				<div class="full">
+				<div class="full" style="display:none">
 					<div class="data_area">
 						<input type="text" name="billing[street][]" id="billing:street<?php echo $i?>" title="<?php echo $this->__('Street Address %s', $i) ?>" value="<?php echo $this->htmlEscape($this->getBillAddress()->getStreet($i)) ?>" class="t1" />
 					</div>
@@ -139,7 +161,7 @@ $has_addr	= $this->customerHasAddresses();
 						</label>
 						<?php if($zip_r === 'required'){echo ' <sup>*</sup>';}?>
 						<div class="data_area">
-							<input type="text" title="<?php echo $this->__('Zip Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->htmlEscape($this->getBillAddress()->getPostcode()) ?>" class="t1 validate-zip-international<?php if($zip_r === 'required'){echo ' required-entry ';}?>" />
+							<input type="text" title="<?php echo $this->__('Zip Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo (!$logged) ? Mage::getSingleton('core/session')->getAdZipcode() : $this->htmlEscape($this->getBillAddress()->getPostcode()) ?>" class="t1 validate-zip-international<?php if($zip_r === 'required'){echo ' required-entry ';}?>" />
 						</div>
 					</div>
 				<?php endif; ?>
@@ -229,27 +251,7 @@ $has_addr	= $this->customerHasAddresses();
 				<?php 
 				} 
 				?>
-				<div class="two_fields" id="register-customer-password" <?php if ($agc) { echo ' style="display: none;" '; } ?>>
-					<div class="short">
-						<label for="billing:customer_password" class="required">
-							<?php echo $this->__('Password') ?>
-						</label>
-						<sup>*</sup>
-						<div class="data_area">
-							<input type="password" name="billing[customer_password]" id="billing:customer_password" title="<?php echo $this->__('Password') ?>" class="t1 required-entry validate-password" />
-						</div>
-					</div>
-					<div class="short">
-						<label for="billing:confirm_password" class="required">
-							<?php echo $this->__('Confirm Password') ?>
-						</label>
-						<sup>*</sup>
-						<div class="data_area">
-							<input type="password" name="billing[confirm_password]" title="<?php echo $this->__('Confirm Password') ?>" id="billing:confirm_password" class="t1 required-entry validate-cpassword" />
-						</div>
-					</div>
-					<div class='clr'></div>
-				</div>
+				
 				<div class='clr'></div>
 			<?php 
 			endif; 

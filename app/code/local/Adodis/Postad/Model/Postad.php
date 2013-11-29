@@ -95,7 +95,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         if (!empty($make)) {
             $mailInfo['make'] = $make;
         } else {
-            $product->setMake($request->getParam('make'));   
+            $product->setManufacturer($request->getParam('make'));   
         }
     
         $product->setCondition($request->getParam('condition'));
@@ -121,6 +121,7 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
         }
 
         $product->setProductCountry($request->getParam('country'));
+        $product->setZipCode($request->getParam('zipcode'));
         $product->setProductTelephone($request->getParam('telephone'));
         $product->setMobile($request->getParam('mobile_telephone'));
         $product->setEmail($request->getParam('email'));
@@ -165,6 +166,8 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
 
         Mage::getSingleton('core/session')->setAdEmail($request->getParam('email'));
 
+        Mage::getSingleton('core/session')->setAdZipcode($request->getParam('zipcode'));
+
         
         if (!empty($mailInfo)) {
         
@@ -200,11 +203,11 @@ class Adodis_Postad_Model_Postad extends Mage_Core_Model_Abstract
                         </tr>
                         <tr>
                             <td align='right' width='40%'><b>State:</b></td>
-                            <td width='55%'>".$mailInfo['State']."</td>
+                            <td width='55%'>".$mailInfo['state']."</td>
                         </tr>
                         <tr>
                             <td align='right' width='40%'><b>City:</b></td>
-                            <td width='55%'>".$mailInfo['City']."</td>
+                            <td width='55%'>".$mailInfo['city']."</td>
                         </tr>
                     </table>
                 </body>

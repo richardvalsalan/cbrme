@@ -107,7 +107,101 @@ class Adodis_Postad_IndexController extends Mage_Core_Controller_Front_Action
 
     public function classifiedadsaveAction()
     {
-    	
+        $request = Mage::app()->getRequest();
+    
+        $typeofAd = $request->getParam('type_of_ad');
+        $category = $request->getParam('category');
+        $categoryOther = $request->getParam('category_other');
+        $subCategory = $request->getParam('sub_category');
+        $subCategoryOther = $request->getParam('sub_category_other');
+        $companyName = $request->getParam('name');
+        $description = $request->getParam('description');
+        $make = $request->getParam('make');
+        $newMake = $request->getParam('new-make');
+        $model = $request->getParam('model');
+        $condition = $request->getParam('condition');
+        $address = $request->getParam('address');
+        $state = $request->getParam('state');
+        $newState = $request->getParam('add_new_state');
+        $city = $request->getParam('city');
+        $newCity = $request->getParam('add_new_city');
+        $landLine = $request->getParam('telephone');
+        $mobile = $request->getParam('mobile_telephone');
+        $email = $request->getParam('email');
+        $website = $request->getParam('website');
+        $zipcode = $request->getParam('zipcode');
+
+        $previousUrl = $request->getParam('current_url');
+
+        if (empty($typeofAd) || empty($companyName) || empty($description) || empty($address) || empty($landLine) || empty($mobile) || empty($email) || empty($website) || empty($zipcode)) {
+            
+            Mage::getSingleton('core/session')->addError('Some of the Required Fields has not been filled.Please Fill Them Correctly');
+            return $this->_redirectUrl($previousUrl);
+        }
+        
+        if (empty($category)) {
+            Mage::getSingleton('core/session')->addError('Category is not selected.Please Select a main category');
+            return $this->_redirectUrl($previousUrl);
+        }
+        
+        if ($subCategory == "other_sub") {
+            if (empty($subCategoryOther)) {
+                Mage::getSingleton('core/session')->addError('Sub-Category is not selected.Please Select a main category');
+                return $this->_redirectUrl($previousUrl);
+            }
+        } else if (empty($subCategory)) {
+            Mage::getSingleton('core/session')->addError('Sub-Category is not selected.Please Select a main category');
+            return $this->_redirectUrl($previousUrl);
+        }
+        
+        if (!empty($typeofAd)) {
+            
+            if ($typeofAd == '5' || $typeofAd == '4') {
+                if(empty($condition)) {
+                    Mage::getSingleton('core/session')->addError('Condition has not been Selected.Please Fill It');
+                    return $this->_redirectUrl($previousUrl);
+                }
+            }
+        } 
+
+        if (empty($state)) {
+            Mage::getSingleton('core/session')->addError('State has not been Selected.Please Select It');
+            return $this->_redirectUrl($previousUrl);    
+        } else if ($state == "other_state") {
+            if (empty($newState)) {
+                Mage::getSingleton('core/session')->addError('Please Enter The New State');
+                return $this->_redirectUrl($previousUrl);
+            }
+        }
+
+        if (empty($city)) {
+            Mage::getSingleton('core/session')->addError('City has not been Selected.Please Select It');
+            return $this->_redirectUrl($previousUrl);
+        } else if ($city == "other_city") {
+            if (empty($newCity)) {
+                Mage::getSingleton('core/session')->addError('Please Enter The New State');
+                return $this->_redirectUrl($previousUrl);
+            }
+        }
+
+       
+        if (empty($make)) {
+            if($typeofAd != "3") {
+                if (empty($newMake)) {
+                    Mage::getSingleton('core/session')->addError('Please Ad the New Make not been Selected.Please Select It');
+                    return $this->_redirectUrl($previousUrl);
+                }
+            }
+        }
+
+        if (empty($model)) {
+            if($typeofAd != "3") {
+                Mage::getSingleton('core/session')->addError('Model has not been Entered.Please Enter It');
+                return $this->_redirectUrl($previousUrl);
+            }
+        }
+        
+
         $saveAdAndGetId = Mage::getModel('postad/postad')->saveAd();
         $product = Mage::getModel('catalog/product')->load($saveAdAndGetId);
 
