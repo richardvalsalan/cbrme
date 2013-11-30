@@ -37,19 +37,19 @@ class Adodis_Postad_IndexController extends Mage_Core_Controller_Front_Action
                           <td align='center' colspan='2' height='30' ><b>Contact Info</b></td>
                         </tr>
                         <tr>
-                            <td align='right' width='40%'><b>Category:</b></td>
+                            <td align='right' width='40%'><b>Name:</b></td>
                             <td width='55%'>".$this->getRequest()->getParam('contact-name')."</td>
                         </tr>
                         <tr>
-                            <td align='right' width='40%'><b>Sub Category:</b></td>
+                            <td align='right' width='40%'><b>Email :</b></td>
                             <td width='55%'>".$this->getRequest()->getParam('contact-email')."</td>
                         </tr>
                         <tr>
-                            <td align='right' width='40%'><b>Sub Category:</b></td>
+                            <td align='right' width='40%'><b>Contact No:</b></td>
                             <td width='55%'>".$this->getRequest()->getParam('contact-no')."</td>
                         </tr>
                         <tr>
-                            <td align='right' width='40%'><b>Sub Category:</b></td>
+                            <td align='right' width='40%'><b>Contact Message:</b></td>
                             <td width='75%'>".$this->getRequest()->getParam('contact-message')."</td>
                         </tr>
                     </table>
